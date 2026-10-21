@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import TopCategories from '../components/sections/TopCategories.astro';
+import AboutTeaser from '../components/sections/AboutTeaser.astro';
+import WhyUs from '../components/sections/WhyUs.astro';
+import ContactBar from '../components/sections/ContactBar.astro';
+import site from '../data/site.json';
+---
+
+<BaseLayout
+  title={`${site.name} — ${site.tagline} | Showroom Addis Ababa`}
+  description="Addis Ababa's premier supplier of high-end architectural lighting, anti-glare LED spotlights, RGB linear profiles, commercial street luminaires, and luxury electrical gear."
+  currentPath="/"
+>
+  <!-- 1. Hero Section -->
+  <Hero />
+
+  <!-- 2. Top Categories Section -->
+  <TopCategories />
+
+  <!-- 3. About Us Teaser Section -->
+  <AboutTeaser />
+
+  <!-- 4. Why Choose Us / We Deliver More Section -->
+  <WhyUs />
+
+  <!-- 5. Contact & Order Bar -->
+  <ContactBar />
+</BaseLayout>

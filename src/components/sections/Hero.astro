@@ -1,0 +1,166 @@
+---
+import { Image } from 'astro:assets';
+import heroBg from '../../assets/hero/hero-bg.jpg';
+import stripImg from '../../assets/hero/led-strip-reel.jpg';
+import floodlightImg from '../../assets/hero/kk-floodlight-100w.jpg';
+import site from '../../data/site.json';
+
+const bgSlides = [
+  {
+    image: stripImg,
+    alt: 'High-density commercial LED strip light reel',
+    title: 'Commercial LED Strip Roll'
+  },
+  {
+    image: floodlightImg,
+    alt: 'KK Electric 100W IP66 commercial outdoor floodlight luminaire',
+    title: 'KK Electric 100W Floodlight'
+  },
+  {
+    image: heroBg,
+    alt: 'Luxury architectural interior lighting showroom ambiance',
+    title: 'Luxury Showroom Ambiance'
+  }
+];
+---
+
+<section class="relative pt-12 pb-20 lg:pt-24 lg:pb-36 overflow-hidden border-b border-white/10" id="hero-section">
+  <!-- Hero Full-Bleed Dynamic Background Images -->
+  <div class="absolute inset-0 z-0 overflow-hidden" id="hero-bg-container">
+    {bgSlides.map((slide, idx) => (
+      <div
+        class={`hero-bg-slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === 0 ? 'opacity-100' : 'opacity-0'}`}
+        data-index={idx}
+      >
+        <Image
+          src={slide.image}
+          alt={slide.alt}
+          width={1920}
+          height={1080}
+          loading={idx === 0 ? "eager" : "lazy"}
+          fetchpriority={idx === 0 ? "high" : "low"}
+          class="w-full h-full object-cover object-center lg:object-right brightness-110 contrast-105 saturate-110 select-none pointer-events-none"
+        />
+      </div>
+    ))}
+
+    <!-- Soft directional gradient for text legibility on the left, leaving the rest 100% clear & bright -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#050807]/90 via-[#050807]/50 via-30% to-transparent pointer-events-none z-10"></div>
+    <!-- Subtle top & bottom edge blending into page -->
+    <div class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050807] to-transparent pointer-events-none z-10"></div>
+    <div class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#050807] to-transparent pointer-events-none z-10"></div>
+  </div>
+
+  <!-- Subtle ambient green glow in background -->
+  <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-[#5BE584]/10 blur-[140px] pointer-events-none rounded-full z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+    <div class="max-w-3xl flex flex-col gap-6 text-left">
+      <!-- Eyebrow Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1C201F]/90 backdrop-blur-md border border-[#5BE584]/40 w-fit">
+        <span class="w-2 h-2 rounded-full bg-[#5BE584] animate-pulse"></span>
+        <span class="text-xs font-semibold text-[#5BE584] tracking-wider uppercase">{site.tagline}</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+        LUXURY <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#5BE584] to-[#2FD468]">ELECTRICAL</span>
+      </h1>
+
+      <!-- Slogan & Subtitle -->
+      <p class="text-lg sm:text-xl text-[#C1C8C4] leading-relaxed max-w-2xl font-light">
+        {site.slogan} — <span class="text-[#5BE584] font-medium">{site.slogan_am}</span>. Addis Ababa's foremost destination for commercial luminaires, anti-glare architectural spots, and certified electrical gear.
+      </p>
+
+
+
+      <!-- Background Slideshow Controls & Label -->
+      <div class="flex items-center gap-3 pt-6">
+        <div class="flex items-center gap-1.5 p-1 rounded-full bg-[#0B1210]/80 backdrop-blur-md border border-white/15" role="tablist" aria-label="Hero background slides">
+          {bgSlides.map((slide, idx) => (
+            <button
+              type="button"
+              class={`hero-bg-dot h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === 0 ? 'bg-[#5BE584] w-7' : 'bg-white/30 hover:bg-white/60 w-2.5'}`}
+              data-index={idx}
+              aria-label={`View ${slide.title} in background`}
+            ></button>
+          ))}
+        </div>
+        <span id="hero-bg-title" class="text-xs font-medium text-[#9BAAA4] tracking-wide">
+          {bgSlides[0].title}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupHeroBackground() {
+    const slides = document.querySelectorAll<HTMLElement>('.hero-bg-slide');
+    const dots = document.querySelectorAll<HTMLButtonElement>('.hero-bg-dot');
+    const titleEl = document.getElementById('hero-bg-title');
+    if (!slides.length) return;
+
+    const titles = [
+      'Commercial LED Strip Roll',
+      'KK Electric 100W Floodlight',
+      'Luxury Showroom Ambiance'
+    ];
+
+    let currentIndex = 0;
+    let timer: number | null = null;
+
+    function goToSlide(index: number) {
+      currentIndex = index;
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('opacity-0');
+          slide.classList.add('opacity-100');
+        } else {
+          slide.classList.remove('opacity-100');
+          slide.classList.add('opacity-0');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-white/30', 'w-2.5');
+          dot.classList.add('bg-[#5BE584]', 'w-7');
+        } else {
+          dot.classList.remove('bg-[#5BE584]', 'w-7');
+          dot.classList.add('bg-white/30', 'w-2.5');
+        }
+      });
+
+      if (titleEl && titles[index]) {
+        titleEl.textContent = titles[index];
+      }
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = Number(dot.dataset.index);
+        goToSlide(idx);
+        restartTimer();
+      });
+    });
+
+    function startTimer() {
+      timer = window.setInterval(() => {
+        const next = (currentIndex + 1) % slides.length;
+        goToSlide(next);
+      }, 5000);
+    }
+
+    function restartTimer() {
+      if (timer) clearInterval(timer);
+      startTimer();
+    }
+
+    startTimer();
+  }
+
+  setupHeroBackground();
+  document.addEventListener('astro:page-load', setupHeroBackground);
+</script>
+

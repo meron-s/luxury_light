@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+import { formatPhone, toTel } from '../lib/phone';
+---
+
+<BaseLayout
+  title={`Contact & Showroom Location // ${site.brand} — Addis Ababa`}
+  description={`Visit or call Luxury Lighting at Sosa Merkato Building, Addis Ababa. Direct manager phone numbers, Telegram inbox, and location map.`}
+  currentPath="/contact"
+>
+  <div class="py-12 lg:py-20 bg-[#050807] min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Contact Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-widest mb-3">
+          <span>COMMUNICATIONS</span>
+          <span>•</span>
+          <span>DIRECT SHOWROOM CONCIERGE</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Connect with Our Showroom Team
+        </h1>
+        <p class="text-sm sm:text-base text-[#9BAAA4] mt-3 leading-relaxed">
+          Reach our dedicated managers at Sosa Merkato for price quotes, project fixture orders, delivery arrangements, or visit our physical displays.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+        <!-- Left: Phone Lines (4 items) -->
+        <div class="lg:col-span-6 flex flex-col gap-6">
+          <div class="p-6 sm:p-8 rounded-3xl bg-[#0B1210] border border-white/10 shadow-xl flex flex-col gap-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-[#5BE584]/10 text-[#5BE584] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-white">Direct Phone Lines</h2>
+                <p class="text-xs text-[#9BAAA4]">Tap any line to call our managers immediately</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              {site.phones.map((phone) => (
+                <a
+                  href={toTel(phone.number)}
+                  class="flex items-center justify-between p-4 rounded-2xl bg-[#1C201F] border border-white/10 hover:border-[#5BE584]/60 active:scale-[0.98] transition-all group"
+                >
+                  <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-xl bg-[#5BE584]/10 border border-[#5BE584]/30 text-[#5BE584] flex items-center justify-center group-hover:bg-[#5BE584] group-hover:text-[#050807] transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                      </svg>
+                    </div>
+                    <div class="flex flex-col text-left">
+                      <span class="text-base font-bold text-white group-hover:text-[#5BE584] transition-colors">{formatPhone(phone.number)}</span>
+                      <span class="text-xs text-[#9BAAA4]">{phone.label}</span>
+                    </div>
+                  </div>
+                  <svg class="text-[#9BAAA4] group-hover:text-[#5BE584] transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Digital Channels & Location Info -->
+        <div class="lg:col-span-6 flex flex-col gap-6">
+          <!-- Telegram & Digital -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-[#0B1210] border border-white/10 shadow-xl flex flex-col gap-5">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-[#2AABEE]/10 text-[#2AABEE] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-white">Digital Messaging & Socials</h2>
+                <p class="text-xs text-[#9BAAA4]">Send photos and blueprint specs directly</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <a
+                href={site.telegram.inbox}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between p-4 rounded-2xl bg-[#1C201F] border border-[#2AABEE]/40 hover:bg-[#2AABEE]/10 transition-all group"
+              >
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 rounded-lg bg-[#2AABEE] text-white flex items-center justify-center font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col text-left">
+                    <span class="text-sm font-bold text-white group-hover:text-[#2AABEE] transition-colors">Telegram Architect Inbox</span>
+                    <span class="text-xs text-[#2AABEE]">{site.telegram.inboxHandle}</span>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-[#2AABEE]/20 text-[#2AABEE]">Chat Now</span>
+              </a>
+
+              <a
+                href={site.telegram.channel}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between p-4 rounded-2xl bg-[#1C201F] border border-white/10 hover:border-[#2AABEE]/50 transition-all group"
+              >
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 rounded-lg bg-[#101413] text-[#2AABEE] flex items-center justify-center font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"/>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col text-left">
+                    <span class="text-sm font-bold text-white group-hover:text-[#2AABEE] transition-colors">Official Telegram Broadcast Channel</span>
+                    <span class="text-xs text-[#9BAAA4]">@luxuryelectrical</span>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-white/10 text-white group-hover:bg-[#2AABEE] group-hover:text-white transition-colors">Join Channel</span>
+              </a>
+
+              <a
+                href={site.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between p-4 rounded-2xl bg-[#1C201F] border border-white/10 hover:border-white transition-all group"
+              >
+                <div class="flex items-center gap-3.5">
+                  <div class="w-10 h-10 rounded-lg bg-[#101413] text-white flex items-center justify-center font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col text-left">
+                    <span class="text-sm font-bold text-white">Official TikTok Account</span>
+                    <span class="text-xs text-[#9BAAA4]">Watch lighting demo videos</span>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-white/10 text-white">Follow</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Store Hours & Address -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-[#0B1210] border border-white/10 shadow-xl flex flex-col gap-4">
+            <h3 class="text-lg font-bold text-white">Store Address & Operating Hours</h3>
+            <div class="flex flex-col gap-2 text-xs text-[#C1C8C4]">
+              <p><strong class="text-white text-sm">Location:</strong> {site.address.line}, {site.address.city}, {site.address.country}</p>
+              <p class="text-[#5BE584] italic"><strong class="text-white">Landmarks:</strong> {site.address.landmarks}</p>
+              <p class="pt-2 border-t border-white/10"><strong class="text-white">Hours:</strong> {site.hours}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Embedded Google Map -->
+      <div class="rounded-3xl overflow-hidden border border-[#5BE584]/30 shadow-2xl bg-[#0B1210]">
+        <div class="p-6 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-white">Showroom Map & Location</h2>
+            <p class="text-xs text-[#9BAAA4]">Sosa Merkato Building, Addis Ababa</p>
+          </div>
+          <a
+            href={site.map.shareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-5 py-2.5 rounded-full bg-[#5BE584] text-[#050807] font-bold text-xs hover:bg-[#2FD468] transition-all shadow inline-flex items-center gap-2 w-fit"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+            </svg>
+            <span>Open in Google Maps App</span>
+          </a>
+        </div>
+
+        <div class="w-full h-80 sm:h-96 relative">
+          <iframe
+            src={site.map.embedUrl}
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Luxury Electrical showroom location at Sosa Merkato Building"
+            class="w-full h-full grayscale-[0.3] contrast-[1.1]"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

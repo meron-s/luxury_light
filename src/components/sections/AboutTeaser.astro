@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import entranceImg from '../../assets/about/showroom-entrance.jpg';
+import displayImg from '../../assets/about/display-wall.jpg';
+import decorativeImg from '../../assets/about/decorative-corner.jpg';
+import site from '../../data/site.json';
+---
+
+<section class="py-16 lg:py-24 bg-[#050807] border-b border-white/10 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left: Photo Collage -->
+      <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <Image
+              src={entranceImg}
+              alt="Luxury Lighting luminaire display"
+              width={500}
+              height={500}
+              class="w-full h-48 sm:h-64 object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <!-- Relocated Trust Badges from Hero section -->
+          <div class="rounded-2xl overflow-hidden border border-[#5BE584]/30 shadow-neon-glow bg-[#0B1210] p-4 flex flex-col justify-center gap-3">
+            <div class="flex items-center gap-2.5 text-left">
+              <div class="w-8 h-8 rounded-lg bg-[#5BE584]/10 text-[#5BE584] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">High Quality Products</span>
+                <span class="text-[10px] text-[#9BAAA4]">Certified genuine fixtures</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2.5 text-left">
+              <div class="w-8 h-8 rounded-lg bg-[#5BE584]/10 text-[#5BE584] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                  <path d="M15 18H9"/>
+                  <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                  <circle cx="17" cy="18" r="2"/>
+                  <circle cx="7" cy="18" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Fast Addis Delivery</span>
+                <span class="text-[10px] text-[#9BAAA4]">Express delivery in Addis</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2.5 text-left">
+              <div class="w-8 h-8 rounded-lg bg-[#5BE584]/10 text-[#5BE584] flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Trusted & Reliable</span>
+                <span class="text-[10px] text-[#9BAAA4]">Merkato Sosa Building</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-6">
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <Image
+              src={displayImg}
+              alt="Spotlight and luminaire collection in showroom"
+              width={500}
+              height={500}
+              class="w-full h-40 sm:h-52 object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <Image
+              src={decorativeImg}
+              alt="Artisanal decorative glass filament lamp"
+              width={500}
+              height={500}
+              class="w-full h-48 sm:h-64 object-cover hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Story & Badges -->
+      <div class="lg:col-span-6 flex flex-col gap-6">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-widest">
+          <span>ABOUT LUXURY LIGHTING</span>
+          <span>•</span>
+          <span>ADDIS ABABA</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+          Crafting Light, Elevating Spaces Across Ethiopia
+        </h2>
+
+        <p class="text-base text-[#C1C8C4] leading-relaxed">
+          Headquartered at the bustling Merkato Sosa Building, {site.name} delivers architectural lighting fixtures, precision spotlights, commercial floodlights, and premium electrical components to architects, contractors, and homeowners.
+        </p>
+
+        <!-- 3 Badges (SPEC 3.3) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+          <div class="p-3.5 rounded-xl bg-[#0B1210] border border-white/10 flex flex-col gap-1 text-center">
+            <div class="text-[#5BE584] mx-auto mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold text-white">Original Products</span>
+            <span class="text-[10px] text-[#9BAAA4]">Direct genuine imports</span>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-[#0B1210] border border-white/10 flex flex-col gap-1 text-center">
+            <div class="text-[#5BE584] mx-auto mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold text-white">Professional Service</span>
+            <span class="text-[10px] text-[#9BAAA4]">Expert fixture advisory</span>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-[#0B1210] border border-white/10 flex flex-col gap-1 text-center">
+            <div class="text-[#5BE584] mx-auto mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </div>
+            <span class="text-xs font-bold text-white">Customer Focus</span>
+            <span class="text-[10px] text-[#9BAAA4]">Enduring satisfaction</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <a
+            href="/about"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1C201F] border border-[#5BE584]/40 text-white font-semibold text-sm hover:border-[#5BE584] hover:bg-[#272B29] transition-all"
+          >
+            <span>Learn More About Us</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

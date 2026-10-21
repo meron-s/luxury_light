@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+.astro/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.local
+
+# Scratch and internal tools
+stitch-screens/
+scratch/

@@ -1,0 +1,16 @@
+{
+  "name": "Luxury Electrical & Lighting",
+  "short_name": "Luxury Lighting",
+  "description": "Premier Architectural Electrical and Lighting Showroom in Addis Ababa, Ethiopia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050807",
+  "theme_color": "#5BE584",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

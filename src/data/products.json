@@ -1,0 +1,366 @@
+[
+  {
+    "id": "architectural-linear-pendant",
+    "category": "led-panel-lights",
+    "name": "Architectural Suspended Linear Pendant Luminaire",
+    "description": "Minimalist matte black linear suspended luminaire with uniform anti-glare downward diffusion and ceiling suspension wire kit for contemporary workspaces and dining tables.",
+    "image": "/src/assets/products/led-panel-lights/architectural-linear-pendant.png",
+    "specs": {
+      "watt": "TODO: confirm wattage with showroom",
+      "ip": "IP20 Architectural",
+      "color": "Matte Black Profile / Warm White"
+    },
+    "badge": "Featured"
+  },
+  {
+    "id": "commercial-led-strip-reel",
+    "category": "led-strip-lights",
+    "name": "High-Density Commercial 220V LED Strip Spool (100m)",
+    "description": "Heavy-duty continuous 100-meter commercial LED strip reel engineered with high diode density for architectural coves, ceiling recesses, and decorative illumination.",
+    "image": "/src/assets/products/led-strip-lights/commercial-led-strip-reel.jpg",
+    "specs": {
+      "watt": "220V Direct Input (TODO: confirm)",
+      "ip": "IP65 Weatherproof Jacket",
+      "color": "High-Efficiency Warm/Neutral White"
+    },
+    "badge": "Featured"
+  },
+  {
+    "id": "kk-electric-100w-floodlight",
+    "category": "led-street-lights",
+    "name": "KK Electric 100W Heavy-Duty IP66 Outdoor Floodlight",
+    "description": "High-power 100W commercial exterior pawza luminaire with high-impact tempered glass, IP66 waterproof sealing, and multi-LED SMD array for facade and yard security.",
+    "image": "/src/assets/products/led-street-lights/kk-electric-100w-floodlight.jpg",
+    "specs": {
+      "watt": "100W High Lumen",
+      "ip": "IP66 Heavy-Duty",
+      "color": "Daylight White / Die-Cast Body"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "rgb-strip-reel",
+    "category": "led-strip-lights",
+    "name": "High-Density RGB Flexible LED Strip Reel",
+    "description": "Commercial-grade flexible RGB LED tape with high lumen efficiency, vibrant multi-color dynamic switching, and uniform optical diffusion for cove and architectural applications.",
+    "image": "/src/assets/products/led-strip-lights/rgb-strip-reel.jpg",
+    "specs": {
+      "watt": "14.4W/m (TODO: confirm with owner)",
+      "ip": "IP65 Coated",
+      "color": "RGB Full Spectrum"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "rgb-strip-kit",
+    "category": "led-strip-lights",
+    "name": "RGB LED Strip Kit with Remote Controller",
+    "description": "Complete plug-and-play architectural LED accent kit featuring wireless infrared remote, multi-scene modes, and dedicated power supply unit.",
+    "image": "/src/assets/products/led-strip-lights/rgb-strip-kit.jpg",
+    "specs": {
+      "watt": "TODO: confirm with owner",
+      "ip": "IP20 Indoor",
+      "color": "Multi-Color Modes"
+    },
+    "badge": "New"
+  },
+  {
+    "id": "aluminum-profile-2cm",
+    "category": "led-strip-lights",
+    "name": "Architectural Aluminum Profile Channel 2cm",
+    "description": "Extruded anodized aluminum linear channel with frosted optical diffuser lens for spotless linear light integration into ceilings, cabinetry, and joinery.",
+    "image": "/src/assets/products/led-strip-lights/aluminum-profile-2cm.jpg",
+    "specs": {
+      "watt": "Passive Thermal Dissipation",
+      "ip": "Anodized Alloy",
+      "color": "Matte Silver / Frosted Lens"
+    },
+    "badge": null
+  },
+  {
+    "id": "kk-deep-spot-white",
+    "category": "led-panel-lights",
+    "name": "KK Anti-Glare Deep-Recessed Spotlight (White)",
+    "description": "Architectural deep-baffle downlight engineered to eliminate direct glare (UGR<19) while delivering precise conical light beam distribution.",
+    "image": "/src/assets/products/led-panel-lights/kk-deep-spot-white.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage",
+      "ip": "IP44 Splashproof",
+      "color": "Clean Architectural White"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "kk-deep-spot-black",
+    "category": "led-panel-lights",
+    "name": "KK Anti-Glare Deep-Recessed Spotlight (Black)",
+    "description": "Stealth matte-black recessed architectural fixture with deep light source placement for high-contrast interior lighting schemes.",
+    "image": "/src/assets/products/led-panel-lights/kk-deep-spot-black.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage",
+      "ip": "IP44 Splashproof",
+      "color": "Stealth Matte Black"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "aura-6w-spot",
+    "category": "led-panel-lights",
+    "name": "AURA 6W Slim Architectural Recessed Spotlight",
+    "description": "Ultra-slim low-clearance recessed ceiling spotlight delivering high lumen-per-watt efficiency and smooth optical beam spread.",
+    "image": "/src/assets/products/led-panel-lights/aura-6w-spot.jpg",
+    "specs": {
+      "watt": "6W High-Lumen",
+      "ip": "IP20",
+      "color": "3000K Warm White (TODO: confirm)"
+    },
+    "badge": "New"
+  },
+  {
+    "id": "shutter-20w-spotlight",
+    "category": "led-panel-lights",
+    "name": "20W Shutter Adjustable Architectural Spotlight",
+    "description": "High-powered 20W directional spotlight with precision beam adjustment and heavy-duty die-cast aluminum heat sink body.",
+    "image": "/src/assets/products/led-panel-lights/shutter-20w-spotlight.jpg",
+    "specs": {
+      "watt": "20W",
+      "ip": "IP20 Commercial",
+      "color": "Dual Body Finish (White / Black)"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "mini-spot-black",
+    "category": "led-panel-lights",
+    "name": "Compact Architectural Mini Downlight (Black)",
+    "description": "Micro-aperture ceiling downlight designed for minimalist accent lighting, niches, display cases, and cove details.",
+    "image": "/src/assets/products/led-panel-lights/mini-spot-black.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage",
+      "ip": "IP20",
+      "color": "Matte Obsidian Black"
+    },
+    "badge": null
+  },
+  {
+    "id": "mini-spot-white",
+    "category": "led-panel-lights",
+    "name": "Compact Architectural Mini Downlight (White)",
+    "description": "Discreet low-profile micro downlight blending cleanly into white gypsum and timber ceiling planes.",
+    "image": "/src/assets/products/led-panel-lights/mini-spot-white.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage",
+      "ip": "IP20",
+      "color": "Satin Pure White"
+    },
+    "badge": null
+  },
+  {
+    "id": "crystal-spot-luxury",
+    "category": "led-panel-lights",
+    "name": "Luxury Faceted Crystal Glass Recessed Spotlight",
+    "description": "Exclusive decorative luminaire with precision-faceted optical crystal trim that creates shimmering light refractions across the ceiling.",
+    "image": "/src/assets/products/led-panel-lights/crystal-spot-luxury.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage",
+      "ip": "Optical Crystal Trim",
+      "color": "Warm Ambient Refraction"
+    },
+    "badge": "New"
+  },
+  {
+    "id": "6w-filament-lamp",
+    "category": "led-panel-lights",
+    "name": "6W Vintage Edison LED Filament Bulb",
+    "description": "Warm retro aesthetic combined with energy-saving LED filament technology, ideal for visible pendant fixtures and chandeliers.",
+    "image": "/src/assets/products/led-panel-lights/6w-filament-lamp.jpg",
+    "specs": {
+      "watt": "6W Low Consumption",
+      "ip": "Standard E27 Base",
+      "color": "2200K Vintage Amber"
+    },
+    "badge": null
+  },
+  {
+    "id": "street-light-150w",
+    "category": "led-street-lights",
+    "name": "150W Heavy-Duty Commercial LED Street Luminaire",
+    "description": "Commercial-grade roadway luminaire featuring multi-array optical lenses, aerodynamic thermal dissipation housing, and surge protection.",
+    "image": "/src/assets/products/led-street-lights/street-light-150w.jpg",
+    "specs": {
+      "watt": "150W High Lumen",
+      "ip": "IP66 Weatherproof",
+      "color": "6000K Daylight Roadway"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "y-shaped-landscape-pole",
+    "category": "led-street-lights",
+    "name": "3-Meter Y-Shaped Modern Architectural Landscape Pole",
+    "description": "Sculptural 3-meter outdoor pathway and compound illumination post featuring dual balanced LED arms and corrosion-resistant powder coat.",
+    "image": "/src/assets/products/led-street-lights/y-shaped-landscape-pole.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage",
+      "ip": "IP65 Outdoor Heavy-Duty",
+      "color": "3-Meter Dark Charcoal Pole"
+    },
+    "badge": "New"
+  },
+  {
+    "id": "kk-outdoor-floodlight-series",
+    "category": "led-street-lights",
+    "name": "KK High-Power Commercial Floodlight (Pawza)",
+    "description": "High-output exterior floodlight available in 30W, 50W, 100W, 150W, 200W, 300W, and 400W for building facades, billboards, and security perimeters.",
+    "image": "/src/assets/products/led-street-lights/kk-outdoor-floodlight-series.jpg",
+    "specs": {
+      "watt": "30W - 400W Multi-Range",
+      "ip": "IP66 Ruggedized",
+      "color": "High-Efficiency White"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "star-silver-modular-switches",
+    "category": "electrical-accessories",
+    "name": "STAR Silver Luxury Switches & Sockets Collection",
+    "description": "Modular electrical faceplate line in premium brushed silver finish including single switches, dual rockers, 16A grounded sockets, TV, and RJ45 data plates.",
+    "image": "/src/assets/products/electrical-accessories/star-silver-modular-switches.jpg",
+    "specs": {
+      "watt": "16A 250V Rated",
+      "ip": "Flame-Retardant Polycarbonate",
+      "color": "Brushed STAR Silver"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "volt-grey-collection",
+    "category": "electrical-accessories",
+    "name": "Volt Grey Designer Switches & Sockets",
+    "description": "Contemporary matte grey faceplate collection designed for modern minimalist interiors and luxury hospitality fitouts.",
+    "image": "/src/assets/products/electrical-accessories/volt-grey-collection.jpg",
+    "specs": {
+      "watt": "16A 250V Rated",
+      "ip": "Scratch-Resistant Matte Finish",
+      "color": "Volt Grey Architectural"
+    },
+    "badge": "New"
+  },
+  {
+    "id": "micro-breaker-25a",
+    "category": "electrical-accessories",
+    "name": "25A Miniature Circuit Breaker (MCB)",
+    "description": "DIN-rail mounted thermal magnetic circuit breaker engineered for reliable overload and short-circuit protection in residential and commercial boards.",
+    "image": "/src/assets/products/electrical-accessories/micro-breaker-25a.jpg",
+    "specs": {
+      "watt": "25A / 230-400V~",
+      "ip": "IEC/EN 60898-1 Certified",
+      "color": "Standard DIN White / Orange"
+    },
+    "badge": null
+  },
+  {
+    "id": "hawud-distribution-board",
+    "category": "electrical-accessories",
+    "name": "Hawud 8/12-Way Circuit Breaker Distribution Board",
+    "description": "Surface and flush-mount steel enclosure with transparent protective door and insulated busbar system for centralized electrical distribution.",
+    "image": "/src/assets/products/electrical-accessories/hawud-distribution-board.jpg",
+    "specs": {
+      "watt": "8 to 12 Way Modular Capacity",
+      "ip": "Heavy-Duty Coated Steel",
+      "color": "Showroom Off-White"
+    },
+    "badge": null
+  },
+  {
+    "id": "jkf-metal-box-3",
+    "category": "electrical-accessories",
+    "name": "JKF 3-Gang Galvanized Flush Metal Back Box",
+    "description": "Rigid corrosion-resistant stamped steel wall enclosure with multiple conduit knockouts for switch and socket installation.",
+    "image": "/src/assets/products/electrical-accessories/jkf-metal-box-3.jpg",
+    "specs": {
+      "watt": "3-Gang Standard Flush",
+      "ip": "Galvanized Steel",
+      "color": "Metallic Zinc"
+    },
+    "badge": null
+  },
+  {
+    "id": "jkf-plastic-box-3",
+    "category": "electrical-accessories",
+    "name": "JKF 3-Gang Shockproof Plastic Junction Box",
+    "description": "Durable high-impact thermoplastic flush mounting junction box engineered for masonry and drywall installations.",
+    "image": "/src/assets/products/electrical-accessories/jkf-plastic-box-3.jpg",
+    "specs": {
+      "watt": "3-Gang Standard Flush",
+      "ip": "Self-Extinguishing Polymer",
+      "color": "Industrial Orange-Red"
+    },
+    "badge": null
+  },
+  {
+    "id": "copper-cables-assortment",
+    "category": "cables-and-wires",
+    "name": "Pure Copper Multi-Gauge Building Power Cables",
+    "description": "High-conductivity pure copper multi-core building wire available in 2x1.5mm², 2x2.5mm², 2x4mm², 2x6mm², 3x4mm², and 3x6mm² reels.",
+    "image": "/src/assets/products/cables-and-wires/copper-cables-assortment.jpg",
+    "specs": {
+      "watt": "2x1.5 to 3x6 mm² Range",
+      "ip": "Double-Insulated PVC (750V)",
+      "color": "Color-Coded Coils"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "cat6-hs-network-cable",
+    "category": "cables-and-wires",
+    "name": "Cat6 High-Speed UTP Gigabit Ethernet Cable Box",
+    "description": "4-pair unshielded twisted pair Category 6 network cable tested up to 250 MHz for commercial networking, smart lighting, and IP cameras.",
+    "image": "/src/assets/products/cables-and-wires/cat6-hs-network-cable.jpg",
+    "specs": {
+      "watt": "Gigabit 1000BASE-T Certified",
+      "ip": "23 AWG Solid Copper",
+      "color": "Matte Grey Jacket (305m)"
+    },
+    "badge": null
+  },
+  {
+    "id": "dish-cable-noble",
+    "category": "cables-and-wires",
+    "name": "Noble Shielded Coaxial Satellite Dish TV Cable",
+    "description": "High-frequency 75-ohm RG6 coaxial cable with dense aluminum braid shielding for interference-free satellite receiver connections.",
+    "image": "/src/assets/products/cables-and-wires/dish-cable-noble.jpg",
+    "specs": {
+      "watt": "75 Ohm Characteristic Impedance",
+      "ip": "Double Foil & Braid Shield",
+      "color": "Pure White Jacket"
+    },
+    "badge": null
+  },
+  {
+    "id": "dish-cable-hs",
+    "category": "cables-and-wires",
+    "name": "HS Low-Loss Coaxial Satellite Television Cable",
+    "description": "Premium RG6 coaxial cable with low signal attenuation, ideal for multi-story residential and commercial TV distribution systems.",
+    "image": "/src/assets/products/cables-and-wires/dish-cable-hs.jpg",
+    "specs": {
+      "watt": "75 Ohm RG6 Spec",
+      "ip": "Weatherproof Outer Sheath",
+      "color": "Solid Black Jacket"
+    },
+    "badge": null
+  },
+  {
+    "id": "architectural-exhaust-fan",
+    "category": "fans-and-ventilation",
+    "name": "Architectural Low-Noise Ceiling & Wall Ventilation Fan",
+    "description": "High-efficiency ventilation unit engineered with quiet aerodynamic blades for modern bathrooms, kitchens, and commercial washrooms.",
+    "image": "/src/assets/products/fans-and-ventilation/architectural-exhaust-fan.jpg",
+    "specs": {
+      "watt": "TODO: confirm wattage and airflow CFM",
+      "ip": "Continuous Duty Sealed Motor",
+      "color": "Clean Satin White"
+    },
+    "badge": "New"
+  }
+]

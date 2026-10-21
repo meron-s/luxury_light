@@ -1,0 +1,209 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import categories from '../../data/categories.json';
+import products from '../../data/products.json';
+import site from '../../data/site.json';
+import fallbackHero from '../../assets/hero/hero-main.jpg';
+
+// Category cover images
+import stripImg from '../../assets/categories/led-strip-lights.jpg';
+import panelImg from '../../assets/categories/led-panel-lights.jpg';
+import streetImg from '../../assets/categories/led-street-lights.jpg';
+import accessoriesImg from '../../assets/categories/electrical-accessories.jpg';
+import cablesImg from '../../assets/categories/cables-and-wires.jpg';
+import fansImg from '../../assets/categories/fans-and-ventilation.jpg';
+
+const categoryImages: Record<string, any> = {
+  'led-strip-lights': stripImg,
+  'led-panel-lights': panelImg,
+  'led-street-lights': streetImg,
+  'electrical-accessories': accessoriesImg,
+  'cables-and-wires': cablesImg,
+  'fans-and-ventilation': fansImg,
+};
+
+// Map all product images
+const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/products/**/*.{jpg,png,jpeg}', { eager: true });
+
+export function getStaticPaths() {
+  return categories.map((cat) => ({
+    params: { category: cat.slug },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+const categoryProducts = products.filter((p) => p.category === category.slug);
+const coverImage = categoryImages[category.slug] || fallbackHero;
+---
+
+<BaseLayout
+  title={`${category.name} // ${site.name} — Addis Ababa Electrical Showroom`}
+  description={category.description}
+  currentPath={`/products/${category.slug}`}
+>
+  <!-- Category Hero Banner -->
+  <section class="relative py-16 lg:py-24 bg-[#0B1210] border-b border-white/10 overflow-hidden">
+    <!-- Background Cover with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <Image
+        src={coverImage}
+        alt={category.name}
+        width={1400}
+        height={600}
+        class="w-full h-full object-cover filter brightness-[0.25] blur-sm scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0B1210] via-[#0B1210]/80 to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs text-[#9BAAA4] mb-6" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[#5BE584] transition-colors">Home</a>
+        <span>/</span>
+        <a href="/products" class="hover:text-[#5BE584] transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-white font-medium">{category.name}</span>
+      </nav>
+
+      <div class="max-w-3xl flex flex-col gap-4">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-widest">
+          <span>{category.name_am}</span>
+          <span>•</span>
+          <span>OFFICIAL SPECIFICATIONS</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          {category.name}
+        </h1>
+
+        <p class="text-base sm:text-lg text-[#C1C8C4] leading-relaxed">
+          {category.description}
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-4">
+          <button
+            type="button"
+            class="trigger-call-modal px-6 py-3 rounded-full bg-[#5BE584] text-[#050807] font-bold text-sm hover:bg-[#2FD468] shadow-neon-glow transition-all active:scale-95 flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>Inquire by Phone</span>
+          </button>
+
+          <a
+            href={site.telegram.inbox}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 rounded-full bg-[#1C201F] border border-[#2AABEE]/40 text-[#2AABEE] hover:bg-[#2AABEE]/10 font-bold text-sm transition-all flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            <span>Ask via Telegram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Products Grid -->
+  <section class="py-16 bg-[#050807] min-h-[500px]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
+        <h2 class="text-xl font-bold text-white">
+          Available {category.name} ({categoryProducts.length} items)
+        </h2>
+        <a href="/products" class="text-xs font-bold text-[#5BE584] hover:underline">
+          ← Back to All Categories
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {categoryProducts.map((prod) => {
+          const imgModule = productImages[prod.image]?.default || fallbackHero;
+          const telegramPrefill = encodeURIComponent(`Hello, I want to inquire about: ${prod.name}`);
+          const telegramUrl = `${site.telegram.inbox}?text=${telegramPrefill}`;
+
+          return (
+            <div class="group rounded-2xl bg-[#0B1210] border border-white/10 hover:border-[#5BE584]/50 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-2xl hover:-translate-y-1">
+              <div class="relative bg-[#101413] p-4 flex items-center justify-center min-h-[220px]">
+                <Image
+                  src={imgModule}
+                  alt={prod.name}
+                  width={400}
+                  height={350}
+                  loading="lazy"
+                  class="w-full h-48 object-contain transform duration-500 group-hover:scale-105"
+                />
+
+                {prod.badge && (
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#5BE584] text-[#050807]">
+                    {prod.badge}
+                  </span>
+                )}
+              </div>
+
+              <div class="p-5 flex flex-col gap-3 flex-grow justify-between">
+                <div>
+                  <h3 class="text-base font-bold text-white group-hover:text-[#5BE584] transition-colors leading-snug">
+                    {prod.name}
+                  </h3>
+                  <p class="text-xs text-[#9BAAA4] mt-1.5 line-clamp-2 leading-relaxed">
+                    {prod.description}
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap gap-1.5 pt-2 border-t border-white/5">
+                  {prod.specs.watt && (
+                    <span class="px-2 py-0.5 rounded bg-[#1C201F] text-[10px] font-mono text-[#5BE584] border border-[#5BE584]/20">
+                      {prod.specs.watt}
+                    </span>
+                  )}
+                  {prod.specs.ip && (
+                    <span class="px-2 py-0.5 rounded bg-[#1C201F] text-[10px] font-mono text-[#C1C8C4] border border-white/10">
+                      {prod.specs.ip}
+                    </span>
+                  )}
+                  {prod.specs.color && (
+                    <span class="px-2 py-0.5 rounded bg-[#1C201F] text-[10px] text-[#9BAAA4] border border-white/10">
+                      {prod.specs.color}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div class="p-4 pt-0 grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  class="trigger-call-modal w-full py-2 px-2.5 rounded-xl bg-[#5BE584] text-[#050807] font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-[#2FD468] transition-all active:scale-95 shadow"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <span>Call to Order</span>
+                </button>
+
+                <a
+                  href={telegramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full py-2 px-2.5 rounded-xl bg-[#1C201F] border border-[#2AABEE]/40 text-[#2AABEE] hover:bg-[#2AABEE]/10 font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
+                  <span>Telegram</span>
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

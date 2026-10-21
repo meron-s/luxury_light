@@ -1,0 +1,82 @@
+[
+  {
+    "id": "arch-ambient-ceiling",
+    "title": "Architectural Ambient Ceiling & Cove Lighting",
+    "category": "Architectural",
+    "image": "/src/assets/gallery/arch-ambient-ceiling.jpg",
+    "alt": "Modern architectural luxury interior illuminated with recessed ambient lighting fixtures",
+    "description": "Integrated linear LED profiles and warm recessed downlights creating soft chiaroscuro ambiance across modern interior surfaces."
+  },
+  {
+    "id": "warm-luminaire-glow",
+    "title": "Contemporary Minimalist Luminaire",
+    "category": "Showcase",
+    "image": "/src/assets/gallery/warm-luminaire-glow.jpg",
+    "alt": "Architectural luminaire with warm ambient light output",
+    "description": "High-CRI optical lighting casting warm glare-free illumination against obsidian finishes."
+  },
+  {
+    "id": "crystal-optical-fixture",
+    "title": "Faceted Crystal Glass Spotlight",
+    "category": "Decorative",
+    "image": "/src/assets/gallery/crystal-optical-fixture.jpg",
+    "alt": "Luxury crystal trimmed recessed ceiling spotlight luminaire",
+    "description": "Precision-cut optical crystal rim that refracts warm lumens into geometric light patterns on the ceiling."
+  },
+  {
+    "id": "crystal-refraction-illuminated",
+    "title": "Illuminated Crystal Light Refraction",
+    "category": "Decorative",
+    "image": "/src/assets/gallery/crystal-refraction-illuminated.jpg",
+    "alt": "Crystal spotlight fixture illuminated with warm optical refraction",
+    "description": "Close-up capture of illuminated K9 crystal facets delivering radiant sparkle and luxury warmth."
+  },
+  {
+    "id": "filament-amber-pendant",
+    "title": "Artisanal Amber Filament Pendant",
+    "category": "Decorative",
+    "image": "/src/assets/gallery/filament-amber-pendant.jpg",
+    "alt": "Amber tinted decorative glass filament lamp with warm amber illumination",
+    "description": "Hand-blown amber glass housing a 2200K vintage LED spiral filament for hospitality and residential dining."
+  },
+  {
+    "id": "rgb-linear-spool",
+    "title": "Vibrant Architectural RGB Strip",
+    "category": "Linear",
+    "image": "/src/assets/gallery/rgb-linear-spool.jpg",
+    "alt": "Vibrant high-density RGB LED strip light reel illuminated",
+    "description": "High-density color-tunable LED ribbon capable of millions of scene variations for accent and cove niches."
+  },
+  {
+    "id": "shutter-spotlight-beam",
+    "title": "20W Shutter Adjustable Spotlight",
+    "category": "Architectural",
+    "image": "/src/assets/gallery/shutter-spotlight-beam.jpg",
+    "alt": "20W Shutter spotlight luminaire alternate angle view",
+    "description": "Directable optical spotlight with precision cut-off shutter blades for accentuating artwork and architectural details."
+  },
+  {
+    "id": "showroom-spotlight-collection",
+    "title": "Showroom Luminaire Display",
+    "category": "Showcase",
+    "image": "/src/assets/gallery/showroom-spotlight-collection.jpg",
+    "alt": "Showroom display of modern ceiling spotlight fixtures",
+    "description": "Live demonstration panel showcasing deep anti-glare baffles, beam spreads, and color temperatures."
+  },
+  {
+    "id": "landscape-y-pole",
+    "title": "3M Y-Shaped Architectural Landscape Luminaire",
+    "category": "Outdoor",
+    "image": "/src/assets/gallery/landscape-y-pole.jpg",
+    "alt": "3m Y-shaped modern architectural landscape pathway light pole",
+    "description": "Geometric outdoor pole luminaire balancing form and high-output safety illumination for pathways and gardens."
+  },
+  {
+    "id": "star-silver-installation",
+    "title": "STAR Silver Luxury Switches & Sockets",
+    "category": "Accessories",
+    "image": "/src/assets/gallery/star-silver-installation.jpg",
+    "alt": "STAR Silver luxury modular wall switches, sockets, and data plates",
+    "description": "High-grade metallic finish wall switches delivering tactile satisfaction and seamless aesthetic integration."
+  }
+]

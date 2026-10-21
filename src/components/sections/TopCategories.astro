@@ -1,0 +1,317 @@
+---
+import { Image } from 'astro:assets';
+import categories from '../../data/categories.json';
+import products from '../../data/products.json';
+
+// Import category images
+import stripImg from '../../assets/categories/led-strip-lights.jpg';
+import panelImg from '../../assets/categories/led-panel-lights.jpg';
+import streetImg from '../../assets/categories/led-street-lights.jpg';
+import accessoriesImg from '../../assets/categories/electrical-accessories.jpg';
+import cablesImg from '../../assets/categories/cables-and-wires.jpg';
+import fansImg from '../../assets/categories/fans-and-ventilation.jpg';
+
+const categoryImages: Record<string, any> = {
+  'led-strip-lights': stripImg,
+  'led-panel-lights': panelImg,
+  'led-street-lights': streetImg,
+  'electrical-accessories': accessoriesImg,
+  'cables-and-wires': cablesImg,
+  'fans-and-ventilation': fansImg,
+};
+
+// Map all product images dynamically
+const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/products/**/*.{jpg,png,jpeg}', { eager: true });
+
+// Select featured/top products across categories to showcase
+const featuredProductIds = [
+  'architectural-linear-pendant',
+  'commercial-led-strip-reel',
+  'kk-electric-100w-floodlight',
+  'kk-deep-spot-black',
+  'rgb-strip-reel',
+  'street-light-150w',
+  'star-silver-modular-switches',
+  'volt-grey-collection',
+  'copper-cables-assortment',
+  'crystal-spot-luxury',
+  'micro-breaker-25a',
+  'architectural-exhaust-fan'
+];
+
+const featuredProducts = products.filter((p) => featuredProductIds.includes(p.id));
+---
+
+<section class="py-16 lg:py-24 bg-[#0B1210] border-b border-white/10" id="top-categories-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-widest mb-2">
+          <span>PORTFOLIO</span>
+          <span>•</span>
+          <span>DISCOVER FIXTURES</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Top Product Categories
+        </h2>
+        <p class="text-base text-[#9BAAA4] mt-2 max-w-xl">
+          Engineered for architectural elegance, commercial durability, and high photometric performance.
+        </p>
+      </div>
+
+      <a
+        href="/products"
+        class="inline-flex items-center gap-2 text-sm font-bold text-[#5BE584] hover:text-[#2FD468] transition-colors w-fit group"
+      >
+        <span>View Full Catalog</span>
+        <svg class="transform group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- 1. Categories Grid (6 cards) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+      {categories.map((cat) => {
+        const img = categoryImages[cat.slug];
+        return (
+          <a
+            href={`/products/${cat.slug}`}
+            class="group relative rounded-2xl overflow-hidden bg-[#101413] border border-white/10 hover:border-[#5BE584]/50 transition-all duration-300 flex flex-col justify-end min-h-[300px] p-6 hover:shadow-2xl"
+          >
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0 overflow-hidden">
+              {img && (
+                <Image
+                  src={img}
+                  alt={cat.name}
+                  width={600}
+                  height={500}
+                  class="w-full h-full object-cover transform duration-500 group-hover:scale-110 filter brightness-90 group-hover:brightness-100"
+                />
+              )}
+              <!-- Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#050807] via-[#050807]/75 to-transparent"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col gap-2">
+              <span class="text-xs font-semibold text-[#5BE584] uppercase tracking-wider">
+                {cat.name_am}
+              </span>
+              <h3 class="text-xl font-bold text-white group-hover:text-[#5BE584] transition-colors">
+                {cat.name}
+              </h3>
+              <p class="text-xs text-[#C1C8C4] line-clamp-2 leading-relaxed">
+                {cat.tagline}
+              </p>
+
+              <div class="inline-flex items-center gap-1.5 text-xs font-bold text-[#5BE584] pt-2">
+                <span>Explore Category</span>
+                <svg class="transform group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- 2. Featured Products Under Top Categories -->
+    <div class="pt-8 border-t border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-widest mb-1">
+            <span>SHOWROOM INVENTORY</span>
+            <span>•</span>
+            <span>IN STOCK AT SOSA MERKATO</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Featured Products in Categories
+          </h3>
+          <p class="text-sm text-[#9BAAA4] mt-1">
+            Popular luminaires, commercial gear, and electrical accessories available for direct purchase or delivery across Addis Ababa.
+          </p>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap items-center gap-2" id="category-filter-bar" role="tablist" aria-label="Filter products by category">
+          <button
+            type="button"
+            class="top-cat-filter-btn px-4 py-2 rounded-full text-xs font-bold transition-all bg-[#5BE584] text-[#050807] shadow-neon-glow"
+            data-category="all"
+          >
+            All Products
+          </button>
+          {categories.map((c) => (
+            <button
+              type="button"
+              class="top-cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-[#101413] text-[#C1C8C4] border border-white/10 hover:border-white/30 hover:text-white"
+              data-category={c.slug}
+            >
+              {c.name.split(' ')[0]} {c.name.split(' ')[1] || ''}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Featured Products Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="top-category-products-grid">
+        {featuredProducts.map((p) => {
+          const imageModule = productImages[p.image];
+          const matchedCategory = categories.find((c) => c.slug === p.category);
+
+          return (
+            <div
+              class="top-cat-product-item group flex flex-col bg-[#101413] border border-white/10 rounded-2xl overflow-hidden hover:border-[#5BE584]/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+              data-category={p.category}
+            >
+              <!-- Image Container -->
+              <div class="relative h-56 w-full overflow-hidden bg-[#181C1B] flex items-center justify-center p-4">
+                {imageModule ? (
+                  <Image
+                    src={imageModule.default}
+                    alt={p.name}
+                    width={400}
+                    height={300}
+                    loading="lazy"
+                    class="max-h-full max-w-full object-contain transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center bg-[#1C201F] text-xs text-[#9BAAA4]">
+                    Showroom Fixture
+                  </div>
+                )}
+
+                <!-- Badge (Popular/New/Featured) -->
+                {p.badge && (
+                  <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#050807]/90 backdrop-blur-md border border-white/15 text-[10px] font-bold text-white tracking-wider uppercase flex items-center gap-1.5 shadow-md">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#5BE584] animate-pulse"></span>
+                    <span>{p.badge}</span>
+                  </div>
+                )}
+
+                <!-- Category Tag Top Right -->
+                {matchedCategory && (
+                  <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-[#5BE584]/15 border border-[#5BE584]/30 text-[#5BE584] text-[10px] font-bold tracking-wider uppercase">
+                    {matchedCategory.name.split(' ')[0]}
+                  </div>
+                )}
+              </div>
+
+              <!-- Content Area -->
+              <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                <div>
+                  <span class="text-[11px] font-semibold text-[#5BE584] uppercase tracking-wider block mb-1">
+                    {matchedCategory?.name_am || 'የቅንጦት መብራት'}
+                  </span>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#5BE584] transition-colors line-clamp-2">
+                    {p.name}
+                  </h4>
+                  <p class="text-xs text-[#9BAAA4] line-clamp-2 mt-1.5 leading-relaxed">
+                    {p.description}
+                  </p>
+
+                  <!-- Specs Chips -->
+                  <div class="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/5">
+                    {p.specs.watt && !p.specs.watt.includes('TODO') && (
+                      <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-[#C1C8C4] border border-white/5">
+                        {p.specs.watt}
+                      </span>
+                    )}
+                    {p.specs.ip && (
+                      <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] text-[#C1C8C4] border border-white/5">
+                        {p.specs.ip}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <!-- Card Actions -->
+                <div class="flex items-center gap-2 pt-2">
+                  <button
+                    type="button"
+                    class="trigger-call-modal flex-1 py-2 px-3 rounded-xl bg-[#5BE584] hover:bg-[#2FD468] text-[#050807] font-bold text-xs transition-all active:scale-95 flex items-center justify-center gap-1.5 shadow-neon-glow"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>Order by Call</span>
+                  </button>
+
+                  <a
+                    href={`/products/${p.category}`}
+                    class="py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs transition-colors border border-white/10"
+                    aria-label={`View ${p.name} category`}
+                  >
+                    Details &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Bottom Action Link -->
+      <div class="mt-12 text-center">
+        <a
+          href="/products"
+          class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#101413] border border-[#5BE584]/40 hover:border-[#5BE584] text-white hover:text-[#5BE584] font-bold text-sm transition-all shadow-md active:scale-95"
+        >
+          <span>Explore All {products.length}+ Showroom Products</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupCategoryProductFilter() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.top-cat-filter-btn');
+    const productItems = document.querySelectorAll<HTMLElement>('.top-cat-product-item');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.category || 'all';
+
+        // Update active button state
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-[#5BE584]', 'text-[#050807]', 'shadow-neon-glow');
+          b.classList.add('bg-[#101413]', 'text-[#C1C8C4]', 'border', 'border-white/10');
+        });
+
+        btn.classList.remove('bg-[#101413]', 'text-[#C1C8C4]', 'border-white/10');
+        btn.classList.add('bg-[#5BE584]', 'text-[#050807]', 'shadow-neon-glow');
+
+        // Filter products with smooth transitions
+        productItems.forEach((item) => {
+          const itemCat = item.dataset.category;
+          if (cat === 'all' || itemCat === cat) {
+            item.classList.remove('hidden');
+            requestAnimationFrame(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            });
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              if (btn.dataset.category !== 'all' && item.dataset.category !== btn.dataset.category) {
+                item.classList.add('hidden');
+              }
+            }, 200);
+          }
+        });
+      });
+    });
+  }
+
+  setupCategoryProductFilter();
+  document.addEventListener('astro:page-load', setupCategoryProductFilter);
+</script>

@@ -1,0 +1,30 @@
+{
+  "name": "Luxury Electrical",
+  "brand": "Luxury Lighting",
+  "tagline": "Lighting Your World",
+  "slogan": "Quality Products, Brighter Future",
+  "slogan_am": "Luxury ይገባዎታል!",
+  "phones": [
+    { "number": "0911948627", "label": "Showroom Manager 1" },
+    { "number": "0935021157", "label": "Showroom Manager 2" },
+    { "number": "0910404241", "label": "Wholesale & Cables" },
+    { "number": "0910210089", "label": "Customer Support" }
+  ],
+  "telegram": {
+    "channel": "https://t.me/luxuryelectrical",
+    "inbox": "https://t.me/Rezured",
+    "inboxHandle": "@Rezured"
+  },
+  "tiktok": "https://www.tiktok.com/@luxuryelectrical",
+  "address": {
+    "line": "Sosa Merkato, Merkato Sosa Building",
+    "city": "Addis Ababa",
+    "country": "Ethiopia",
+    "landmarks": "Between Harere Hotel and Derba Lime and Chemicals"
+  },
+  "map": {
+    "shareUrl": "https://maps.google.com/?q=Merkato+Sosa+Building+Addis+Ababa",
+    "embedUrl": "https://maps.google.com/maps?q=Merkato+Sosa+Building+Addis+Ababa&t=&z=16&ie=UTF8&iwloc=&output=embed"
+  },
+  "hours": "TODO: Confirm exact hours with owner (e.g. Mon–Sat 8:30 AM – 6:30 PM)"
+}

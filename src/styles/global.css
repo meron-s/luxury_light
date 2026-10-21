@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+:root {
+  --brand-green: #5be584;
+  --brand-green-strong: #2fd468;
+  --bg-black: #050807;
+  --bg-dark: #0b1210;
+  --bg-surface: #101413;
+  --bg-surface-low: #181c1b;
+  --bg-surface-container: #1c201f;
+  --bg-surface-high: #272b29;
+  --bg-surface-highest: #323634;
+  --bg-light: #f4f7f6;
+  --text-on-dark: #ffffff;
+  --text-secondary: #c1c8c4;
+  --text-muted: #9baaa4;
+  --text-on-light: #0b1210;
+  --telegram: #2aabee;
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  
+  --shadow-neon: 0 0 20px rgba(91, 229, 132, 0.45);
+  --shadow-neon-lg: 0 0 35px rgba(91, 229, 132, 0.3), 0 8px 32px rgba(0, 0, 0, 0.7);
+  --border-emerald: rgba(91, 229, 132, 0.15);
+  --border-subtle: rgba(244, 247, 246, 0.08);
+}
+
+@theme {
+  --font-sans: 'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Inter Variable', Inter, monospace;
+  
+  --color-brand-green: #5be584;
+  --color-brand-green-strong: #2fd468;
+  --color-dark-obsidian: #050807;
+  --color-dark-card: #0b1210;
+  --color-surface: #101413;
+  --color-surface-low: #181c1b;
+  --color-surface-container: #1c201f;
+  --color-surface-high: #272b29;
+  --color-surface-highest: #323634;
+  --color-light-bg: #f4f7f6;
+  --color-telegram: #2aabee;
+  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #c1c8c4;
+  --color-text-muted: #9baaa4;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-black);
+  color: var(--text-on-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles for WCAG AA */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--brand-green);
+  outline-offset: 3px;
+}
+
+/* Skip link */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--brand-green);
+  color: var(--bg-black);
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* Glow utility classes */
+.shadow-neon-glow {
+  box-shadow: 0 0 20px rgba(91, 229, 132, 0.45);
+}
+
+.shadow-neon-glow-lg {
+  box-shadow: 0 0 35px rgba(91, 229, 132, 0.3), 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 24px rgba(91, 229, 132, 0.55);
+}
+
+/* Category Filter Chip States */
+.filter-chip {
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-chip.active {
+  background-color: var(--brand-green) !important;
+  color: var(--bg-black) !important;
+  border-color: var(--brand-green) !important;
+}
+
+.filter-chip:not(.active) {
+  background-color: #1c201f;
+  color: #c1c8c4;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.filter-chip:not(.active):hover {
+  color: #ffffff;
+  border-color: rgba(91, 229, 132, 0.5);
+}

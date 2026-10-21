@@ -1,0 +1,164 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import galleryItems from '../data/gallery.json';
+import site from '../data/site.json';
+import fallbackHero from '../assets/hero/hero-main.jpg';
+
+// Map all gallery images
+const galleryImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/**/*.{jpg,png,jpeg}', { eager: true });
+---
+
+<BaseLayout
+  title={`Project & Showroom Gallery // ${site.brand} — Addis Ababa`}
+  description="Browse our architectural lighting installations, decorative crystal fixtures, high-output outdoor luminaires, and luxury switches."
+  currentPath="/gallery"
+>
+  <div class="py-12 lg:py-20 bg-[#050807] min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Gallery Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-widest mb-3">
+          <span>EXHIBITION</span>
+          <span>•</span>
+          <span>ARCHITECTURAL PHOTOGRAPHY</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Showroom & Installation Gallery
+        </h1>
+        <p class="text-sm sm:text-base text-[#9BAAA4] mt-3 leading-relaxed">
+          Explore real fixtures illuminated in our Sosa Merkato showroom and selected commercial projects. Click any image for expanded viewing.
+        </p>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryItems.map((item) => {
+          const imgModule = galleryImages[item.image]?.default || fallbackHero;
+
+          return (
+            <div
+              class="gallery-trigger group relative rounded-2xl overflow-hidden bg-[#0B1210] border border-white/10 hover:border-[#5BE584]/60 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1"
+              data-full-src={imgModule.src}
+              data-title={item.title}
+              data-desc={item.description}
+              data-alt={item.alt}
+              tabindex="0"
+              role="button"
+              aria-label={`View ${item.title}`}
+            >
+              <div class="relative h-72 sm:h-80 w-full overflow-hidden bg-[#101413]">
+                <Image
+                  src={imgModule}
+                  alt={item.alt}
+                  width={600}
+                  height={500}
+                  loading="lazy"
+                  class="w-full h-full object-cover transform duration-500 group-hover:scale-110"
+                />
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#050807] via-[#050807]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+
+                <!-- Category Pill -->
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="px-2.5 py-1 rounded-full bg-[#050807]/80 backdrop-blur-md text-[10px] font-bold text-[#5BE584] uppercase tracking-wider border border-[#5BE584]/30">
+                    {item.category}
+                  </span>
+                </div>
+
+                <!-- Zoom Icon on Hover -->
+                <div class="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#050807]/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 3 21 3 21 9"/>
+                    <polyline points="9 21 3 21 3 15"/>
+                    <line x1="21" y1="3" x2="14" y2="10"/>
+                    <line x1="3" y1="21" x2="10" y2="14"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Caption -->
+              <div class="p-5 flex flex-col gap-1.5 relative z-10 bg-[#0B1210]">
+                <h3 class="text-base font-bold text-white group-hover:text-[#5BE584] transition-colors">
+                  {item.title}
+                </h3>
+                <p class="text-xs text-[#9BAAA4] line-clamp-2 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+
+  <!-- Accessible Lightbox Modal -->
+  <div
+    id="gallery-lightbox"
+    class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo Lightbox"
+  >
+    <div class="lightbox-backdrop absolute inset-0"></div>
+
+    <div class="relative z-10 max-w-5xl w-full flex flex-col items-center gap-4">
+      <!-- Top Close Button -->
+      <div class="w-full flex justify-between items-center text-white pb-2">
+        <span class="text-xs font-semibold text-[#5BE584] uppercase tracking-widest">LUXURY LIGHTING GALLERY</span>
+        <button
+          id="lightbox-close"
+          type="button"
+          aria-label="Close Lightbox"
+          class="w-10 h-10 rounded-full bg-[#1C201F] border border-white/20 text-white hover:text-[#5BE584] flex items-center justify-center transition-colors active:scale-95"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Main Image Viewport & Navigation -->
+      <div class="relative w-full flex items-center justify-center min-h-[300px] max-h-[70vh]">
+        <button
+          id="lightbox-prev"
+          type="button"
+          aria-label="Previous image"
+          class="absolute left-2 sm:left-4 z-20 w-11 h-11 rounded-full bg-[#050807]/80 backdrop-blur-md border border-white/20 text-white hover:text-[#5BE584] hover:border-[#5BE584] flex items-center justify-center transition-all active:scale-95"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+
+        <img
+          id="lightbox-image"
+          src=""
+          alt=""
+          class="max-h-[70vh] max-w-full rounded-2xl object-contain shadow-2xl border border-white/10"
+        />
+
+        <button
+          id="lightbox-next"
+          type="button"
+          aria-label="Next image"
+          class="absolute right-2 sm:right-4 z-20 w-11 h-11 rounded-full bg-[#050807]/80 backdrop-blur-md border border-white/20 text-white hover:text-[#5BE584] hover:border-[#5BE584] flex items-center justify-center transition-all active:scale-95"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Caption Container -->
+      <div class="w-full text-center p-4 bg-[#0B1210] border border-white/10 rounded-2xl max-w-2xl">
+        <h2 id="lightbox-title" class="text-lg font-bold text-white"></h2>
+        <p id="lightbox-desc" class="text-xs text-[#9BAAA4] mt-1"></p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script src="../scripts/lightbox.ts"></script>

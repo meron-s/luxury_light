@@ -1,0 +1,42 @@
+---
+import site from '../../data/site.json';
+---
+
+<div class="fixed bottom-4 inset-x-4 z-40 md:hidden flex justify-center pointer-events-none">
+  <div class="pointer-events-auto bg-[#0B1210]/95 backdrop-blur-md border border-[#5BE584]/30 rounded-full px-4 py-2.5 shadow-2xl flex items-center gap-3">
+    <!-- Active status indicator -->
+    <div class="flex items-center gap-1.5 pl-1 pr-2 border-r border-white/10">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5BE584] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#5BE584]"></span>
+      </span>
+      <span class="text-[11px] font-medium text-white/90 uppercase tracking-wider">Showroom</span>
+    </div>
+
+    <!-- Call Trigger -->
+    <button
+      type="button"
+      class="trigger-call-modal flex items-center gap-1.5 text-xs font-bold bg-[#5BE584] text-[#050807] px-3.5 py-1.5 rounded-full shadow hover:bg-[#2FD468] active:scale-95 transition-all"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <span>Call Now</span>
+    </button>
+
+    <!-- Telegram Quick Link -->
+    <a
+      href={site.telegram.inbox}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Inquire on Telegram"
+      class="flex items-center gap-1 text-xs font-semibold text-[#2AABEE] bg-[#1C201F] border border-[#2AABEE]/30 px-3 py-1.5 rounded-full hover:bg-[#2AABEE]/10 transition-colors"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+      <span>Telegram</span>
+    </a>
+  </div>
+</div>

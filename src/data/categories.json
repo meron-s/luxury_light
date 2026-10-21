@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "led-strip-lights",
+    "name": "LED Strip Lights",
+    "name_am": "የኤልኢዲ ስትሪፕ መብራቶች",
+    "tagline": "Architectural linear illumination & flexible RGB ambiance",
+    "image": "/src/assets/categories/led-strip-lights.jpg",
+    "description": "High-density flexible LED strip reels, vibrant RGB lighting systems, and precision extruded aluminum profiles engineered for seamless cove, cabinet, and ceiling illumination."
+  },
+  {
+    "slug": "led-panel-lights",
+    "name": "LED Panel Lights & Spotlights",
+    "name_am": "የኤልኢዲ ፓነል እና ስፖት መብራቶች",
+    "tagline": "Deep-recessed anti-glare downlights & directional spots",
+    "image": "/src/assets/categories/led-panel-lights.jpg",
+    "description": "Premium architectural spotlights including KK anti-glare recessed fixtures, AURA 6W slim downlights, and 20W shutter spotlights engineered for optical precision."
+  },
+  {
+    "slug": "led-street-lights",
+    "name": "LED Street Lights & Outdoor",
+    "name_am": "የመንገድ እና የውጪ መብራቶች",
+    "tagline": "High-lumen roadway luminaires & architectural landscape poles",
+    "image": "/src/assets/categories/led-street-lights.jpg",
+    "description": "Rugged commercial street lighting, 150W high-efficiency roadway fixtures, 3-meter Y-shaped modern landscape garden poles, and KK heavy-duty exterior floodlights."
+  },
+  {
+    "slug": "electrical-accessories",
+    "name": "Electrical Accessories",
+    "name_am": "የኤሌክትሪክ እቃዎች",
+    "tagline": "Designer luxury switches, sockets, breakers & enclosures",
+    "image": "/src/assets/categories/electrical-accessories.jpg",
+    "description": "STAR Silver luxury modular faceplates, Volt Grey designer switches, miniature circuit breakers (MCBs), Hawud distribution boards, and heavy-duty flush back boxes."
+  },
+  {
+    "slug": "cables-and-wires",
+    "name": "Cables & Wires",
+    "name_am": "ገመዶች እና ሽቦዎች",
+    "tagline": "Certified copper building wire, Cat6 Ethernet & dish cables",
+    "image": "/src/assets/categories/cables-and-wires.jpg",
+    "description": "Multi-gauge pure copper insulated power cables (2x1.5 to 3x6), high-speed Cat6 UTP networking cables, and low-loss satellite television coaxial lines."
+  },
+  {
+    "slug": "fans-and-ventilation",
+    "name": "Fans & Ventilation",
+    "name_am": "የአየር ማናፈሻ እና ማራገቢያዎች",
+    "tagline": "Silent architectural ceiling fans & high-efficiency ventilation",
+    "image": "/src/assets/categories/fans-and-ventilation.jpg",
+    "description": "Commercial and residential energy-efficient ceiling fans, wall ventilation exhaust systems, and climate circulation units."
+  }
+]

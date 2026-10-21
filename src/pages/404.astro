@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../data/site.json';
+---
+
+<BaseLayout
+  title={`404 - Page Not Found // ${site.brand}`}
+  description="The requested page could not be found. Explore our electrical fixtures catalog or contact our showroom."
+>
+  <div class="py-24 sm:py-32 bg-[#050807] flex items-center justify-center min-h-[65vh]">
+    <div class="max-w-xl mx-auto px-4 text-center flex flex-col items-center gap-6">
+      <div class="w-20 h-20 rounded-3xl bg-[#0B1210] border border-[#5BE584]/40 flex items-center justify-center text-[#5BE584] shadow-neon-glow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1C201F] text-xs font-mono text-[#5BE584] border border-[#5BE584]/30">
+        CIRCUIT_DISCONNECTED // 404
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Page Not Found
+      </h1>
+
+      <p class="text-sm text-[#9BAAA4] leading-relaxed max-w-md">
+        The link you followed seems to be disconnected or has moved. Return to our main showroom or browse the product catalog.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a
+          href="/"
+          class="px-7 py-3 rounded-full bg-[#5BE584] text-[#050807] font-bold text-sm hover:bg-[#2FD468] shadow-neon-glow transition-all active:scale-95"
+        >
+          Return to Homepage
+        </a>
+        <a
+          href="/products"
+          class="px-7 py-3 rounded-full bg-[#1C201F] border border-white/10 text-white font-semibold text-sm hover:border-[#5BE584] transition-all"
+        >
+          Browse Products
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

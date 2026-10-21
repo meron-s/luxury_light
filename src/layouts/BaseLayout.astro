@@ -1,0 +1,114 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import MobileMenu from '../components/layout/MobileMenu.astro';
+import FloatingCall from '../components/layout/FloatingCall.astro';
+import CallSheet from '../components/layout/CallSheet.astro';
+import site from '../data/site.json';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonicalUrl?: string;
+  currentPath?: string;
+}
+
+const {
+  title = `${site.brand} // ${site.name} — Premier Electrical & Lighting Showroom Addis Ababa`,
+  description = 'High-end architectural lighting, LED strip lights, commercial street luminaires, and luxury electrical accessories in Addis Ababa, Ethiopia.',
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+  canonicalUrl = Astro.url.href,
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString() : 'https://luxurylighting.vercel.app';
+const fullOgImageUrl = new URL(ogImage, siteUrl).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ElectricalStore",
+  "name": `${site.brand} / ${site.name}`,
+  "alternateName": site.name,
+  "description": description,
+  "url": siteUrl,
+  "logo": new URL('/favicon.svg', siteUrl).toString(),
+  "image": fullOgImageUrl,
+  "telephone": site.phones.map(p => `+251${p.number.replace(/\D/g, '').slice(1)}`),
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.address.line,
+    "addressLocality": site.address.city,
+    "addressCountry": "ET"
+  },
+  "sameAs": [
+    site.telegram.channel,
+    site.telegram.inbox,
+    site.tiktok
+  ],
+  "openingHours": "Mo-Sa 08:30-18:30",
+  "priceRange": "$$"
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={fullOgImageUrl} />
+    <meta property="og:site_name" content={`${site.brand} - ${site.name}`} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImageUrl} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#5BE584" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-[#050807] text-[#C1C8C4] antialiased min-h-screen flex flex-col selection:bg-[#5BE584] selection:text-[#050807]">
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-to-content">
+      Skip to main content
+    </a>
+
+    <!-- Header -->
+    <Header currentPath={currentPath} />
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+
+    <!-- Mobile Drawer & Overlays -->
+    <MobileMenu />
+    <FloatingCall />
+    <CallSheet />
+  </body>
+</html>
