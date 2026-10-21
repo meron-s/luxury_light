@@ -18,6 +18,15 @@ const categoryImages: Record<string, any> = {
   'cables-and-wires': cablesImg,
   'fans-and-ventilation': fansImg,
 };
+
+const i18nKeys: Record<string, { title: string; tag: string }> = {
+  'led-strip-lights': { title: 'categories.strip_title', tag: 'categories.strip_tag' },
+  'led-panel-lights': { title: 'categories.panel_title', tag: 'categories.panel_tag' },
+  'led-street-lights': { title: 'categories.street_title', tag: 'categories.street_tag' },
+  'electrical-accessories': { title: 'categories.accessories_title', tag: 'categories.accessories_tag' },
+  'cables-and-wires': { title: 'categories.cables_title', tag: 'categories.cables_tag' },
+  'fans-and-ventilation': { title: 'categories.fans_title', tag: 'categories.fans_tag' },
+};
 ---
 
 <section class="py-12 sm:py-16 bg-[#f4f7f6] text-gray-900" id="top-categories-section">
@@ -25,10 +34,10 @@ const categoryImages: Record<string, any> = {
     <!-- Section Header (as in mockup) -->
     <div class="flex items-center justify-between gap-4 mb-6 sm:mb-8">
       <div>
-        <span class="text-xs font-bold text-[#28e374] uppercase tracking-wider block mb-1">
+        <span class="text-xs font-bold text-[#28e374] uppercase tracking-wider block mb-1" data-i18n="categories.eyebrow">
           OUR PRODUCTS
         </span>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight" data-i18n="categories.title">
           Top Categories
         </h2>
       </div>
@@ -37,7 +46,7 @@ const categoryImages: Record<string, any> = {
         href="/products"
         class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white border border-gray-300 hover:border-gray-400 text-xs sm:text-sm font-bold text-gray-900 shadow-xs hover:bg-gray-50 active:scale-95 transition-all shrink-0"
       >
-        <span>View All Products</span>
+        <span data-i18n="categories.view_all">View All Products</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
@@ -49,6 +58,7 @@ const categoryImages: Record<string, any> = {
     <div class="grid grid-cols-2 md:grid-cols-3 gap-3.5 sm:gap-6">
       {categories.map((cat) => {
         const img = categoryImages[cat.slug];
+        const keys = i18nKeys[cat.slug];
         return (
           <a
             href={`/products/${cat.slug}`}
@@ -70,10 +80,10 @@ const categoryImages: Record<string, any> = {
             <!-- Card Bottom Info & Green Arrow Button -->
             <div class="p-3 sm:p-4 flex items-center justify-between gap-2 border-t border-gray-100 bg-white">
               <div class="min-w-0 flex-1">
-                <h3 class="text-xs sm:text-sm md:text-base font-bold text-[#0f172a] group-hover:text-emerald-600 transition-colors truncate">
+                <h3 class="text-xs sm:text-sm md:text-base font-bold text-[#0f172a] group-hover:text-emerald-600 transition-colors truncate" data-i18n={keys?.title}>
                   {cat.name}
                 </h3>
-                <p class="text-[10px] sm:text-xs text-gray-500 truncate mt-0.5">
+                <p class="text-[10px] sm:text-xs text-gray-500 truncate mt-0.5" data-i18n={keys?.tag}>
                   {cat.tagline}
                 </p>
               </div>

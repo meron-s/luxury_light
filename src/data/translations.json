@@ -1,0 +1,93 @@
+{
+  "nav": {
+    "home": { "en": "Home", "am": "መነሻ" },
+    "products": { "en": "Products", "am": "ምርቶች" },
+    "about": { "en": "About Us", "am": "ስለ እኛ" },
+    "gallery": { "en": "Gallery", "am": "ማሳያ" },
+    "contact": { "en": "Contact", "am": "አድራሻ" },
+    "call_now": { "en": "Call Now", "am": "ይደውሉ" }
+  },
+  "hero": {
+    "eyebrow": { "en": "LIGHTING YOUR WORLD", "am": "ዓለምዎን በብርሃን ያድምቁ" },
+    "title_1": { "en": "LUXURY", "am": "LUXURY" },
+    "title_2": { "en": "LIGHTING", "am": "LIGHTING" },
+    "desc": {
+      "en": "High quality electrical and lighting products for your home, office and business. Modern design, reliable brands, and affordable prices.",
+      "am": "ለቤትዎ፣ ለቢሮዎ እና ለንግድዎ ከፍተኛ ጥራት ያላቸው የኤሌክትሪክ እና የብርሃን ምርቶች። ዘመናዊ ዲዛይን፣ አስተማማኝ ብራንዶች እና ተመጣጣኝ ዋጋዎች።"
+    },
+    "badge_quality": { "en": "High Quality Products", "am": "ከፍተኛ ጥራት ያላቸው ምርቶች" },
+    "badge_delivery": { "en": "Fast Delivery (Addis Ababa)", "am": "ፈጣን ማድረስ (አዲስ አበባ)" },
+    "badge_trusted": { "en": "Trusted & Reliable", "am": "አስተማማኝ እና ታማኝ" },
+    "shop_now": { "en": "Shop Now", "am": "አሁኑኑ ይግዙ" }
+  },
+  "categories": {
+    "eyebrow": { "en": "OUR PRODUCTS", "am": "ምርቶቻችን" },
+    "title": { "en": "Top Categories", "am": "ዋና ዋና ምድቦች" },
+    "view_all": { "en": "View All Products", "am": "ሁሉንም ምርቶች ይመልከቱ" },
+    "strip_title": { "en": "LED Strip Lights", "am": "የኤልኢዲ ስትሪፕ መብራቶች" },
+    "strip_tag": { "en": "Brighten Your Space", "am": "ቦታዎን ያድምቁ" },
+    "panel_title": { "en": "LED Panel Lights", "am": "የኤልኢዲ ፓነል መብራቶች" },
+    "panel_tag": { "en": "Modern & Energy Saving", "am": "ዘመናዊ እና ኃይል ቆጣቢ" },
+    "street_title": { "en": "LED Street Lights", "am": "የመንገድ መብራቶች" },
+    "street_tag": { "en": "For Safer Tomorrow", "am": "ለተሻለ እና ደህንነቱ የተጠበቀ ነገ" },
+    "accessories_title": { "en": "Electrical Accessories", "am": "የኤሌክትሪክ እቃዎች" },
+    "accessories_tag": { "en": "Safe & Reliable", "am": "ደህንነቱ የተጠበቀ እና አስተማማኝ" },
+    "cables_title": { "en": "Cables & Wires", "am": "ገመዶች እና ሽቦዎች" },
+    "cables_tag": { "en": "Powering Your World", "am": "ኃይል ለዓለምዎ" },
+    "fans_title": { "en": "Fans & Ventilation", "am": "የአየር ማናፈሻ እና ማራገቢያዎች" },
+    "fans_tag": { "en": "Comfort in Every Season", "am": "ምቾት በሁሉም ወቅት" }
+  },
+  "about": {
+    "eyebrow": { "en": "ABOUT US", "am": "ስለ እኛ" },
+    "title": { "en": "Luxury Lighting", "am": "ላግዠሪ ላይቲንግ" },
+    "desc": {
+      "en": "Luxury Lighting is your trusted partner for high-quality electrical and lighting solutions. We provide a wide range of products including LED lights, panels, street lights, electrical accessories, cables, fans and more — all at the best prices and with excellent service.",
+      "am": "ላግዠሪ ላይቲንግ ለከፍተኛ ጥራት ያላቸው የኤሌክትሪክ እና የብርሃን መፍትሄዎች ታማኝ አጋርዎ ነው። የኤልኢዲ መብራቶች፣ ፓነሎች፣ የመንገድ መብራቶች፣ የኤሌክትሪክ እቃዎች፣ ገመዶች፣ ማራገቢያዎች እና ሌሎች በርካታ ምርቶችን በተመጣጣኝ ዋጋ እና በጥሩ አገልግሎት እናቀርባለን።"
+    },
+    "badge_original": { "en": "Original Products", "am": "ኦሪጅናል ምርቶች" },
+    "badge_service": { "en": "Professional Service", "am": "ሙያዊ አገልግሎት" },
+    "badge_satisfaction": { "en": "Customer Satisfaction", "am": "የደንበኛ እርካታ" },
+    "learn_more": { "en": "Learn More", "am": "ተጨማሪ ይወቁ" },
+    "slogan_1": { "en": "Quality Products", "am": "ጥራት ያላቸው ምርቶች" },
+    "slogan_2": { "en": "Brighter Future", "am": "ብሩህ የወደፊት ጊዜ" }
+  },
+  "why_us": {
+    "eyebrow": { "en": "WHY CHOOSE US", "am": "ለምን እኛን ይመርጣሉ?" },
+    "title": { "en": "We Deliver More", "am": "የላቀ አገልግሎት እናቀርባለን" },
+    "quality_title": { "en": "Premium Quality", "am": "የላቀ ጥራት" },
+    "quality_desc": { "en": "Only the best brands and genuine products.", "am": "ምርጥ ብራንዶች እና ትክክለኛ እቃዎች ብቻ።" },
+    "price_title": { "en": "Affordable Price", "am": "ተመጣጣኝ ዋጋ" },
+    "price_desc": { "en": "Great value for your money.", "am": "ለገንዘብዎ የሚመጥን ተገቢ ዋጋ።" },
+    "delivery_title": { "en": "Fast & Safe Delivery", "am": "ፈጣን እና አስተማማኝ ማድረስ" },
+    "delivery_desc": { "en": "Across Addis Ababa (Merkato and nearby).", "am": "በመላው አዲስ አበባ (መርካቶ እና አካባቢው)።" },
+    "support_title": { "en": "After Sales Support", "am": "ከሽያጭ በኋላ ድጋፍ" },
+    "support_desc": { "en": "We are always here for you.", "am": "ሁልጊዜ ከጎንዎ ነን።" }
+  },
+  "contact": {
+    "order_call": { "en": "Order by Call", "am": "በቀጥታ በመደወል ይዘዙ" },
+    "city": { "en": "Addis Ababa", "am": "አዲስ አበባ" },
+    "area": { "en": "Merkato", "am": "መርካቶ" },
+    "inbox": { "en": "Inbox me @Rezured", "am": "በቴሌግራም ያናግሩኝ @Rezured" },
+    "join": { "en": "....... join ....... →", "am": "....... ይቀላቀሉ ....... →" }
+  },
+  "footer": {
+    "about_text": {
+      "en": "Premier architectural lighting, designer switches, and certified electrical supplies for projects across Addis Ababa.",
+      "am": "ከፍተኛ ደረጃ ያላቸው የብርሃን እቃዎች፣ ዲዛይነር ማብሪያዎች እና የተረጋገጡ የኤሌክትሪክ አቅርቦቶች በመላው አዲስ አበባ።"
+    },
+    "quick_nav": { "en": "Quick Navigation", "am": "ፈጣን አሰሳ" },
+    "categories": { "en": "Product Categories", "am": "የምርት ምድቦች" },
+    "direct_lines": { "en": "Showroom Direct Lines", "am": "የሾውሩም ስልክ መስመሮች" },
+    "location": { "en": "Sosa Merkato, Addis Ababa, Ethiopia", "am": "ሶሳ መርካቶ፣ አዲስ አበባ፣ ኢትዮጵያ" }
+  },
+  "catalog": {
+    "badge": { "en": "CATALOG • ARCHITECTURAL & COMMERCIAL SPECIFICATIONS", "am": "ካታሎግ • የህንፃ እና ንግድ ዝርዝር መግለጫዎች" },
+    "title": { "en": "Complete Fixtures & Supplies Portfolio", "am": "የተሟላ የብርሃን እና የኤሌክትሪክ እቃዎች ዝርዝር" },
+    "desc": {
+      "en": "Filter by category or search our inventory. All products can be ordered immediately via phone or Telegram.",
+      "am": "በምድብ ይምረጡ ወይም በእቃ ዝርዝር ውስጥ ይፈልጉ። ሁሉም እቃዎች በስልክ ወይም በቴሌግራም ወዲያውኑ ሊታዘዙ ይችላሉ።"
+    },
+    "search_placeholder": { "en": "Search fixtures by keyword (e.g., spot, breaker, cable, RGB, 150W)...", "am": "ምርቶችን በስም ይፈልጉ (ለምሳሌ፡ ስፖት፣ ብሬከር፣ ገመድ፣ RGB)..." },
+    "all_products": { "en": "All Products", "am": "ሁሉም ምርቶች" }
+  }
+}

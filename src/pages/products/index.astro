@@ -19,15 +19,13 @@ const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Catalog Header -->
       <div class="flex flex-col gap-4 text-center max-w-3xl mx-auto mb-10">
-        <div class="inline-flex items-center gap-2 justify-center text-xs font-bold text-[#5BE584] uppercase tracking-widest">
-          <span>CATALOG</span>
-          <span>•</span>
-          <span>ARCHITECTURAL & COMMERCIAL SPECIFICATIONS</span>
+        <div class="inline-flex items-center gap-2 justify-center text-xs font-bold text-[#5BE584] uppercase tracking-widest" data-i18n="catalog.badge">
+          CATALOG • ARCHITECTURAL & COMMERCIAL SPECIFICATIONS
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight" data-i18n="catalog.title">
           Complete Fixtures & Supplies Portfolio
         </h1>
-        <p class="text-sm sm:text-base text-[#9BAAA4] leading-relaxed">
+        <p class="text-sm sm:text-base text-[#9BAAA4] leading-relaxed" data-i18n="catalog.desc">
           Filter by category or search our inventory. All products can be ordered immediately via phone or Telegram.
         </p>
       </div>
@@ -46,6 +44,7 @@ const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/
             id="product-search-input"
             type="search"
             placeholder="Search fixtures by keyword (e.g., spot, breaker, cable, RGB, 150W)..."
+            data-i18n-placeholder="catalog.search_placeholder"
             class="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-[#0B1210] border border-white/10 text-white placeholder-[#9BAAA4] focus:outline-none focus:border-[#5BE584] transition-colors text-sm shadow-inner"
           />
         </div>

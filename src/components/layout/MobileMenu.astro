@@ -5,33 +5,36 @@ import site from '../../data/site.json';
 ---
 
 <!-- Backdrop -->
-<div id="menu-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden transition-opacity duration-300"></div>
+<div id="menu-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300 pointer-events-none"></div>
 
 <!-- Drawer -->
 <div
   id="mobile-drawer"
-  class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-[#050807] border-l border-[#5BE584]/20 p-6 flex flex-col justify-between overflow-y-auto transform translate-x-full transition-transform duration-300 ease-out shadow-2xl"
+  class="fixed inset-y-0 right-0 z-[70] w-full max-w-xs sm:max-w-sm bg-[#060b08] border-l border-white/10 p-6 flex flex-col justify-between overflow-y-auto shadow-2xl transition-transform duration-300 ease-out"
+  style="transform: translateX(100%);"
   role="dialog"
   aria-modal="true"
   aria-label="Mobile Navigation"
 >
   <div>
     <!-- Top Bar -->
-    <div class="flex items-center justify-between pb-6 border-b border-white/10">
+    <div class="flex items-center justify-between pb-5 border-b border-white/10">
       <div class="flex items-center gap-2">
         <Image
           src={logoImg}
           alt={`${site.name} logo`}
-          width={120}
-          height={120}
-          class="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(40,227,116,0.3)]"
+          width={140}
+          height={140}
+          class="h-10 w-auto object-contain"
         />
       </div>
+
+      <!-- Close Button -->
       <button
         id="menu-close-btn"
         type="button"
         aria-label="Close navigation menu"
-        class="w-10 h-10 rounded-full bg-[#1C201F] border border-white/10 flex items-center justify-center text-[#5BE584] hover:bg-[#272B29] active:scale-95 transition-all"
+        class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-[#28e374] active:scale-95 transition-all cursor-pointer"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 6 6 18M6 6l12 12"/>
@@ -39,35 +42,56 @@ import site from '../../data/site.json';
       </button>
     </div>
 
+    <!-- Language Selector inside Drawer -->
+    <div class="py-4 border-b border-white/10 flex items-center justify-between">
+      <span class="text-xs font-semibold text-gray-400">Language / ቋንቋ</span>
+      <div class="inline-flex items-center p-1 rounded-full bg-white/5 border border-white/10 text-xs">
+        <button
+          type="button"
+          class="lang-btn px-3 py-1 rounded-full font-bold transition-all cursor-pointer"
+          data-lang="en"
+        >
+          EN
+        </button>
+        <button
+          type="button"
+          class="lang-btn px-3 py-1 rounded-full font-bold transition-all cursor-pointer"
+          data-lang="am"
+        >
+          አማ
+        </button>
+      </div>
+    </div>
+
     <!-- Navigation links -->
-    <nav class="flex flex-col gap-2 py-6">
-      <a href="/" class="mobile-nav-link flex items-center justify-between py-3 text-lg font-medium text-white hover:text-[#5BE584] transition-colors border-b border-white/5">
-        <span>Home</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <nav class="flex flex-col gap-1 py-4">
+      <a href="/" class="mobile-nav-link flex items-center justify-between py-3 text-base font-semibold text-white hover:text-[#28e374] transition-colors border-b border-white/5">
+        <span data-i18n="nav.home">Home</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m9 18 6-6-6-6"/>
         </svg>
       </a>
-      <a href="/products" class="mobile-nav-link flex items-center justify-between py-3 text-lg font-medium text-white hover:text-[#5BE584] transition-colors border-b border-white/5">
-        <span>Products Catalog</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <a href="/products" class="mobile-nav-link flex items-center justify-between py-3 text-base font-semibold text-white hover:text-[#28e374] transition-colors border-b border-white/5">
+        <span data-i18n="nav.products">Products</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m9 18 6-6-6-6"/>
         </svg>
       </a>
-      <a href="/about" class="mobile-nav-link flex items-center justify-between py-3 text-lg font-medium text-white hover:text-[#5BE584] transition-colors border-b border-white/5">
-        <span>About Us</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <a href="/about" class="mobile-nav-link flex items-center justify-between py-3 text-base font-semibold text-white hover:text-[#28e374] transition-colors border-b border-white/5">
+        <span data-i18n="nav.about">About Us</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m9 18 6-6-6-6"/>
         </svg>
       </a>
-      <a href="/gallery" class="mobile-nav-link flex items-center justify-between py-3 text-lg font-medium text-white hover:text-[#5BE584] transition-colors border-b border-white/5">
-        <span>Gallery & Showroom</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <a href="/gallery" class="mobile-nav-link flex items-center justify-between py-3 text-base font-semibold text-white hover:text-[#28e374] transition-colors border-b border-white/5">
+        <span data-i18n="nav.gallery">Gallery</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m9 18 6-6-6-6"/>
         </svg>
       </a>
-      <a href="/contact" class="mobile-nav-link flex items-center justify-between py-3 text-lg font-medium text-white hover:text-[#5BE584] transition-colors">
-        <span>Contact & Location</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <a href="/contact" class="mobile-nav-link flex items-center justify-between py-3 text-base font-semibold text-white hover:text-[#28e374] transition-colors">
+        <span data-i18n="nav.contact">Contact</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m9 18 6-6-6-6"/>
         </svg>
       </a>
@@ -75,25 +99,25 @@ import site from '../../data/site.json';
   </div>
 
   <!-- Bottom CTA & Socials -->
-  <div class="flex flex-col gap-4 pt-6 border-t border-white/10">
+  <div class="flex flex-col gap-3 pt-4 border-t border-white/10">
     <button
       type="button"
-      class="trigger-call-modal w-full py-3.5 px-4 rounded-xl bg-[#28e374] text-[#050807] font-bold text-center flex items-center justify-center gap-2 hover:bg-[#22c55e] active:scale-95 transition-all shadow-lg cursor-pointer"
+      class="trigger-call-modal w-full py-3 px-4 rounded-full bg-[#28e374] text-black font-extrabold text-sm text-center flex items-center justify-center gap-2 hover:bg-[#22c55e] active:scale-95 transition-all shadow-md cursor-pointer"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.83-6.82l1.97-1.61c.29-.26.37-.65.25-1.02A11.36 11.36 0 0 1 8.72 4c0-.55-.45-1-1-1H4.08c-.55 0-1 .45-1 1C3.08 13.28 10.73 20.92 20.01 20.92c.55 0 1-.45 1-1v-3.54c0-.55-.45-1-1-1z"/>
       </svg>
-      <span>Call Showroom</span>
+      <span data-i18n="nav.call_now">Call Now</span>
     </button>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2">
       <a
         href={site.telegram.inbox}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex-1 py-2.5 px-3 rounded-lg bg-[#1C201F] border border-white/10 text-xs font-semibold text-white flex items-center justify-center gap-1.5 hover:border-[#2AABEE] transition-all"
+        class="flex-1 py-2 px-3 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white flex items-center justify-center gap-1.5 hover:border-[#2AABEE] transition-all"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2AABEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2AABEE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="22" y1="2" x2="11" y2="13"/>
           <polygon points="22 2 15 22 11 13 2 9 22 2"/>
         </svg>
@@ -103,9 +127,9 @@ import site from '../../data/site.json';
         href={site.tiktok}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex-1 py-2.5 px-3 rounded-lg bg-[#1C201F] border border-white/10 text-xs font-semibold text-white flex items-center justify-center gap-1.5 hover:border-white transition-all"
+        class="flex-1 py-2 px-3 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white flex items-center justify-center gap-1.5 hover:border-white transition-all"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
         </svg>
         <span>TikTok</span>

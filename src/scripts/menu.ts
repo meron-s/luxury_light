@@ -1,39 +1,56 @@
-// Mobile hamburger navigation drawer controller
-function setupMobileMenu(): void {
-  const openBtn = document.getElementById('menu-open-btn');
-  const closeBtn = document.getElementById('menu-close-btn');
+// Bulletproof Mobile Hamburger Navigation Controller
+export function openMenu(): void {
   const drawer = document.getElementById('mobile-drawer');
   const backdrop = document.getElementById('menu-backdrop');
-  const links = document.querySelectorAll('.mobile-nav-link');
-
-  if (!openBtn || !drawer) return;
-
-  function openMenu(): void {
-    drawer?.classList.remove('translate-x-full');
-    drawer?.classList.add('translate-x-0');
-    backdrop?.classList.remove('hidden');
-    document.body.classList.add('overflow-hidden');
-    closeBtn?.focus();
+  if (drawer) {
+    drawer.style.transform = 'translateX(0)';
+    drawer.setAttribute('aria-hidden', 'false');
   }
-
-  function closeMenu(): void {
-    drawer?.classList.add('translate-x-full');
-    drawer?.classList.remove('translate-x-0');
-    backdrop?.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');
-    openBtn?.focus();
+  if (backdrop) {
+    backdrop.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      backdrop.style.opacity = '1';
+      backdrop.style.pointerEvents = 'auto';
+    });
   }
+  document.body.style.overflow = 'hidden';
+  const closeBtn = document.getElementById('menu-close-btn');
+  closeBtn?.focus();
+}
 
-  openBtn.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  backdrop?.addEventListener('click', closeMenu);
+export function closeMenu(): void {
+  const drawer = document.getElementById('mobile-drawer');
+  const backdrop = document.getElementById('menu-backdrop');
+  if (drawer) {
+    drawer.style.transform = 'translateX(100%)';
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+  if (backdrop) {
+    backdrop.style.opacity = '0';
+    backdrop.style.pointerEvents = 'none';
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+    }, 300);
+  }
+  document.body.style.overflow = '';
+  const openBtn = document.getElementById('menu-open-btn');
+  openBtn?.focus();
+}
 
-  links.forEach(link => {
-    link.addEventListener('click', closeMenu);
+export function setupMobileMenu(): void {
+  // Global event delegation for open button
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('#menu-open-btn')) {
+      e.preventDefault();
+      openMenu();
+    } else if (target.closest('#menu-close-btn') || target.closest('#menu-backdrop') || target.closest('.mobile-nav-link')) {
+      closeMenu();
+    }
   });
 
   window.addEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && !drawer.classList.contains('translate-x-full')) {
+    if (e.key === 'Escape') {
       closeMenu();
     }
   });
