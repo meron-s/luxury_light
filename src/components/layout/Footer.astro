@@ -1,149 +1,50 @@
 ---
 import { Image } from 'astro:assets';
 import logoImg from '../../assets/brand/logo.png';
-import footerBg from '../../assets/brand/footer-bg.jpg';
 import site from '../../data/site.json';
-import categories from '../../data/categories.json';
-import { formatPhone, toTel } from '../../lib/phone';
-
-const currentYear = new Date().getFullYear();
 ---
 
-<footer class="relative border-t border-white/10 text-[#C1C8C4] pt-16 pb-24 md:pb-12 overflow-hidden">
-  <!-- Footer Background Image -->
-  <div class="absolute inset-0 z-0">
-    <Image
-      src={footerBg}
-      alt=""
-      width={1920}
-      height={1080}
-      loading="lazy"
-      class="w-full h-full object-cover object-center brightness-75 saturate-90 select-none pointer-events-none"
-    />
-    <!-- Dark overlay for text legibility -->
-    <div class="absolute inset-0 bg-[#050807]/70"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-[#050807]/90 via-transparent to-[#050807]/80"></div>
-  </div>
+<footer class="bg-[#030906] text-[#C1C8C4] border-t border-white/10 py-5 sm:py-6 relative z-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- Left: Brand Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <Image
+        src={logoImg}
+        alt={`${site.name} logo`}
+        width={160}
+        height={50}
+        class="h-8 sm:h-10 w-auto object-contain"
+      />
+    </a>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
-      <!-- Col 1: Brand Info -->
-      <div class="flex flex-col gap-4">
-        <a href="/" class="flex items-center gap-2">
-          <Image
-            src={logoImg}
-            alt={`${site.name} logo`}
-            width={120}
-            height={120}
-            class="w-12 h-12 object-contain drop-shadow-[0_0_6px_rgba(91,229,132,0.25)]"
-          />
-        </a>
-        <p class="text-sm text-[#9BAAA4] leading-relaxed">
-          {site.slogan} — <span class="text-[#5BE584] font-medium">{site.slogan_am}</span>
-        </p>
-        <p class="text-xs text-[#9BAAA4]">
-          Premier architectural lighting, designer switches, and certified electrical supplies for projects across Addis Ababa.
-        </p>
-
-        <!-- Social Pills -->
-        <div class="flex items-center gap-2.5 pt-2">
-          <a
-            href={site.telegram.channel}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram Channel"
-            class="w-9 h-9 rounded-lg bg-[#1C201F] border border-white/10 flex items-center justify-center text-[#2AABEE] hover:border-[#2AABEE] transition-all"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-          </a>
-          <a
-            href={site.telegram.inbox}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram Inbox"
-            class="w-9 h-9 rounded-lg bg-[#1C201F] border border-white/10 flex items-center justify-center text-[#5BE584] hover:border-[#5BE584] transition-all"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </a>
-          <a
-            href={site.tiktok}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok Account"
-            class="w-9 h-9 rounded-lg bg-[#1C201F] border border-white/10 flex items-center justify-center text-white hover:border-white transition-all"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Col 2: Navigation Links -->
-      <div class="flex flex-col gap-3">
-        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Quick Navigation</h3>
-        <ul class="flex flex-col gap-2 text-sm">
-          <li><a href="/" class="hover:text-[#5BE584] transition-colors">Home</a></li>
-          <li><a href="/products" class="hover:text-[#5BE584] transition-colors">Products Catalog</a></li>
-          <li><a href="/about" class="hover:text-[#5BE584] transition-colors">About Us & Showroom</a></li>
-          <li><a href="/gallery" class="hover:text-[#5BE584] transition-colors">Project Gallery</a></li>
-          <li><a href="/contact" class="hover:text-[#5BE584] transition-colors">Contact & Location</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Categories -->
-      <div class="flex flex-col gap-3">
-        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Product Categories</h3>
-        <ul class="flex flex-col gap-2 text-sm">
-          {categories.slice(0, 6).map((cat) => (
-            <li>
-              <a href={`/products/${cat.slug}`} class="hover:text-[#5BE584] transition-colors">
-                {cat.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Col 4: Showroom & Orders -->
-      <div class="flex flex-col gap-3">
-        <h3 class="text-sm font-bold text-white uppercase tracking-wider">Showroom Direct Lines</h3>
-        <div class="flex flex-col gap-1.5 text-xs text-[#9BAAA4]">
-          <p class="font-medium text-white">{site.address.line}</p>
-          <p>{site.address.city}, {site.address.country}</p>
-          <p class="italic text-[11px] text-[#5BE584]/80">{site.address.landmarks}</p>
-        </div>
-
-        <div class="flex flex-col gap-1.5 pt-2">
-          {site.phones.map((phone) => (
-            <a
-              href={toTel(phone.number)}
-              class="flex items-center gap-2 text-xs font-semibold text-white hover:text-[#5BE584] transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5BE584" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              <span>{formatPhone(phone.number)}</span>
-              <span class="text-[10px] text-[#9BAAA4] font-normal">({phone.label})</span>
-            </a>
-          ))}
-        </div>
-      </div>
+    <!-- Center: Amharic Brand Script -->
+    <div class="text-center">
+      <span class="font-serif italic font-extrabold text-lg sm:text-2xl text-[#28e374] tracking-wider drop-shadow-[0_0_10px_rgba(40,227,116,0.5)] transform -rotate-2 inline-block">
+        Luxury ይገባዎታል!
+      </span>
     </div>
 
-    <!-- Bottom Copyright -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9BAAA4]">
-      <p>© {currentYear} {site.name} / {site.brand}. All rights reserved.</p>
-      <p class="flex items-center gap-2">
-        <span>Sosa Merkato, Addis Ababa, Ethiopia</span>
-        <span>•</span>
-        <span class="text-white">Privacy-focused static site</span>
-      </p>
+    <!-- Right: Addis Ababa Skyline Silhouette -->
+    <div class="flex flex-col items-center md:items-end gap-1">
+      <!-- Addis Ababa Skyline Vector (including CBE Tower profile) -->
+      <svg class="h-8 w-auto text-white/50" viewBox="0 0 240 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ground base -->
+        <rect y="48" width="240" height="2" fill="currentColor"/>
+        <!-- Background buildings -->
+        <path d="M5 48V32h8v16M18 48V25h12v23M35 48V35h10v13M50 48V28h8v20M62 48V38h7v10" opacity="0.4"/>
+        <path d="M72 48V22h14v26M90 48V30h11v18M105 48V18h16v30" opacity="0.6"/>
+        <!-- CBE Tower (Center High-Rise Landmark) -->
+        <path d="M128 48V8l3-5 3 5v40h-6z" fill="#28e374" opacity="0.85"/>
+        <line x1="131" y1="3" x2="131" y2="0" stroke="#28e374" stroke-width="1.5"/>
+        <path d="M136 48V20h12v28M152 48V34h10v14" opacity="0.5"/>
+        <path d="M166 48V26h15v22M185 48V16h14v32M203 48V32h12v16M219 48V36h14v12" opacity="0.5"/>
+        <!-- Architectural roof detail -->
+        <path d="M107 18l6-4 6 4" stroke="currentColor" stroke-width="1" fill="none"/>
+        <circle cx="131" cy="1" r="1" fill="#28e374"/>
+      </svg>
+      <span class="text-[10px] sm:text-xs text-gray-400 font-medium tracking-wide">
+        Addis Ababa, Ethiopia
+      </span>
     </div>
   </div>
 </footer>

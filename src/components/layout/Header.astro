@@ -18,24 +18,21 @@ const navItems = [
 ];
 ---
 
-<header class="sticky top-0 z-40 w-full bg-[#050807]/95 backdrop-blur-md border-b border-white/10 shadow-xl transition-all">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<header class="sticky top-0 z-40 w-full bg-[#060b08]/95 backdrop-blur-md border-b border-white/10 shadow-lg transition-all">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
     <!-- Brand Logo -->
-    <a href="/" class="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5BE584] rounded-lg p-1">
+    <a href="/" class="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#28e374] rounded-lg">
       <Image
         src={logoImg}
         alt={`${site.name} logo`}
-        width={160}
-        height={160}
-        class="w-14 h-14 object-contain drop-shadow-[0_0_8px_rgba(91,229,132,0.3)] transition-transform duration-300 group-hover:scale-105"
+        width={180}
+        height={60}
+        class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
       />
-      <div class="flex flex-col">
-        <span class="text-[10px] font-semibold text-[#9BAAA4] tracking-widest uppercase">ELECTRICAL SHOWROOM • ADDIS ABABA</span>
-      </div>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+    <nav class="hidden md:flex items-center gap-7 lg:gap-8" aria-label="Main Navigation">
       {navItems.map((item) => {
         const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
         return (
@@ -43,56 +40,40 @@ const navItems = [
             href={item.href}
             class={`text-sm font-semibold transition-all py-1 relative ${
               isActive
-                ? 'text-[#5BE584]'
+                ? 'text-[#28e374]'
                 : 'text-[#C1C8C4] hover:text-white'
             }`}
           >
             {item.label}
             {isActive && (
-              <span class="absolute bottom-0 inset-x-0 h-0.5 bg-[#5BE584] rounded-full shadow-neon-glow"></span>
+              <span class="absolute bottom-0 inset-x-0 h-0.5 bg-[#28e374] rounded-full shadow-[0_0_8px_rgba(40,227,116,0.6)]"></span>
             )}
           </a>
         );
       })}
     </nav>
 
-    <!-- Desktop Action CTAs -->
-    <div class="hidden md:flex items-center gap-4">
-      <a
-        href={site.telegram.inbox}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Direct Telegram Architect Inbox"
-        class="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#1C201F] border border-white/10 hover:border-[#2AABEE]/50 text-xs font-semibold text-white transition-all"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2AABEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13"/>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
-        <span>{site.telegram.inboxHandle}</span>
-      </a>
-
-      <!-- Call Now button (per SPEC 3.4: on mobile opens sheet, on desktop scrolls to contact bar) -->
+    <!-- Action CTAs (Call Now visible on BOTH mobile & desktop) -->
+    <div class="flex items-center gap-2.5 sm:gap-4">
+      <!-- Call Now button -->
       <button
         type="button"
-        class="trigger-call-modal flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#5BE584] text-[#050807] font-bold text-sm tracking-wide shadow-neon-glow hover:bg-[#2FD468] hover:shadow-neon-glow-lg active:scale-95 transition-all"
+        class="trigger-call-modal flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#28e374] text-black font-extrabold text-xs sm:text-sm tracking-wide shadow-md shadow-[#28e374]/25 hover:bg-[#22c55e] active:scale-95 transition-all cursor-pointer"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="shrink-0">
+          <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.83-6.82l1.97-1.61c.29-.26.37-.65.25-1.02A11.36 11.36 0 0 1 8.72 4c0-.55-.45-1-1-1H4.08c-.55 0-1 .45-1 1C3.08 13.28 10.73 20.92 20.01 20.92c.55 0 1-.45 1-1v-3.54c0-.55-.45-1-1-1z"/>
         </svg>
         <span>Call Now</span>
       </button>
-    </div>
 
-    <!-- Mobile Hamburger Toggle -->
-    <div class="flex items-center gap-2 md:hidden">
+      <!-- Mobile Hamburger Toggle -->
       <button
         id="menu-open-btn"
         type="button"
         aria-label="Open navigation menu"
-        class="w-10 h-10 rounded-xl bg-[#1C201F] border border-white/10 flex items-center justify-center text-white hover:text-[#5BE584] active:scale-95 transition-all"
+        class="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-[#28e374] active:scale-95 transition-all"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="4" x2="20" y1="12" y2="12"/>
           <line x1="4" x2="20" y1="6" y2="6"/>
           <line x1="4" x2="20" y1="18" y2="18"/>

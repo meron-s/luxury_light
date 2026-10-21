@@ -1,108 +1,118 @@
 ---
 import site from '../../data/site.json';
-import { formatPhone, toTel } from '../../lib/phone';
+import { toTel } from '../../lib/phone';
 ---
 
-<section id="contact-bar" class="py-16 lg:py-24 bg-[#050807] border-b border-white/10 relative overflow-hidden scroll-mt-24">
+<section id="contact-bar" class="py-8 sm:py-12 bg-[#f4f7f6] scroll-mt-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="rounded-3xl bg-[#0B1210] border border-[#5BE584]/30 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-      <!-- Glow ambient light -->
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#5BE584]/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Dark Card Container -->
+    <div class="rounded-3xl bg-[#04120a] border border-emerald-950/90 p-6 sm:p-8 lg:p-10 text-white shadow-2xl relative overflow-hidden">
+      <!-- Glow effect -->
+      <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-[#28e374]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-        <!-- Col 1: Direct Order by Call -->
-        <div class="lg:col-span-5 flex flex-col gap-4">
-          <div class="inline-flex items-center gap-2 text-xs font-bold text-[#5BE584] uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-[#5BE584]"></span>
-            <span>DIRECT ORDERING & INQUIRIES</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Order by Direct Call
-          </h2>
-          <p class="text-xs text-[#9BAAA4] leading-relaxed">
-            Need pricing, bulk contractor quotes, or stock availability? Call any of our showroom managers directly:
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            {site.phones.map((phone) => (
-              <a
-                href={toTel(phone.number)}
-                class="flex items-center gap-3 p-3 rounded-xl bg-[#1C201F] border border-white/10 hover:border-[#5BE584]/50 transition-all group"
-              >
-                <div class="w-8 h-8 rounded-lg bg-[#5BE584]/10 text-[#5BE584] flex items-center justify-center shrink-0 group-hover:bg-[#5BE584] group-hover:text-[#050807] transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </div>
-                <div class="flex flex-col text-left">
-                  <span class="text-xs font-bold text-white group-hover:text-[#5BE584] transition-colors">{formatPhone(phone.number)}</span>
-                  <span class="text-[10px] text-[#9BAAA4]">{phone.label}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <!-- Col 2: Telegram Concierge -->
-        <div class="lg:col-span-4 flex flex-col gap-4 p-6 rounded-2xl bg-[#101413] border border-white/10">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-lg bg-[#2AABEE]/10 text-[#2AABEE] flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      <!-- Top Row: Call Ordering & Location -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center pb-6 border-b border-white/10 relative z-10">
+        <!-- Left: Order by Call & Numbers -->
+        <div class="md:col-span-7 flex flex-col gap-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-[#28e374] text-black flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.43-3.9-6.83-6.82l1.97-1.61c.29-.26.37-.65.25-1.02A11.36 11.36 0 0 1 8.72 4c0-.55-.45-1-1-1H4.08c-.55 0-1 .45-1 1C3.08 13.28 10.73 20.92 20.01 20.92c.55 0 1-.45 1-1v-3.54c0-.55-.45-1-1-1z"/>
               </svg>
             </div>
-            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Telegram Channels</h3>
+            <span class="text-sm sm:text-base font-bold text-white">
+              Order by Call
+            </span>
           </div>
-          <p class="text-xs text-[#9BAAA4]">
-            Send product photos, blueprint specs, or join our broadcast channel for weekly arrivals and promotions.
-          </p>
 
-          <div class="flex flex-col gap-2 pt-1">
-            <a
-              href={site.telegram.inbox}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full py-2.5 px-4 rounded-xl bg-[#2AABEE] text-white font-bold text-xs flex items-center justify-center gap-2 hover:bg-[#2299d6] transition-colors shadow"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <!-- Numbers in 2 Columns -->
+          <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 pt-1">
+            <a href={toTel("0911948627")} class="text-base sm:text-lg font-extrabold text-white hover:text-[#28e374] transition-colors tracking-tight">
+              0911948627
+            </a>
+            <a href={toTel("0935021157")} class="text-base sm:text-lg font-extrabold text-white hover:text-[#28e374] transition-colors tracking-tight">
+              0935021157
+            </a>
+            <a href={toTel("0910404241")} class="text-base sm:text-lg font-extrabold text-white hover:text-[#28e374] transition-colors tracking-tight">
+              0910404241
+            </a>
+            <a href={toTel("0910210089")} class="text-base sm:text-lg font-extrabold text-white hover:text-[#28e374] transition-colors tracking-tight">
+              0910210089
+            </a>
+          </div>
+        </div>
+
+        <!-- Vertical Divider (desktop) -->
+        <div class="hidden md:block md:col-span-1 border-r border-white/10 h-20 my-auto"></div>
+
+        <!-- Right: Location & Amharic Slogan -->
+        <div class="md:col-span-4 flex items-center justify-between gap-4">
+          <div class="flex items-start gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-[#28e374]/15 text-[#28e374] flex items-center justify-center shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
               </svg>
-              <span>Direct Telegram Chat ({site.telegram.inboxHandle})</span>
-            </a>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-white">Addis Ababa</span>
+              <span class="text-xs text-gray-400">Merkato</span>
+            </div>
+          </div>
 
-            <a
-              href={site.telegram.channel}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full py-2.5 px-4 rounded-xl bg-[#1C201F] border border-[#2AABEE]/40 text-[#2AABEE] font-semibold text-xs flex items-center justify-center gap-2 hover:bg-[#2AABEE]/10 transition-colors"
-            >
-              <span>Join @luxuryelectrical Channel</span>
-            </a>
+          <div class="text-right">
+            <span class="font-serif italic font-extrabold text-xl sm:text-2xl text-[#28e374] drop-shadow-[0_0_10px_rgba(40,227,116,0.5)] whitespace-nowrap transform -rotate-2 inline-block">
+              Luxury ይገባዎታል!
+            </span>
           </div>
         </div>
+      </div>
 
-        <!-- Col 3: Location & Directions -->
-        <div class="lg:col-span-3 flex flex-col gap-3">
-          <span class="text-xs font-bold text-white uppercase tracking-wider">Visit Our Showroom</span>
-          <div class="text-xs text-[#C1C8C4] space-y-1">
-            <p class="font-bold text-white text-sm">{site.address.line}</p>
-            <p>{site.address.city}, {site.address.country}</p>
-            <p class="text-[11px] text-[#5BE584]">{site.address.landmarks}</p>
-          </div>
-
-          <a
-            href={site.map.shareUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-2 w-full py-3 px-4 rounded-xl bg-[#1C201F] border border-white/15 text-white font-semibold text-xs flex items-center justify-center gap-2 hover:border-[#5BE584] hover:text-[#5BE584] transition-all"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+      <!-- Bottom Row: Telegram Integrations -->
+      <div class="pt-5 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
+        <!-- 1. Inbox Button -->
+        <a
+          href={site.telegram.inbox}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-[#2AABEE]/60 text-xs font-semibold text-white transition-all shadow-xs"
+        >
+          <div class="w-5 h-5 rounded-full bg-[#2AABEE] text-white flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
             </svg>
-            <span>Get Directions (Google Maps)</span>
-          </a>
-        </div>
+          </div>
+          <span>Inbox me <strong class="text-white">@Rezured</strong></span>
+        </a>
+
+        <!-- 2. Channel URL -->
+        <a
+          href={site.telegram.channel}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-[#28e374] transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          <span>https://t.me/luxuryelectrical</span>
+        </a>
+
+        <!-- 3. Join Pill Button -->
+        <a
+          href={site.telegram.channel}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full bg-[#28e374] text-black font-extrabold text-xs tracking-wider shadow-md hover:bg-[#22c55e] active:scale-95 transition-all"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          <span>....... join ....... &rarr;</span>
+        </a>
       </div>
     </div>
   </div>

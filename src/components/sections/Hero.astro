@@ -1,166 +1,104 @@
 ---
 import { Image } from 'astro:assets';
 import heroBg from '../../assets/hero/hero-bg.jpg';
-import stripImg from '../../assets/hero/led-strip-reel.jpg';
-import floodlightImg from '../../assets/hero/kk-floodlight-100w.jpg';
 import site from '../../data/site.json';
-
-const bgSlides = [
-  {
-    image: stripImg,
-    alt: 'High-density commercial LED strip light reel',
-    title: 'Commercial LED Strip Roll'
-  },
-  {
-    image: floodlightImg,
-    alt: 'KK Electric 100W IP66 commercial outdoor floodlight luminaire',
-    title: 'KK Electric 100W Floodlight'
-  },
-  {
-    image: heroBg,
-    alt: 'Luxury architectural interior lighting showroom ambiance',
-    title: 'Luxury Showroom Ambiance'
-  }
-];
 ---
 
-<section class="relative pt-12 pb-20 lg:pt-24 lg:pb-36 overflow-hidden border-b border-white/10" id="hero-section">
-  <!-- Hero Full-Bleed Dynamic Background Images -->
-  <div class="absolute inset-0 z-0 overflow-hidden" id="hero-bg-container">
-    {bgSlides.map((slide, idx) => (
-      <div
-        class={`hero-bg-slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === 0 ? 'opacity-100' : 'opacity-0'}`}
-        data-index={idx}
-      >
-        <Image
-          src={slide.image}
-          alt={slide.alt}
-          width={1920}
-          height={1080}
-          loading={idx === 0 ? "eager" : "lazy"}
-          fetchpriority={idx === 0 ? "high" : "low"}
-          class="w-full h-full object-cover object-center lg:object-right brightness-110 contrast-105 saturate-110 select-none pointer-events-none"
-        />
-      </div>
-    ))}
+<section class="relative pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden bg-[#060b08]" id="hero-section">
+  <!-- Hero Background Image -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <Image
+      src={heroBg}
+      alt="Luxury architectural lighting showroom interior ambiance"
+      width={1920}
+      height={1080}
+      loading="eager"
+      fetchpriority="high"
+      class="w-full h-full object-cover object-right sm:object-center brightness-105 contrast-105 saturate-110 select-none pointer-events-none"
+    />
 
-    <!-- Soft directional gradient for text legibility on the left, leaving the rest 100% clear & bright -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#050807]/90 via-[#050807]/50 via-30% to-transparent pointer-events-none z-10"></div>
-    <!-- Subtle top & bottom edge blending into page -->
-    <div class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050807] to-transparent pointer-events-none z-10"></div>
-    <div class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#050807] to-transparent pointer-events-none z-10"></div>
+    <!-- Dark gradient on left for crystal clear readability while showing right table ambiance -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#060b08]/95 via-[#060b08]/85 via-45% to-[#060b08]/25 pointer-events-none"></div>
+    <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#060b08] to-transparent pointer-events-none"></div>
   </div>
 
-  <!-- Subtle ambient green glow in background -->
-  <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-[#5BE584]/10 blur-[140px] pointer-events-none rounded-full z-10"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-    <div class="max-w-3xl flex flex-col gap-6 text-left">
-      <!-- Eyebrow Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1C201F]/90 backdrop-blur-md border border-[#5BE584]/40 w-fit">
-        <span class="w-2 h-2 rounded-full bg-[#5BE584] animate-pulse"></span>
-        <span class="text-xs font-semibold text-[#5BE584] tracking-wider uppercase">{site.tagline}</span>
-      </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-2xl flex flex-col gap-5 text-left">
+      <!-- Eyebrow -->
+      <span class="text-xs sm:text-sm font-extrabold text-[#28e374] tracking-widest uppercase">
+        LIGHTING YOUR WORLD
+      </span>
 
       <!-- Headline -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
-        LUXURY <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#5BE584] to-[#2FD468]">ELECTRICAL</span>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
+        LUXURY<br />
+        <span class="text-[#28e374]">ELECTRICAL</span>
       </h1>
 
-      <!-- Slogan & Subtitle -->
-      <p class="text-lg sm:text-xl text-[#C1C8C4] leading-relaxed max-w-2xl font-light">
-        {site.slogan} — <span class="text-[#5BE584] font-medium">{site.slogan_am}</span>. Addis Ababa's foremost destination for commercial luminaires, anti-glare architectural spots, and certified electrical gear.
+      <!-- Slogan / Subtitle -->
+      <p class="text-xs sm:text-base text-gray-200/90 leading-relaxed font-normal max-w-xl">
+        High quality electrical and lighting products for your home, office and business. Modern design, reliable brands, and affordable prices.
       </p>
 
-
-
-      <!-- Background Slideshow Controls & Label -->
-      <div class="flex items-center gap-3 pt-6">
-        <div class="flex items-center gap-1.5 p-1 rounded-full bg-[#0B1210]/80 backdrop-blur-md border border-white/15" role="tablist" aria-label="Hero background slides">
-          {bgSlides.map((slide, idx) => (
-            <button
-              type="button"
-              class={`hero-bg-dot h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === 0 ? 'bg-[#5BE584] w-7' : 'bg-white/30 hover:bg-white/60 w-2.5'}`}
-              data-index={idx}
-              aria-label={`View ${slide.title} in background`}
-            ></button>
-          ))}
+      <!-- 3 Trust Badges Row (as in mockup) -->
+      <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-1 max-w-lg">
+        <!-- Badge 1: High Quality -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-md bg-[#28e374]/15 border border-[#28e374]/40 text-[#28e374] flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold text-white leading-tight">
+            High Quality<br class="hidden sm:inline" /> Products
+          </span>
         </div>
-        <span id="hero-bg-title" class="text-xs font-medium text-[#9BAAA4] tracking-wide">
-          {bgSlides[0].title}
-        </span>
+
+        <!-- Badge 2: Fast Delivery -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-md bg-[#28e374]/15 border border-[#28e374]/40 text-[#28e374] flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+              <path d="M15 18H9"/>
+              <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+              <circle cx="17" cy="18" r="2"/>
+              <circle cx="7" cy="18" r="2"/>
+            </svg>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold text-white leading-tight">
+            Fast Delivery<br class="hidden sm:inline" /> (Addis Ababa)
+          </span>
+        </div>
+
+        <!-- Badge 3: Trusted & Reliable -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          <div class="w-6 h-6 sm:w-7 sm:h-7 rounded-md bg-[#28e374]/15 border border-[#28e374]/40 text-[#28e374] flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m11 17 2 2a1 1 0 0 0 1.4 0l4.3-4.3a2 2 0 0 0 0-2.8l-1.4-1.4a2 2 0 0 0-2.8 0L13 12"/>
+              <path d="m13 12-2.5-2.5a2 2 0 0 0-2.8 0l-1.4 1.4a2 2 0 0 0 0 2.8l4.3 4.3"/>
+              <path d="M18 11V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7"/>
+            </svg>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold text-white leading-tight">
+            Trusted &<br class="hidden sm:inline" /> Reliable
+          </span>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="pt-2">
+        <a
+          href="/products"
+          class="inline-flex items-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#28e374] text-black font-extrabold text-sm sm:text-base shadow-lg shadow-[#28e374]/30 hover:bg-[#22c55e] active:scale-95 transition-all"
+        >
+          <span>Shop Now</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  function setupHeroBackground() {
-    const slides = document.querySelectorAll<HTMLElement>('.hero-bg-slide');
-    const dots = document.querySelectorAll<HTMLButtonElement>('.hero-bg-dot');
-    const titleEl = document.getElementById('hero-bg-title');
-    if (!slides.length) return;
-
-    const titles = [
-      'Commercial LED Strip Roll',
-      'KK Electric 100W Floodlight',
-      'Luxury Showroom Ambiance'
-    ];
-
-    let currentIndex = 0;
-    let timer: number | null = null;
-
-    function goToSlide(index: number) {
-      currentIndex = index;
-      slides.forEach((slide, i) => {
-        if (i === index) {
-          slide.classList.remove('opacity-0');
-          slide.classList.add('opacity-100');
-        } else {
-          slide.classList.remove('opacity-100');
-          slide.classList.add('opacity-0');
-        }
-      });
-
-      dots.forEach((dot, i) => {
-        if (i === index) {
-          dot.classList.remove('bg-white/30', 'w-2.5');
-          dot.classList.add('bg-[#5BE584]', 'w-7');
-        } else {
-          dot.classList.remove('bg-[#5BE584]', 'w-7');
-          dot.classList.add('bg-white/30', 'w-2.5');
-        }
-      });
-
-      if (titleEl && titles[index]) {
-        titleEl.textContent = titles[index];
-      }
-    }
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const idx = Number(dot.dataset.index);
-        goToSlide(idx);
-        restartTimer();
-      });
-    });
-
-    function startTimer() {
-      timer = window.setInterval(() => {
-        const next = (currentIndex + 1) % slides.length;
-        goToSlide(next);
-      }, 5000);
-    }
-
-    function restartTimer() {
-      if (timer) clearInterval(timer);
-      startTimer();
-    }
-
-    startTimer();
-  }
-
-  setupHeroBackground();
-  document.addEventListener('astro:page-load', setupHeroBackground);
-</script>
-
