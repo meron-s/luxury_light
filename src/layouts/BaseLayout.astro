@@ -17,7 +17,7 @@ interface Props {
 }
 
 const {
-  title = `${site.brand} // ${site.name} — Premier Electrical & Lighting Showroom Addis Ababa`,
+  title = `${site.name} — Premier Electrical & Lighting Showroom Addis Ababa`,
   description = 'High-end architectural lighting, LED strip lights, commercial street luminaires, and luxury electrical accessories in Addis Ababa, Ethiopia.',
   ogImage = '/og-image.jpg',
   ogType = 'website',
@@ -31,7 +31,7 @@ const fullOgImageUrl = new URL(ogImage, siteUrl).toString();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ElectricalStore",
-  "name": `${site.brand} / ${site.name}`,
+  "name": site.name,
   "alternateName": site.name,
   "description": description,
   "url": siteUrl,
@@ -69,7 +69,7 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={fullOgImageUrl} />
-    <meta property="og:site_name" content={`${site.brand} - ${site.name}`} />
+    <meta property="og:site_name" content={site.name} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
