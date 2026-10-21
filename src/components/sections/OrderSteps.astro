@@ -1,0 +1,141 @@
+---
+import site from '../../data/site.json';
+
+interface Step {
+  number: string;
+  title: string;
+  tagline: string;
+  description: string;
+  highlight: string;
+  icon: string;
+}
+
+const steps: Step[] = [
+  {
+    number: '01',
+    title: 'Select or Send Your List',
+    tagline: 'Online or Telegram',
+    description: 'Browse our catalog online or send your electrical project Bill of Quantities (BOQ) directly to our specialists via Telegram (@Rezured) or call.',
+    highlight: 'No registration or app required',
+    icon: 'list',
+  },
+  {
+    number: '02',
+    title: 'Instant Quote & Spec Check',
+    tagline: 'Same-Hour Response',
+    description: 'We verify stock at Merkato Sosa, confirm voltage, wattage, and CCT color temperatures, and provide transparent retail or wholesale trade pricing.',
+    highlight: 'Contractor discounts applied',
+    icon: 'quote',
+  },
+  {
+    number: '03',
+    title: 'Rapid Delivery or Pickup',
+    tagline: 'Addis Ababa Wide',
+    description: 'Collect your verified, packaged items directly from our showroom inside Merkato Sosa Building, or receive fast same-day dispatch to your building site.',
+    highlight: 'Safe packaging & testing',
+    icon: 'truck',
+  },
+];
+---
+
+<section class="py-12 sm:py-16 bg-[#f4f7f6] border-t border-gray-200/60" id="order-steps-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
+      <div>
+        <span class="text-xs font-bold text-[#28e374] uppercase tracking-wider block mb-1">
+          HASSLE-FREE FULFILLMENT
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight">
+          Simple 3-Step Ordering & Delivery
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-500 max-w-xl mt-1.5 leading-relaxed">
+          Experience straightforward lighting supply without delays. Here is how we get the right luminaires and electrical gear to your project.
+        </p>
+      </div>
+
+      <!-- Quick Trust Badges -->
+      <div class="flex items-center gap-2 self-start md:self-auto">
+        <span class="px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-semibold text-gray-700 shadow-2xs">
+          ⚡ Same-Day Dispatch
+        </span>
+        <span class="px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-semibold text-gray-700 shadow-2xs">
+          📍 Merkato Pickup
+        </span>
+      </div>
+    </div>
+
+    <!-- 3 Steps Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {steps.map((step) => (
+        <div class="group bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+          <div>
+            <!-- Top Step Number & Icon -->
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-[#28e374] text-black font-extrabold text-lg flex items-center justify-center shadow-xs">
+                {step.number}
+              </div>
+              <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full">
+                {step.tagline}
+              </span>
+            </div>
+
+            <!-- Title & Body -->
+            <h3 class="text-lg font-bold text-[#0f172a] group-hover:text-emerald-700 transition-colors mb-2">
+              {step.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">
+              {step.description}
+            </p>
+          </div>
+
+          <!-- Bottom Highlight Pill -->
+          <div class="pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-medium text-gray-700">
+            <svg class="text-[#28e374] shrink-0" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            <span>{step.highlight}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Contact & Action Banner -->
+    <div class="mt-8 sm:mt-10 p-5 sm:p-6 rounded-2xl bg-white border border-gray-200/90 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3 text-center sm:text-left">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-[#28e374] flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-[#0f172a]">Ready to order or verify specs?</h4>
+          <p class="text-xs text-gray-500">Call our showroom managers directly or start an instant chat on Telegram.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5 w-full sm:w-auto">
+        <button
+          type="button"
+          class="trigger-call-modal flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-[#28e374] hover:bg-[#2fd468] text-black font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95"
+        >
+          <span>Call 0911948627</span>
+        </button>
+
+        <a
+          href={site.telegram.inbox}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-bold text-xs flex items-center justify-center gap-1.5 transition-all active:scale-95"
+        >
+          <svg class="text-[#2aabee]" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          <span>Telegram Inquiry</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

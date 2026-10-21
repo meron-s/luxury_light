@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import TopCategories from '../components/sections/TopCategories.astro';
+import FeaturedProducts from '../components/sections/FeaturedProducts.astro';
+import LightingSolutions from '../components/sections/LightingSolutions.astro';
+import ShowroomGallery from '../components/sections/ShowroomGallery.astro';
+import OrderSteps from '../components/sections/OrderSteps.astro';
+import LightingFaq from '../components/sections/LightingFaq.astro';
 import AboutTeaser from '../components/sections/AboutTeaser.astro';
 import WhyUs from '../components/sections/WhyUs.astro';
 import ContactBar from '../components/sections/ContactBar.astro';
@@ -13,18 +18,33 @@ import site from '../data/site.json';
   description="Addis Ababa's premier supplier of high-end architectural lighting, anti-glare LED spotlights, RGB linear profiles, commercial street luminaires, and luxury electrical gear."
   currentPath="/"
 >
-  <!-- 1. Hero Section -->
+  <!-- Hero Section -->
   <Hero />
 
-  <!-- 2. Top Categories Section -->
+  <!-- 1. Expanded Product Category Grid with attractive images and clear navigation -->
   <TopCategories />
 
-  <!-- 3. About Us Teaser Section -->
+  <!-- 2. Featured Products with product names, available specifications, and Request Price buttons -->
+  <FeaturedProducts />
+
+  <!-- 3. Lighting Solutions for homes, offices, hotels, commercial spaces, and outdoor areas -->
+  <LightingSolutions />
+
+  <!-- 4. Project Gallery and Showroom showcase with a responsive image grid and lightbox -->
+  <ShowroomGallery />
+
+  <!-- 5. Simple Three-Step Ordering and Delivery explanation -->
+  <OrderSteps />
+
+  <!-- 6. Short Lighting Buying Guides and practical customer FAQs -->
+  <LightingFaq />
+
+  <!-- About Us Teaser Section -->
   <AboutTeaser />
 
-  <!-- 4. Why Choose Us / We Deliver More Section -->
+  <!-- Why Choose Us / We Deliver More Section -->
   <WhyUs />
 
-  <!-- 5. Contact & Order Bar -->
+  <!-- Contact & Order Bar -->
   <ContactBar />
 </BaseLayout>

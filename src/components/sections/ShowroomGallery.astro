@@ -1,0 +1,268 @@
+---
+import { Image } from 'astro:assets';
+
+// Import local project and showroom images
+import wallImg from '../../assets/about/display-wall.jpg';
+import filamentImg from '../../assets/gallery/filament-amber-pendant.jpg';
+import shutterImg from '../../assets/gallery/shutter-spotlight-beam.jpg';
+import poleImg from '../../assets/gallery/landscape-y-pole.jpg';
+import ceilingImg from '../../assets/gallery/arch-ambient-ceiling.jpg';
+import switchImg from '../../assets/gallery/star-silver-installation.jpg';
+
+interface GalleryItem {
+  id: string;
+  title: string;
+  tag: string;
+  image: ImageMetadata;
+  description: string;
+}
+
+const galleryItems: GalleryItem[] = [
+  {
+    id: 'display-wall',
+    title: 'Showroom Main Fixture Wall',
+    tag: 'Sosa Merkato Display',
+    image: wallImg,
+    description: 'Active display collection showing illuminated spotlights, surface panels, and crystal decorative fixtures in our showroom.',
+  },
+  {
+    id: 'filament-amber',
+    title: 'Warm Filament Amber Pendant',
+    tag: 'Dining & Cafe Fixture',
+    image: filamentImg,
+    description: 'Aesthetic vintage amber filament bulb suspended luminaire casting an intimate 2200K warm atmospheric glow.',
+  },
+  {
+    id: 'shutter-spotlight',
+    title: 'Precision Beam Shutter Spotlight',
+    tag: 'Architectural Focus',
+    image: shutterImg,
+    description: '20W precision framing shutter spotlight projecting crisp directional beams for architectural and gallery features.',
+  },
+  {
+    id: 'arch-ceiling',
+    title: 'Continuous Ceiling Cove Illumination',
+    tag: 'Residential Interior',
+    image: ceilingImg,
+    description: 'High-density 220V continuous LED tape mounted within aluminum extrusions for uniform indirect false-ceiling glow.',
+  },
+  {
+    id: 'star-silver',
+    title: 'STAR Silver Modular Switches Installed',
+    tag: 'Luxury Electrical',
+    image: switchImg,
+    description: 'Flush-mounted metallic silver modular switchplates with durable snap-in multi-gang sockets for luxury interiors.',
+  },
+  {
+    id: 'landscape-pole',
+    title: 'Y-Shaped Landscape Garden Pole',
+    tag: 'Exterior & Perimeter',
+    image: poleImg,
+    description: '3-meter modern architectural roadway and garden pole providing 360-degree glare-controlled exterior lighting.',
+  },
+];
+---
+
+<section class="py-12 sm:py-16 bg-white border-t border-gray-200/60" id="showroom-gallery-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
+      <div>
+        <span class="text-xs font-bold text-[#28e374] uppercase tracking-wider block mb-1">
+          SHOWROOM & REAL INSTALLATIONS
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight">
+          Showroom Gallery & Project Showcase
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-500 max-w-xl mt-1.5 leading-relaxed">
+          Explore actual lighting fixtures and electrical accessories as installed in homes, commercial spaces, and on our Merkato Sosa display wall.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="/gallery"
+          class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#f4f7f6] hover:bg-gray-100 border border-gray-300 text-xs sm:text-sm font-bold text-gray-900 transition-all active:scale-95 shrink-0"
+        >
+          <span>View Full Gallery</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Responsive Image Grid (2 cols mobile, 3 cols desktop) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      {galleryItems.map((item, idx) => (
+        <button
+          type="button"
+          class="gallery-lightbox-trigger group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left cursor-pointer focus:outline-none"
+          data-title={item.title}
+          data-tag={item.tag}
+          data-desc={item.description}
+          data-img-src={item.image.src}
+          aria-label={`Open photo of ${item.title}`}
+        >
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={500}
+            height={375}
+            loading={idx < 3 ? 'eager' : 'lazy'}
+            class="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
+          />
+
+          <!-- Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-4 sm:p-5">
+            <!-- Top Tag & Zoom Icon -->
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-wider border border-white/10 uppercase">
+                {item.tag}
+              </span>
+              <div class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:bg-[#28e374] group-hover:text-black transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  <line x1="11" y1="8" x2="11" y2="14"/>
+                  <line x1="8" y1="11" x2="14" y2="11"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Bottom Title -->
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-[#28e374] transition-colors leading-snug">
+                {item.title}
+              </h3>
+              <p class="text-xs text-gray-300 line-clamp-1 mt-0.5">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Accessible Lightbox Modal Dialog -->
+  <div
+    id="gallery-lightbox-modal"
+    class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 hidden transition-opacity"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image Lightbox"
+  >
+    <!-- Backdrop dismiss -->
+    <div id="lightbox-backdrop" class="absolute inset-0 cursor-pointer"></div>
+
+    <!-- Modal Content Window -->
+    <div class="relative z-10 max-w-4xl w-full bg-[#050807] border border-[#28e374]/30 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      <!-- Top Bar -->
+      <div class="p-4 sm:p-5 flex items-center justify-between border-b border-white/10 bg-[#0b1210]">
+        <div>
+          <span id="lightbox-tag" class="text-[10px] font-mono font-bold text-[#28e374] uppercase tracking-wider block mb-0.5">
+            SHOWROOM
+          </span>
+          <h3 id="lightbox-title" class="text-base sm:text-lg font-bold text-white leading-tight">
+            Image Preview
+          </h3>
+        </div>
+
+        <button
+          type="button"
+          id="lightbox-close"
+          class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+          aria-label="Close image lightbox"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Image Area -->
+      <div class="relative flex-1 bg-black flex items-center justify-center p-2 sm:p-4 overflow-hidden">
+        <img
+          id="lightbox-img"
+          src=""
+          alt="Expanded lighting installation"
+          class="max-h-[60vh] max-w-full object-contain rounded-xl"
+        />
+      </div>
+
+      <!-- Bottom Caption Bar -->
+      <div class="p-4 sm:p-5 border-t border-white/10 bg-[#0b1210] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <p id="lightbox-desc" class="text-xs sm:text-sm text-gray-300 leading-relaxed max-w-2xl">
+          Detailed specification and installation view.
+        </p>
+        <button
+          type="button"
+          class="trigger-call-modal px-4 py-2 rounded-xl bg-[#28e374] hover:bg-[#2fd468] text-black text-xs font-bold shrink-0 flex items-center gap-1.5 transition-all cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>Ask About This Fixture</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupShowroomLightbox() {
+    const modal = document.getElementById('gallery-lightbox-modal');
+    const backdrop = document.getElementById('lightbox-backdrop');
+    const closeBtn = document.getElementById('lightbox-close');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxTag = document.getElementById('lightbox-tag');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const triggers = document.querySelectorAll<HTMLElement>('.gallery-lightbox-trigger');
+
+    if (!modal || !lightboxImg || !lightboxTitle) return;
+
+    function openLightbox(title: string, tag: string, desc: string, src: string) {
+      if (lightboxTitle) lightboxTitle.textContent = title;
+      if (lightboxTag) lightboxTag.textContent = tag;
+      if (lightboxDesc) lightboxDesc.textContent = desc;
+      if (lightboxImg) {
+        lightboxImg.src = src;
+        lightboxImg.alt = title;
+      }
+      modal?.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeLightbox() {
+      modal?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const title = trigger.dataset.title || '';
+        const tag = trigger.dataset.tag || '';
+        const desc = trigger.dataset.desc || '';
+        const src = trigger.dataset.imgSrc || '';
+        openLightbox(title, tag, desc, src);
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeLightbox);
+    backdrop?.addEventListener('click', closeLightbox);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  // Initialize on load and on Astro page transitions
+  setupShowroomLightbox();
+  document.addEventListener('astro:page-load', setupShowroomLightbox);
+</script>
