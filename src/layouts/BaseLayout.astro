@@ -88,6 +88,122 @@ const jsonLd = {
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Instant Pre-Hydration Modal & Mobile Drawer Controller -->
+    <script is:inline>
+      (function() {
+        var modalOpenTime = 0;
+        var menuOpenTime = 0;
+
+        window.__openCallModal = function(productName) {
+          modalOpenTime = Date.now();
+          var modal = document.getElementById('call-sheet-modal');
+          if (!modal) {
+            document.addEventListener('DOMContentLoaded', function() {
+              window.__openCallModal(productName);
+            }, { once: true });
+            return;
+          }
+          var title = document.getElementById('call-sheet-title');
+          var subtitle = document.getElementById('call-sheet-subtitle');
+          if (productName && typeof productName === 'string' && productName.trim().length > 0) {
+            if (title) title.textContent = 'Request Price & Order';
+            if (subtitle) subtitle.textContent = 'Inquiring for: ' + productName;
+          } else {
+            if (title) title.textContent = 'Choose a Showroom Line to Call';
+            if (subtitle) subtitle.textContent = 'Connect directly with our team at Sosa Merkato Building';
+          }
+          modal.classList.add('is-open');
+          modal.style.display = 'block';
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('modal-open');
+          document.body.style.overflow = 'hidden';
+          var content = document.getElementById('call-sheet-content');
+          if (content) {
+            content.style.transform = 'translateY(0)';
+          }
+        };
+
+        window.__closeCallModal = function() {
+          var modal = document.getElementById('call-sheet-modal');
+          if (!modal) return;
+          modal.classList.remove('is-open');
+          modal.setAttribute('aria-hidden', 'true');
+          var content = document.getElementById('call-sheet-content');
+          if (content) {
+            content.style.transform = 'translateY(100%)';
+          }
+          setTimeout(function() {
+            if (!modal.classList.contains('is-open')) {
+              modal.style.display = 'none';
+            }
+          }, 250);
+          document.body.classList.remove('modal-open');
+          document.body.style.overflow = '';
+        };
+
+        window.__openMobileMenu = function() {
+          menuOpenTime = Date.now();
+          var drawer = document.getElementById('mobile-drawer');
+          var backdrop = document.getElementById('menu-backdrop');
+          if (!drawer || !backdrop) {
+            document.addEventListener('DOMContentLoaded', function() {
+              window.__openMobileMenu();
+            }, { once: true });
+            return;
+          }
+          drawer.classList.add('is-open');
+          drawer.style.display = 'flex';
+          drawer.style.transform = 'translateX(0)';
+          drawer.setAttribute('aria-hidden', 'false');
+
+          backdrop.classList.add('is-open');
+          backdrop.style.display = 'block';
+          backdrop.style.opacity = '1';
+
+          document.body.classList.add('menu-open');
+          document.body.style.overflow = 'hidden';
+
+          var closeBtn = document.getElementById('menu-close-btn');
+          if (closeBtn) closeBtn.focus();
+        };
+
+        window.__closeMobileMenu = function() {
+          var drawer = document.getElementById('mobile-drawer');
+          var backdrop = document.getElementById('menu-backdrop');
+          if (drawer) {
+            drawer.classList.remove('is-open');
+            drawer.style.transform = 'translateX(100%)';
+            drawer.setAttribute('aria-hidden', 'true');
+            setTimeout(function() {
+              if (!drawer.classList.contains('is-open')) {
+                drawer.style.display = 'none';
+              }
+            }, 300);
+          }
+          if (backdrop) {
+            backdrop.classList.remove('is-open');
+            backdrop.style.opacity = '0';
+            setTimeout(function() {
+              if (!backdrop.classList.contains('is-open')) {
+                backdrop.style.display = 'none';
+              }
+            }, 300);
+          }
+          document.body.classList.remove('menu-open');
+          document.body.style.overflow = '';
+          var openBtn = document.getElementById('menu-open-btn');
+          if (openBtn) openBtn.focus();
+        };
+
+        window.__canCloseModalBackdrop = function() {
+          return (Date.now() - modalOpenTime) > 400;
+        };
+        window.__canCloseMenuBackdrop = function() {
+          return (Date.now() - menuOpenTime) > 400;
+        };
+      })();
+    </script>
   </head>
   <body class="bg-[#050807] text-[#C1C8C4] antialiased min-h-screen flex flex-col selection:bg-[#5BE584] selection:text-[#050807]">
     <!-- Accessibility Skip Link -->

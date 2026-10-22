@@ -133,64 +133,71 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Mobile Navigation Drawer */
 #mobile-drawer {
-  transform: translateX(100%) !important;
-  -webkit-transform: translateX(100%) !important;
-  visibility: hidden;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
-  z-index: 120 !important;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 120;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: none;
 }
 
 #mobile-drawer.is-open {
-  transform: translateX(0) !important;
-  -webkit-transform: translateX(0) !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  display: flex;
 }
 
 #menu-backdrop {
-  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 110 !important;
+  transition: opacity 0.25s ease;
+  display: none;
 }
 
 #menu-backdrop.is-open {
-  display: block !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+  display: block;
+  opacity: 1;
 }
 
 /* Call Sheet Modal */
 #call-sheet-modal {
-  display: none !important;
-  z-index: 130 !important;
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: none;
 }
 
 #call-sheet-modal.is-open {
-  display: block !important;
-  pointer-events: auto !important;
+  display: block;
 }
 
 #call-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   transition: opacity 0.25s ease;
-  pointer-events: none;
 }
 
 #call-sheet-modal.is-open #call-sheet-backdrop {
-  opacity: 1 !important;
-  pointer-events: auto !important;
+  opacity: 1;
 }
 
 #call-sheet-content {
-  transform: translateY(100%) !important;
-  -webkit-transform: translateY(100%) !important;
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 #call-sheet-modal.is-open #call-sheet-content {
-  transform: translateY(0) !important;
-  -webkit-transform: translateY(0) !important;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
 }
+
 

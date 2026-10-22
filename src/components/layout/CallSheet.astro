@@ -3,7 +3,14 @@ import site from '../../data/site.json';
 import { formatPhone, toTel } from '../../lib/phone';
 ---
 
-<div id="call-sheet-modal" class="fixed inset-0 z-[130]" role="dialog" aria-modal="true" aria-labelledby="call-sheet-title">
+<div
+  id="call-sheet-modal"
+  class="fixed inset-0 z-[130]"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="call-sheet-title"
+  style="display: none;"
+>
   <!-- Backdrop -->
   <div id="call-sheet-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"></div>
 
@@ -59,32 +66,5 @@ import { formatPhone, toTel } from '../../lib/phone';
   </div>
 </div>
 
-<script is:inline>
-  window.__openCallModal = function(productName) {
-    var modal = document.getElementById('call-sheet-modal');
-    if (!modal) return;
-    var title = document.getElementById('call-sheet-title');
-    var subtitle = document.getElementById('call-sheet-subtitle');
-    if (productName && typeof productName === 'string' && productName.trim().length > 0) {
-      if (title) title.textContent = 'Request Price & Order';
-      if (subtitle) subtitle.textContent = 'Inquiring for: ' + productName;
-    } else {
-      if (title) title.textContent = 'Choose a Showroom Line to Call';
-      if (subtitle) subtitle.textContent = 'Connect directly with our team at Sosa Merkato Building';
-    }
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    document.body.style.overflow = 'hidden';
-  };
-  window.__closeCallModal = function() {
-    var modal = document.getElementById('call-sheet-modal');
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
-    document.body.style.overflow = '';
-  };
-</script>
 
 <script src="../../scripts/call-sheet.ts"></script>
