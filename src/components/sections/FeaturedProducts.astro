@@ -14,6 +14,7 @@ interface FeaturedItem {
   id: string;
   name: string;
   category: string;
+  categoryBadge: string;
   categorySlug: string;
   image: ImageMetadata;
   badge: string;
@@ -29,6 +30,7 @@ const featuredProducts: FeaturedItem[] = [
     id: 'architectural-linear-pendant',
     name: 'Architectural Suspended Linear Luminaire',
     category: 'LED Panel & Linear',
+    categoryBadge: 'LED PANEL LIGHTS',
     categorySlug: 'led-panel-lights',
     image: pendantImg,
     badge: 'Showroom Pick',
@@ -42,6 +44,7 @@ const featuredProducts: FeaturedItem[] = [
     id: 'commercial-led-strip-reel',
     name: 'Commercial High-Density 220V LED Strip (100m)',
     category: 'LED Strip Lights',
+    categoryBadge: 'LED STRIP LIGHTS',
     categorySlug: 'led-strip-lights',
     image: stripImg,
     badge: 'Best Seller',
@@ -55,6 +58,7 @@ const featuredProducts: FeaturedItem[] = [
     id: 'kk-electric-100w-floodlight',
     name: 'KK Electric 100W Heavy-Duty Outdoor Floodlight',
     category: 'LED Street & Outdoor',
+    categoryBadge: 'LED STREET LIGHTS',
     categorySlug: 'led-street-lights',
     image: floodlightImg,
     badge: 'Heavy-Duty',
@@ -68,6 +72,7 @@ const featuredProducts: FeaturedItem[] = [
     id: 'star-silver-modular-switches',
     name: 'STAR Silver Luxury Modular Switches & Sockets',
     category: 'Electrical Accessories',
+    categoryBadge: 'ELECTRICAL ACCESSORIES',
     categorySlug: 'electrical-accessories',
     image: switchImg,
     badge: 'Luxury Series',
@@ -81,6 +86,7 @@ const featuredProducts: FeaturedItem[] = [
     id: 'kk-deep-spot-black',
     name: 'KK Anti-Glare Deep-Set Recessed Spotlight',
     category: 'LED Panel & Spots',
+    categoryBadge: 'LED PANEL LIGHTS',
     categorySlug: 'led-panel-lights',
     image: spotlightImg,
     badge: 'Popular',
@@ -94,6 +100,7 @@ const featuredProducts: FeaturedItem[] = [
     id: 'street-light-150w',
     name: '150W Commercial Roadway LED Luminaire',
     category: 'LED Street Lights',
+    categoryBadge: 'LED STREET LIGHTS',
     categorySlug: 'led-street-lights',
     image: street150Img,
     badge: 'Commercial',
@@ -136,53 +143,62 @@ const featuredProducts: FeaturedItem[] = [
       </div>
     </div>
 
-    <!-- Product Grid -->
+    <!-- Product Grid: Full Edge-to-Edge Image Settlement matching mockup -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
       {featuredProducts.map((product) => (
-        <div class="group bg-[#f8faf9] rounded-2xl border border-gray-200/90 p-4 sm:p-5 flex flex-col justify-between hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
+        <div class="group bg-[#f8faf9] rounded-2xl sm:rounded-3xl border border-gray-200/90 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
           <div>
-            <!-- Image Container -->
-            <div class="aspect-[4/3] rounded-xl bg-white border border-gray-100 p-3 sm:p-4 flex items-center justify-center overflow-hidden relative mb-4">
-              <span class="absolute top-2.5 left-2.5 z-10 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-200 shadow-2xs">
-                {product.badge}
-              </span>
-
+            <!-- Edge-to-Edge Image Header with Badges -->
+            <div class="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden">
               <Image
                 src={product.image}
                 alt={product.name}
-                width={360}
-                height={270}
-                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                width={600}
+                height={375}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+
+              <!-- Top-Left Green Badge: FEATURED -->
+              <div class="absolute top-3 left-3 z-10">
+                <span class="px-2.5 py-1 rounded-full bg-[#28e374] text-black text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-sm">
+                  FEATURED
+                </span>
+              </div>
+
+              <!-- Top-Right Category Badge -->
+              <div class="absolute top-3 right-3 z-10">
+                <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-wider border border-white/20 shadow-sm">
+                  {product.categoryBadge}
+                </span>
+              </div>
             </div>
 
-            <!-- Category & Title -->
-            <span class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider block mb-1">
-              {product.category}
-            </span>
-            <h3 class="text-sm sm:text-base font-bold text-[#0f172a] group-hover:text-emerald-700 transition-colors line-clamp-2 leading-snug mb-3">
-              {product.name}
-            </h3>
+            <!-- Card Body Content -->
+            <div class="p-5 sm:p-6">
+              <h3 class="text-base sm:text-lg font-bold text-[#0f172a] group-hover:text-emerald-700 transition-colors line-clamp-2 leading-snug mb-2">
+                {product.name}
+              </h3>
 
-            <!-- Specifications List -->
-            <div class="space-y-1.5 pt-3 border-t border-gray-200/80 mb-5">
-              <div class="flex items-center justify-between text-xs py-0.5">
-                <span class="text-gray-500 font-medium">Power / Profile:</span>
-                <span class="font-semibold text-gray-800 text-right">{product.specs.power}</span>
-              </div>
-              <div class="flex items-center justify-between text-xs py-0.5">
-                <span class="text-gray-500 font-medium">Protection:</span>
-                <span class="font-semibold text-gray-800 text-right">{product.specs.rating}</span>
-              </div>
-              <div class="flex items-center justify-between text-xs py-0.5">
-                <span class="text-gray-500 font-medium">Optics / Finish:</span>
-                <span class="font-semibold text-gray-800 text-right">{product.specs.optical}</span>
+              <!-- Specifications List -->
+              <div class="space-y-1.5 pt-3 border-t border-gray-200/80 mb-5">
+                <div class="flex items-center justify-between text-xs py-0.5">
+                  <span class="text-gray-500 font-medium">Power / Profile:</span>
+                  <span class="font-semibold text-gray-800 text-right">{product.specs.power}</span>
+                </div>
+                <div class="flex items-center justify-between text-xs py-0.5">
+                  <span class="text-gray-500 font-medium">Protection:</span>
+                  <span class="font-semibold text-gray-800 text-right">{product.specs.rating}</span>
+                </div>
+                <div class="flex items-center justify-between text-xs py-0.5">
+                  <span class="text-gray-500 font-medium">Optics / Finish:</span>
+                  <span class="font-semibold text-gray-800 text-right">{product.specs.optical}</span>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Price Request & Action Buttons -->
-          <div class="pt-3 border-t border-gray-200/80 flex items-center gap-2">
+          <div class="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 flex items-center gap-2">
             <button
               type="button"
               class="trigger-call-modal flex-1 bg-[#28e374] hover:bg-[#2fd468] text-[#050807] font-bold text-xs sm:text-sm py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 shadow-xs cursor-pointer active:scale-95 transition-all"
@@ -200,14 +216,15 @@ const featuredProducts: FeaturedItem[] = [
               href={`${site.telegram.inbox}?text=Hello,%20I%20am%20inquiring%20about%20the%20price%20of:%20${encodeURIComponent(product.name)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-10 h-10 rounded-xl bg-white hover:bg-[#2aabee] text-gray-700 hover:text-white border border-gray-200/80 flex items-center justify-center transition-colors shrink-0 shadow-2xs"
+              class="py-2.5 px-3.5 rounded-full bg-[#18201d] border border-gray-700/60 hover:border-[#2aa8e8]/60 hover:bg-[#2aa8e8]/15 text-[#2aa8e8] font-semibold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all active:scale-95 shrink-0"
               aria-label={`Inquire about ${product.name} on Telegram`}
               title="Inquire on Telegram"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>
+              <span>Telegram</span>
             </a>
           </div>
         </div>

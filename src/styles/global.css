@@ -121,12 +121,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 .filter-chip:not(.active) {
-  background-color: #1c201f;
-  color: #c1c8c4;
-  border-color: rgba(255, 255, 255, 0.1);
+  background-color: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
 }
 
 .filter-chip:not(.active):hover {
-  color: #ffffff;
-  border-color: rgba(91, 229, 132, 0.5);
+  color: #0f172a;
+  border-color: rgba(40, 227, 116, 0.6);
 }

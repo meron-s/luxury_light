@@ -1,86 +1,95 @@
 ---
-// Lighting Solutions Section: Homes, Offices, Hotels, Commercial Spaces, Outdoor
-interface Solution {
+import { Image } from 'astro:assets';
+import residentialImg from '../../assets/solutions/residential.jpg';
+import officeImg from '../../assets/solutions/office.jpg';
+import hospitalityImg from '../../assets/solutions/hospitality.jpg';
+import retailImg from '../../assets/solutions/retail.jpg';
+import outdoorImg from '../../assets/solutions/outdoor.jpg';
+
+interface SolutionItem {
   id: string;
-  title: string;
   category: string;
-  targetLink: string;
+  title: string;
   description: string;
-  recommended: string[];
+  image: ImageMetadata;
+  link: string;
   icon: string;
 }
 
-const solutions: Solution[] = [
+const solutions: SolutionItem[] = [
   {
-    id: 'homes',
-    title: 'Luxury Homes & Residences',
-    category: 'Residential',
-    targetLink: '/products/led-panel-lights',
-    description: 'Create warm, inviting sanctuaries with anti-glare deep-recessed spotlights, continuous warm cove LED strips, and elegant dining pendants.',
-    recommended: ['Anti-Glare Downlights', '3000K Warm LED Tape', 'Extruded Aluminum Profiles'],
+    id: 'residential',
+    category: 'RESIDENTIAL',
+    title: 'Luxury Home & Residential',
+    description: 'Create a warm, comfortable and elegant atmosphere in your home.',
+    image: residentialImg,
+    link: '/products/led-panel-lights',
     icon: 'home',
   },
   {
-    id: 'offices',
-    title: 'Modern Offices & Workspaces',
-    category: 'Corporate',
-    targetLink: '/products/led-panel-lights',
-    description: 'Boost employee focus and eliminate screen glare with suspended architectural linear luminaires, uniform 4000K daylight, and modular wiring.',
-    recommended: ['Suspended Linear Profiles', '4000K CCT Optics', 'Volt Grey Series Switches'],
+    id: 'office',
+    category: 'OFFICE',
+    title: 'Modern Office & Workspace',
+    description: 'Boost productivity with smart, efficient and professional lighting.',
+    image: officeImg,
+    link: '/products/led-panel-lights',
     icon: 'office',
   },
   {
-    id: 'hotels',
-    title: 'Hotels & Hospitality Venues',
-    category: 'Hospitality',
-    targetLink: '/products/led-strip-lights',
-    description: 'Elevate guest experience with dramatic dimming scenes, lobby wall washers, ambient corridor lighting, and high-end guest room fixtures.',
-    recommended: ['Dimmable LED Drivers', 'Lobby Crystal Fixtures', 'Wall Washer Luminaires'],
+    id: 'hospitality',
+    category: 'HOTELS & HOSPITALITY',
+    title: 'Hotels & Hospitality',
+    description: 'Enhance guest experiences with beautiful and functional lighting designs.',
+    image: hospitalityImg,
+    link: '/products/led-strip-lights',
     icon: 'hotel',
   },
   {
-    id: 'commercial',
-    title: 'Commercial Showrooms & Retail',
-    category: 'Retail & Display',
-    targetLink: '/products/led-strip-lights',
-    description: 'Make products stand out with high-CRI directional spotlights, ultra-bright showcase cabinet LED reels, and robust distribution boards.',
-    recommended: ['CRI 90+ Spotlights', 'Ultra-Bright Reel Strips', 'Hawud Distribution Boards'],
+    id: 'retail',
+    category: 'RETAIL',
+    title: 'Commercial & Retail',
+    description: 'Make your products stand out with the right lighting and visual appeal.',
+    image: retailImg,
+    link: '/products/led-strip-lights',
     icon: 'store',
   },
   {
     id: 'outdoor',
-    title: 'Outdoor, Facades & Perimeters',
-    category: 'Exterior & Infrastructure',
-    targetLink: '/products/led-street-lights',
-    description: 'Protect property and illuminate walkways with IP66 heavy-duty floodlights, 150W commercial roadway lamps, and 3-meter landscape garden poles.',
-    recommended: ['100W–150W IP66 Floodlights', 'Roadway Luminaires', 'Landscape Garden Poles'],
+    category: 'OUTDOOR',
+    title: 'Outdoor & Landscape',
+    description: 'Improve safety, beauty and security with durable outdoor lighting solutions.',
+    image: outdoorImg,
+    link: '/products/led-street-lights',
     icon: 'outdoor',
   },
 ];
+
+const topSolutions = solutions.slice(0, 3);
+const bottomSolutions = solutions.slice(3, 5);
 ---
 
-<section class="py-12 sm:py-16 bg-[#f4f7f6]" id="lighting-solutions-section">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-14 sm:py-20 bg-white relative overflow-hidden border-t border-gray-200/60" id="lighting-solutions-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
       <div>
-        <span class="text-xs font-bold text-[#28e374] uppercase tracking-wider block mb-1">
-          ARCHITECTURAL LIGHTING DESIGN
+        <span class="text-xs font-bold text-[#28e374] tracking-widest uppercase block mb-2">
+          LIGHTING SOLUTIONS
         </span>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight">
           Lighting Solutions for Every Space
         </h2>
-        <p class="text-xs sm:text-sm text-gray-500 max-w-xl mt-1.5 leading-relaxed">
-          Engineered lighting packages curated to meet the exact aesthetic and technical standards of architects, interior designers, and property owners in Addis Ababa.
+        <p class="text-xs sm:text-sm text-gray-500 max-w-xl mt-2.5 leading-relaxed">
+          From cozy homes to large commercial projects, we provide the right lighting solutions to match your space, style and needs.
         </p>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="shrink-0">
         <a
-          href="/contact"
-          class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white hover:bg-gray-50 border border-gray-300 text-xs sm:text-sm font-bold text-gray-900 transition-all active:scale-95 shadow-2xs shrink-0"
+          href="/products"
+          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#f4f7f6] hover:bg-gray-100 border border-gray-300 text-gray-900 font-semibold text-xs sm:text-sm transition-all duration-300 active:scale-95 shadow-2xs"
         >
-          <span>Consult with Specialist</span>
+          <span>Explore All Solutions</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
@@ -89,102 +98,148 @@ const solutions: Solution[] = [
       </div>
     </div>
 
-    <!-- 5 Solutions Grid (responsive: 1 col, 2 cols, 3 cols) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-      {solutions.map((item) => (
-        <div class="group bg-white rounded-2xl border border-gray-200/90 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between">
-          <div>
-            <!-- Icon & Category Pill -->
-            <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 text-[#28e374] flex items-center justify-center">
-                {item.icon === 'home' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                  </svg>
-                )}
-                {item.icon === 'office' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
-                    <path d="M9 22v-4h6v4"/>
-                    <path d="M8 6h.01"/>
-                    <path d="M16 6h.01"/>
-                    <path d="M12 6h.01"/>
-                    <path d="M12 10h.01"/>
-                    <path d="M12 14h.01"/>
-                    <path d="M16 10h.01"/>
-                    <path d="M16 14h.01"/>
-                    <path d="M8 10h.01"/>
-                    <path d="M8 14h.01"/>
-                  </svg>
-                )}
-                {item.icon === 'hotel' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M10 2v20"/>
-                    <path d="M14 2v20"/>
-                    <path d="M4 6h16"/>
-                    <path d="M4 18h16"/>
-                    <rect width="20" height="20" x="2" y="2" rx="2"/>
-                  </svg>
-                )}
-                {item.icon === 'store' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
-                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                    <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
-                    <path d="M2 7h20"/>
-                  </svg>
-                )}
-                {item.icon === 'outdoor' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2v8"/>
-                    <path d="m4.93 4.93 5.66 5.66"/>
-                    <path d="M2 12h8"/>
-                    <path d="m4.93 19.07 5.66-5.66"/>
-                    <path d="M12 22v-8"/>
-                    <path d="m19.07 19.07-5.66-5.66"/>
-                    <path d="M22 12h-8"/>
-                    <path d="m19.07 4.93-5.66 5.66"/>
-                  </svg>
-                )}
-              </div>
-
-              <span class="px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-700 text-[10px] font-bold uppercase tracking-wider">
-                {item.category}
-              </span>
-            </div>
-
-            <!-- Title & Description -->
-            <h3 class="text-base sm:text-lg font-bold text-[#0f172a] group-hover:text-emerald-700 transition-colors mb-2">
-              {item.title}
-            </h3>
-            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4">
-              {item.description}
-            </p>
-
-            <!-- Recommended Highlights -->
-            <div class="pt-3 border-t border-gray-100">
-              <span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block mb-2">
-                Key Recommended Fixtures:
-              </span>
-              <div class="flex flex-wrap gap-1.5 mb-5">
-                {item.recommended.map((spec) => (
-                  <span class="px-2 py-0.5 rounded-md bg-gray-50 text-[11px] text-gray-700 border border-gray-200/80 font-medium">
-                    {spec}
-                  </span>
-                ))}
-              </div>
-            </div>
+    <!-- Top 3 Cards Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      {topSolutions.map((item) => (
+        <div class="group bg-[#07190f]/90 border border-emerald-900/60 hover:border-[#28e374]/70 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch transition-all duration-300 hover:shadow-[0_0_30px_rgba(40,227,116,0.12)]">
+          <!-- Thumbnail Image -->
+          <div class="w-full sm:w-40 lg:w-36 xl:w-44 aspect-square shrink-0 rounded-xl sm:rounded-2xl overflow-hidden bg-emerald-950/50">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={320}
+              height={320}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
 
-          <!-- Bottom Link -->
-          <a
-            href={item.targetLink}
-            class="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-emerald-700 group-hover:text-emerald-800 transition-colors"
-          >
-            <span>Explore Matching Products</span>
-            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-          </a>
+          <!-- Card Content -->
+          <div class="flex flex-col justify-between flex-grow">
+            <div>
+              <!-- Category Pill with Outline Icon -->
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-6 h-6 rounded-md border border-[#28e374]/60 bg-[#28e374]/10 text-[#28e374] flex items-center justify-center shrink-0">
+                  {item.icon === 'home' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                  )}
+                  {item.icon === 'office' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
+                      <path d="M9 22v-4h6v4"/>
+                      <path d="M8 6h.01"/>
+                      <path d="M16 6h.01"/>
+                      <path d="M12 6h.01"/>
+                      <path d="M12 10h.01"/>
+                    </svg>
+                  )}
+                  {item.icon === 'hotel' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M2 4v16"/>
+                      <path d="M2 8h18a2 2 0 0 1 2 2v10"/>
+                      <path d="M2 17h20"/>
+                      <path d="M6 8v9"/>
+                    </svg>
+                  )}
+                </div>
+                <span class="text-[10px] font-bold text-emerald-400 tracking-wider uppercase">
+                  {item.category}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-[#28e374] transition-colors leading-snug mb-1.5">
+                {item.title}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-xs text-gray-300/90 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+
+            <!-- Bottom Link -->
+            <a
+              href={item.link}
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-[#28e374] group-hover:text-emerald-300 transition-colors mt-3"
+            >
+              <span>Explore solution</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom 2 Cards Row (Centered) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      {bottomSolutions.map((item) => (
+        <div class="group bg-[#07190f]/90 border border-emerald-900/60 hover:border-[#28e374]/70 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch transition-all duration-300 hover:shadow-[0_0_30px_rgba(40,227,116,0.12)]">
+          <!-- Thumbnail Image -->
+          <div class="w-full sm:w-40 lg:w-44 aspect-square shrink-0 rounded-xl sm:rounded-2xl overflow-hidden bg-emerald-950/50">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={320}
+              height={320}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+
+          <!-- Card Content -->
+          <div class="flex flex-col justify-between flex-grow">
+            <div>
+              <!-- Category Pill with Outline Icon -->
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-6 h-6 rounded-md border border-[#28e374]/60 bg-[#28e374]/10 text-[#28e374] flex items-center justify-center shrink-0">
+                  {item.icon === 'store' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/>
+                      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                      <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/>
+                      <path d="M2 7h20"/>
+                    </svg>
+                  )}
+                  {item.icon === 'outdoor' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                    </svg>
+                  )}
+                </div>
+                <span class="text-[10px] font-bold text-emerald-400 tracking-wider uppercase">
+                  {item.category}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-[#28e374] transition-colors leading-snug mb-1.5">
+                {item.title}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-xs text-gray-300/90 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+
+            <!-- Bottom Link -->
+            <a
+              href={item.link}
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-[#28e374] group-hover:text-emerald-300 transition-colors mt-3"
+            >
+              <span>Explore solution</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
       ))}
     </div>

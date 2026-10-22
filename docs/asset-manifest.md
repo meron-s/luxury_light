@@ -89,6 +89,28 @@ This document catalogs every image provided in `./luxury_electrical_image/` (40 
 
 ---
 
+---
+
+### Category 7: Architectural Lighting Solutions & Interior Spaces
+| File Name | Dimensions | Size | Content Description | Target Page / Section | Suggested Alt Text |
+|---|---|---|---|---|---|
+| `residential.jpg` | 1024 × 1024 | 767.1 KB | Modern luxury residential living space with warm ambient cove lighting and ceiling fixtures. | Home: Lighting Solutions (`#lighting-solutions-section`) | "Luxury residential living room illuminated with architectural recessed and warm cove lighting" |
+| `office.jpg` | 1024 × 1024 | 909.7 KB | Modern executive office workspace with glare-free high-CRI linear and panel lighting. | Home: Lighting Solutions (`#lighting-solutions-section`) | "Modern commercial office workspace with energy-efficient linear ceiling illumination" |
+| `hospitality.jpg` | 1024 × 1024 | 839.5 KB | Sophisticated boutique hotel lobby and hospitality lounge with curated accent luminaires. | Home: Lighting Solutions (`#lighting-solutions-section`) | "High-end hotel lounge interior with luxury decorative lighting ambiance" |
+| `retail.jpg` | 1024 × 1024 | 748.8 KB | High-end retail showroom with focused merchandise spotlights and architectural accents. | Home: Lighting Solutions (`#lighting-solutions-section`) | "Luxury commercial retail boutique illuminated with directional display spotlights" |
+| `outdoor.jpg` | 1024 × 1024 | 1145.6 KB | Exterior architectural facade and landscaped pathway with weatherproof outdoor luminaires. | Home: Lighting Solutions (`#lighting-solutions-section`) | "Exterior architectural facade illuminated with weather-sealed outdoor lighting fixtures" |
+
+---
+
+### Category 8: Customer Ordering & Fulfillment Workflow
+| File Name | Dimensions | Size | Content Description | Target Page / Section | Suggested Alt Text |
+|---|---|---|---|---|---|
+| `browse-light.jpg` | 1024 × 1024 | 826.5 KB | Customer exploring architectural lighting fixtures in a modern lighting showroom. | Home: Order Steps (`#order-steps-section`) | "Architectural lighting customer reviewing fixtures in a showroom display" |
+| `quote-confirm.jpg` | 1024 × 1024 | 445.2 KB | Customer receiving lighting consultation and quote confirmation on mobile/tablet. | Home: Order Steps (`#order-steps-section`) | "Instant wholesale and retail quote consultation over phone and Telegram" |
+| `delivery-pickup.jpg` | 1024 × 1024 | 46.6 KB | Fast delivery packaging and showroom pickup counter in Addis Ababa. | Home: Order Steps (`#order-steps-section`) | "Carefully packed lighting products ready for showroom pickup or prompt dispatch" |
+
+---
+
 ## 3. Image Optimization & Astro Asset Pipeline Plan
 1. **Hero Image (`LIGHT1.jpg`)**:
    - Copied to `src/assets/hero/hero-main.jpg`
@@ -107,3 +129,7 @@ This document catalogs every image provided in `./luxury_electrical_image/` (40 
 4. **Product Images**:
    - Transferred into organized subdirectories in `src/assets/products/<category>/`
    - All rendered with `loading="lazy"`, responsive `sizes`, explicit `width` and `height` to prevent CLS.
+5. **Solutions & Ordering Assets**:
+   - Organized in `src/assets/solutions/` and `src/assets/ordering/`
+   - Processed via `astro:assets` `<Image />` with WebP/AVIF compression.
+

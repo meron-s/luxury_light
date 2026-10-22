@@ -1,45 +1,5 @@
 ---
-// Lighting Buying Guides & Customer FAQs
-
-interface Guide {
-  title: string;
-  badge: string;
-  description: string;
-  keyPoints: { label: string; text: string }[];
-}
-
-const guides: Guide[] = [
-  {
-    title: 'Color Temperature (CCT)',
-    badge: 'Light Mood',
-    description: 'Selecting the right Kelvin rating defines the ambiance and comfort of your room.',
-    keyPoints: [
-      { label: '3000K Warm White', text: 'Cozy, relaxing glow for bedrooms, living rooms, and hospitality.' },
-      { label: '4000K Neutral White', text: 'Balanced, energizing light for modern offices, kitchens, and reading.' },
-      { label: '6500K Daylight', text: 'Crisp, high-visibility lighting for security, workshops, and roadways.' },
-    ],
-  },
-  {
-    title: 'IP Weatherproof Ratings',
-    badge: 'Durability',
-    description: 'Ensure safety and fixture longevity based on humidity and moisture exposure.',
-    keyPoints: [
-      { label: 'IP20 Architectural', text: 'Indoor dry areas, false ceilings, recessed spots, and switchplates.' },
-      { label: 'IP65 Water-Resistant', text: 'Silicone-sealed for kitchen counters, bathroom zones, and sheltered coves.' },
-      { label: 'IP66 Heavy-Duty', text: 'High-pressure water and dust seal for security floodlights and roadways.' },
-    ],
-  },
-  {
-    title: 'Aluminum Profiles for LED',
-    badge: 'Performance',
-    description: 'Why you should always install flexible LED strips inside extruded aluminum channels.',
-    keyPoints: [
-      { label: 'Heat Dissipation', text: 'Draws heat away from high-density SMD diodes, extending lifespan to 50,000h.' },
-      { label: 'Uniform Diffusion', text: 'Milky frosted lenses eliminate visible diode hot spots for continuous glow.' },
-      { label: 'Physical Protection', text: 'Shields strip tape from dust, cleaning chemicals, and physical damage.' },
-    ],
-  },
-];
+// Customer FAQs
 
 const faqs = [
   {
@@ -62,74 +22,37 @@ const faqs = [
 ---
 
 <section class="py-12 sm:py-16 bg-white border-t border-gray-200/60" id="lighting-faq-section">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-left mb-8 sm:mb-12">
+    <div class="text-center mb-8 sm:mb-12">
       <span class="text-xs font-bold text-[#28e374] uppercase tracking-wider block mb-1">
-        TECHNICAL INSIGHTS & ANSWERS
+        QUESTIONS & ANSWERS
       </span>
       <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] tracking-tight">
-        Lighting Buying Guides & Customer FAQs
+        Frequently Asked Questions
       </h2>
-      <p class="text-xs sm:text-sm text-gray-500 max-w-2xl mt-1.5 leading-relaxed">
-        Key technical considerations to make informed purchases, alongside answers to our most frequent customer questions.
+      <p class="text-xs sm:text-sm text-gray-500 max-w-xl mx-auto mt-1.5 leading-relaxed">
+        Common questions about our Merkato showroom, custom quotes, delivery, and wholesale volume pricing.
       </p>
     </div>
 
-    <!-- Part 1: Buying Guides (3 Cards) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-16">
-      {guides.map((guide) => (
-        <div class="bg-[#f8faf9] rounded-2xl border border-gray-200/90 p-5 sm:p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                {guide.badge}
-              </span>
+    <!-- FAQs Accordion -->
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="group bg-[#f8faf9] rounded-2xl border border-gray-200/90 overflow-hidden transition-all [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between p-4 sm:p-5 font-bold text-sm sm:text-base text-[#0f172a] cursor-pointer select-none group-open:text-emerald-700 transition-colors">
+            <span class="pr-4">{faq.q}</span>
+            <div class="w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform">
+              <svg class="text-[#28e374]" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
             </div>
-
-            <h3 class="text-base sm:text-lg font-bold text-[#0f172a] mb-2">
-              {guide.title}
-            </h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">
-              {guide.description}
-            </p>
-
-            <div class="space-y-2.5 pt-3 border-t border-gray-200/80">
-              {guide.keyPoints.map((point) => (
-                <div class="text-xs">
-                  <span class="font-bold text-gray-900 block">{point.label}</span>
-                  <span class="text-gray-500 leading-relaxed">{point.text}</span>
-                </div>
-              ))}
-            </div>
+          </summary>
+          <div class="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-gray-600 leading-relaxed pt-1 border-t border-gray-100">
+            {faq.a}
           </div>
-        </div>
+        </details>
       ))}
-    </div>
-
-    <!-- Part 2: FAQs Accordion -->
-    <div class="max-w-3xl mx-auto">
-      <h3 class="text-xl sm:text-2xl font-bold text-[#0f172a] tracking-tight mb-6 text-center">
-        Frequently Asked Questions
-      </h3>
-
-      <div class="space-y-3">
-        {faqs.map((faq) => (
-          <details class="group bg-[#f8faf9] rounded-2xl border border-gray-200/90 overflow-hidden transition-all [&_summary::-webkit-details-marker]:hidden">
-            <summary class="flex items-center justify-between p-4 sm:p-5 font-bold text-sm sm:text-base text-[#0f172a] cursor-pointer select-none group-open:text-emerald-700 transition-colors">
-              <span class="pr-4">{faq.q}</span>
-              <div class="w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform">
-                <svg class="text-[#28e374]" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </div>
-            </summary>
-            <div class="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-gray-600 leading-relaxed pt-1 border-t border-gray-100">
-              {faq.a}
-            </div>
-          </details>
-        ))}
-      </div>
     </div>
   </div>
 </section>
