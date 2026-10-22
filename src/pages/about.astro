@@ -152,7 +152,8 @@ import decorativeImg from '../assets/about/decorative-corner.jpg';
         </a>
         <button
           type="button"
-          class="trigger-call-modal px-8 py-3.5 rounded-full bg-gray-100 border border-gray-200 text-[#0f172a] font-semibold text-sm hover:border-[#28e374] transition-all"
+          onclick="window.__openCallModal ? window.__openCallModal() : null"
+          class="trigger-call-modal px-8 py-3.5 rounded-full bg-gray-100 border border-gray-200 text-[#0f172a] font-semibold text-sm hover:border-[#28e374] transition-all cursor-pointer"
         >
           Call Our Showroom
         </button>

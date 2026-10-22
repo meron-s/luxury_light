@@ -130,3 +130,67 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   color: #0f172a;
   border-color: rgba(40, 227, 116, 0.6);
 }
+
+/* Mobile Navigation Drawer */
+#mobile-drawer {
+  transform: translateX(100%) !important;
+  -webkit-transform: translateX(100%) !important;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+  z-index: 120 !important;
+}
+
+#mobile-drawer.is-open {
+  transform: translateX(0) !important;
+  -webkit-transform: translateX(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#menu-backdrop {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 110 !important;
+}
+
+#menu-backdrop.is-open {
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Call Sheet Modal */
+#call-sheet-modal {
+  display: none !important;
+  z-index: 130 !important;
+}
+
+#call-sheet-modal.is-open {
+  display: block !important;
+  pointer-events: auto !important;
+}
+
+#call-sheet-backdrop {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+#call-sheet-modal.is-open #call-sheet-backdrop {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#call-sheet-content {
+  transform: translateY(100%) !important;
+  -webkit-transform: translateY(100%) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#call-sheet-modal.is-open #call-sheet-content {
+  transform: translateY(0) !important;
+  -webkit-transform: translateY(0) !important;
+}
+
