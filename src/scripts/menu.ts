@@ -1,81 +1,84 @@
-// Bulletproof Mobile Hamburger Navigation Controller
+// Bulletproof Mobile Hamburger Navigation Controller (CSP-compliant, external module)
 
-declare global {
-  interface Window {
-    __openMobileMenu?: () => void;
-    __closeMobileMenu?: () => void;
-    __canCloseMenuBackdrop?: () => boolean;
-  }
-}
+let menuOpenTime = 0;
 
 export function openMenu(): void {
-  if (typeof window.__openMobileMenu === 'function') {
-    window.__openMobileMenu();
-  }
-}
-
-export function closeMenu(): void {
-  if (typeof window.__closeMobileMenu === 'function') {
-    window.__closeMobileMenu();
-  }
-}
-
-export function setupMobileMenu(): void {
-  const openBtn = document.getElementById('menu-open-btn');
-  const closeBtn = document.getElementById('menu-close-btn');
+  menuOpenTime = Date.now();
+  const drawer = document.getElementById('mobile-drawer');
   const backdrop = document.getElementById('menu-backdrop');
 
-  if (openBtn) {
-    openBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMenu();
-    });
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeMenu();
-    });
+  if (drawer) {
+    drawer.classList.add('is-open');
+    drawer.style.display = 'flex';
+    drawer.style.transform = 'translateX(0)';
+    drawer.setAttribute('aria-hidden', 'false');
   }
 
   if (backdrop) {
-    backdrop.addEventListener('click', (e) => {
-      if (typeof window.__canCloseMenuBackdrop === 'function' && !window.__canCloseMenuBackdrop()) {
-        return;
-      }
-      e.preventDefault();
-      closeMenu();
-    });
+    backdrop.classList.add('is-open');
+    backdrop.style.display = 'block';
+    backdrop.style.opacity = '1';
   }
 
-  // Close when tapping any navigation link inside the drawer
-  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      closeMenu();
-    });
-  });
+  document.body.classList.add('menu-open');
+  document.body.style.overflow = 'hidden';
 
-  // Global event delegation as secondary fallback (click only - no touchend to eliminate ghost-click bugs)
+  const closeBtn = document.getElementById('menu-close-btn');
+  closeBtn?.focus();
+}
+
+export function closeMenu(): void {
+  const drawer = document.getElementById('mobile-drawer');
+  const backdrop = document.getElementById('menu-backdrop');
+
+  if (drawer) {
+    drawer.classList.remove('is-open');
+    drawer.style.transform = 'translateX(100%)';
+    drawer.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      if (!drawer.classList.contains('is-open')) {
+        drawer.style.display = 'none';
+      }
+    }, 300);
+  }
+
+  if (backdrop) {
+    backdrop.classList.remove('is-open');
+    backdrop.style.opacity = '0';
+    setTimeout(() => {
+      if (!backdrop.classList.contains('is-open')) {
+        backdrop.style.display = 'none';
+      }
+    }, 300);
+  }
+
+  document.body.classList.remove('menu-open');
+  document.body.style.overflow = '';
+
+  const openBtn = document.getElementById('menu-open-btn');
+  openBtn?.focus();
+}
+
+export function setupMobileMenu(): void {
+  // Delegate clicks on document (CSP safe)
   document.addEventListener('click', (e: MouseEvent) => {
     const target = e.target as HTMLElement | null;
     if (!target) return;
-    if (typeof target.closest === 'function') {
-      if (target.closest('#menu-open-btn')) {
-        e.preventDefault();
-        openMenu();
-        return;
-      }
-      if (target.closest('#menu-close-btn') || target.closest('.mobile-nav-link')) {
-        closeMenu();
-        return;
-      }
-      if (target.closest('#menu-backdrop')) {
-        if (typeof window.__canCloseMenuBackdrop === 'function' && !window.__canCloseMenuBackdrop()) {
-          return;
-        }
-        closeMenu();
-      }
+
+    if (target.closest('#menu-open-btn')) {
+      e.preventDefault();
+      openMenu();
+      return;
+    }
+
+    if (target.closest('#menu-close-btn') || target.closest('.mobile-nav-link')) {
+      closeMenu();
+      return;
+    }
+
+    if (target.closest('#menu-backdrop')) {
+      if (Date.now() - menuOpenTime < 400) return;
+      closeMenu();
     }
   });
 
@@ -93,4 +96,5 @@ if (typeof document !== 'undefined') {
     setupMobileMenu();
   }
 }
+
 

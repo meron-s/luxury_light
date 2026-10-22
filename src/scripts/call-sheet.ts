@@ -1,59 +1,63 @@
-// Call Now & Request Price Sheet Modal Controller
+// Call Now & Request Price Sheet Modal Controller (CSP-compliant, external module)
 
-declare global {
-  interface Window {
-    __openCallModal?: (productName?: string | null) => void;
-    __closeCallModal?: () => void;
-    __canCloseModalBackdrop?: () => boolean;
-  }
-}
+let modalOpenTime = 0;
 
 export function openCallSheet(productName?: string | null): void {
-  if (typeof window.__openCallModal === 'function') {
-    window.__openCallModal(productName);
+  modalOpenTime = Date.now();
+  const modal = document.getElementById('call-sheet-modal');
+  if (!modal) return;
+
+  const title = document.getElementById('call-sheet-title');
+  const subtitle = document.getElementById('call-sheet-subtitle');
+
+  if (productName && typeof productName === 'string' && productName.trim().length > 0) {
+    if (title) title.textContent = 'Request Price & Order';
+    if (subtitle) subtitle.textContent = `Inquiring for: ${productName}`;
+  } else {
+    if (title) title.textContent = 'Choose a Showroom Line to Call';
+    if (subtitle) subtitle.textContent = 'Connect directly with our team at Sosa Merkato Building';
+  }
+
+  modal.classList.add('is-open');
+  modal.style.display = 'block';
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
+
+  const content = document.getElementById('call-sheet-content');
+  if (content) {
+    content.style.transform = 'translateY(0)';
   }
 }
 
 export function closeCallSheet(): void {
-  if (typeof window.__closeCallModal === 'function') {
-    window.__closeCallModal();
+  const modal = document.getElementById('call-sheet-modal');
+  if (!modal) return;
+
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+
+  const content = document.getElementById('call-sheet-content');
+  if (content) {
+    content.style.transform = 'translateY(100%)';
   }
+
+  setTimeout(() => {
+    if (!modal.classList.contains('is-open')) {
+      modal.style.display = 'none';
+    }
+  }, 250);
+
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
 }
 
 export function setupCallSheet(): void {
-  // Direct listeners on all trigger elements
-  const triggers = document.querySelectorAll<HTMLElement>('.trigger-call-modal');
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const product = trigger.getAttribute('data-product-name');
-      openCallSheet(product);
-    });
-  });
-
-  const closeBtns = document.querySelectorAll<HTMLElement>('.call-sheet-close');
-  closeBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeCallSheet();
-    });
-  });
-
-  const backdrop = document.getElementById('call-sheet-backdrop');
-  if (backdrop) {
-    backdrop.addEventListener('click', (e) => {
-      if (typeof window.__canCloseModalBackdrop === 'function' && !window.__canCloseModalBackdrop()) {
-        return;
-      }
-      e.preventDefault();
-      closeCallSheet();
-    });
-  }
-
-  // Global delegation fallback (click only - no touchend to eliminate ghost-click bugs)
+  // Delegate clicks on document (CSP safe, works for static and dynamic buttons)
   document.addEventListener('click', (e: MouseEvent) => {
     const target = e.target as HTMLElement | null;
     if (!target) return;
+
     const trigger = target.closest<HTMLElement>('.trigger-call-modal');
     if (trigger) {
       e.preventDefault();
@@ -61,15 +65,15 @@ export function setupCallSheet(): void {
       openCallSheet(product);
       return;
     }
+
     if (target.closest('.call-sheet-close')) {
       e.preventDefault();
       closeCallSheet();
       return;
     }
+
     if (target.closest('#call-sheet-backdrop')) {
-      if (typeof window.__canCloseModalBackdrop === 'function' && !window.__canCloseModalBackdrop()) {
-        return;
-      }
+      if (Date.now() - modalOpenTime < 400) return;
       e.preventDefault();
       closeCallSheet();
     }
@@ -93,4 +97,5 @@ if (typeof document !== 'undefined') {
     setupCallSheet();
   }
 }
+
 
