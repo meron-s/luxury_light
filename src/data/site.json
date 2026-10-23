@@ -17,14 +17,14 @@
   },
   "tiktok": "https://www.tiktok.com/@luxuryelectrical",
   "address": {
-    "line": "Sosa Merkato, Merkato Sosa Building",
+    "line": "Sosa Merkato, Uganda St",
     "city": "Addis Ababa",
     "country": "Ethiopia",
-    "landmarks": "Between Harere Hotel and Derba Lime and Chemicals"
+    "landmarks": "Uganda St, between Harere Hotel and Derba Lime and Chemicals (near Metro Building & Abinet Square)"
   },
   "map": {
-    "shareUrl": "https://maps.google.com/?q=Merkato+Sosa+Building+Addis+Ababa",
-    "embedUrl": "https://maps.google.com/maps?q=Merkato+Sosa+Building+Addis+Ababa&t=&z=16&ie=UTF8&iwloc=&output=embed"
+    "shareUrl": "https://maps.google.com/?q=Sosa+Merkato,+Uganda+St,+Addis+Ababa",
+    "embedUrl": "https://maps.google.com/maps?q=Sosa+Merkato,+Uganda+St,+Addis+Ababa&t=&z=17&ie=UTF8&iwloc=&output=embed"
   },
   "hours": "TODO: Confirm exact hours with owner (e.g. Mon–Sat 8:30 AM – 6:30 PM)"
 }
