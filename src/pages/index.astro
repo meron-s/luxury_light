@@ -11,13 +11,52 @@ import LightingFaq from '../components/sections/LightingFaq.astro';
 import AboutTeaser from '../components/sections/AboutTeaser.astro';
 import WhyUs from '../components/sections/WhyUs.astro';
 import ContactBar from '../components/sections/ContactBar.astro';
-import site from '../data/site.json';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where is your showroom located in Addis Ababa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are located in Merkato, inside the Merkato Sosa Building, conveniently situated between Harere Hotel and Derba Lime and Chemicals on Uganda Street, Addis Ababa. You can inspect working fixtures on our live showroom display wall."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer contractor and wholesale volume discounts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, absolutely. We work closely with electrical contractors, interior designers, real estate developers, and retail stores, offering structured wholesale volume pricing. Call our wholesale line at 0910404241 or message us on Telegram."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast is delivery within Addis Ababa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide prompt same-day dispatch across Addis Ababa for confirmed orders. Alternatively, your order can be packaged and ready for immediate in-person pickup at our Merkato Sosa showroom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I request prices and verify available stock?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can tap any Request Price button on this website, call our direct phone numbers (0911948627, 0935021157, 0910404241, 0910210089), or send your inquiry or Bill of Quantities directly to Telegram (@Rezured)."
+      }
+    }
+  ]
+};
 ---
 
 <BaseLayout
-  title={`${site.name} — ${site.tagline} | Showroom Addis Ababa`}
-  description="Addis Ababa's premier supplier of high-end architectural lighting, anti-glare LED spotlights, RGB linear profiles, commercial street luminaires, and luxury electrical gear."
+  title="Luxury Electrical & Lighting — Architectural Lighting & Supplies Showroom Addis Ababa"
+  description="Addis Ababa's leading supplier of architectural LED strip lights, TESLA LED bulbs, anti-glare KK spotlights, commercial street lighting, STAR designer switches & certified copper cables at Sosa Merkato."
   currentPath="/"
+  extraJsonLd={faqSchema}
 >
   <!-- Hero Section -->
   <Hero />

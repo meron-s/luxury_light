@@ -13,44 +13,84 @@ interface Props {
   ogType?: string;
   canonicalUrl?: string;
   currentPath?: string;
+  extraJsonLd?: Record<string, any> | Record<string, any>[];
+  noindex?: boolean;
 }
 
 const {
   title = `${site.name} — Premier Electrical & Lighting Showroom Addis Ababa`,
-  description = 'High-end architectural lighting, LED strip lights, commercial street luminaires, and luxury electrical accessories in Addis Ababa, Ethiopia.',
+  description = 'High-end architectural lighting, LED strip lights, commercial street luminaires, TESLA LED bulbs, and luxury electrical accessories in Addis Ababa, Ethiopia.',
   ogImage = '/og-image.jpg',
   ogType = 'website',
   canonicalUrl = Astro.url.href,
   currentPath = Astro.url.pathname,
+  extraJsonLd,
+  noindex = false,
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.toString() : 'https://luxurylighting.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxury-light.vercel.app';
 const fullOgImageUrl = new URL(ogImage, siteUrl).toString();
 
-const jsonLd = {
+const baseJsonLd = {
   "@context": "https://schema.org",
   "@type": "ElectricalStore",
-  "name": site.name,
-  "alternateName": site.name,
+  "@id": `${siteUrl}/#store`,
+  "name": "Luxury Electrical & Lighting",
+  "alternateName": ["Luxury Lighting", "Luxury Electrical", "ሉክዠሪ ኤሌክትሪካል መብራቶች"],
   "description": description,
   "url": siteUrl,
-  "logo": new URL('/favicon.svg', siteUrl).toString(),
-  "image": fullOgImageUrl,
+  "logo": new URL('/apple-touch-icon.png', siteUrl).toString(),
+  "image": [fullOgImageUrl],
   "telephone": site.phones.map(p => `+251${p.number.replace(/\D/g, '').slice(1)}`),
+  "currenciesAccepted": "ETB",
+  "paymentAccepted": "Cash, Telebirr, CBE Bank Transfer",
+  "priceRange": "$$",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Addis Ababa"
+    },
+    {
+      "@type": "Country",
+      "name": "Ethiopia"
+    }
+  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": site.address.line,
     "addressLocality": site.address.city,
+    "addressRegion": "Addis Ababa",
     "addressCountry": "ET"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 9.0270,
+    "longitude": 38.7440
+  },
+  "hasMap": site.map.shareUrl,
   "sameAs": [
     site.telegram.channel,
     site.telegram.inbox,
     site.tiktok
   ],
-  "openingHours": "Mo-Sa 08:30-18:30",
-  "priceRange": "$$"
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:30",
+      "closes": "18:30"
+    }
+  ]
 };
+
+const schemasToRender: Record<string, any>[] = [baseJsonLd];
+if (extraJsonLd) {
+  if (Array.isArray(extraJsonLd)) {
+    schemasToRender.push(...extraJsonLd);
+  } else {
+    schemasToRender.push(extraJsonLd);
+  }
+}
 ---
 
 <!DOCTYPE html>
@@ -62,13 +102,36 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- Search Engine Indexing Directives -->
+    {noindex ? (
+      <meta name="robots" content="noindex, follow" />
+    ) : (
+      <>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      </>
+    )}
+
+    <!-- Geographic & Local Search Meta Tags (Addis Ababa, Ethiopia) -->
+    <meta name="geo.region" content="ET-AA" />
+    <meta name="geo.placename" content="Addis Ababa, Merkato" />
+    <meta name="geo.position" content="9.0270;38.7440" />
+    <meta name="ICBM" content="9.0270, 38.7440" />
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
+    <link rel="alternate" hreflang="am" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={fullOgImageUrl} />
-    <meta property="og:site_name" content={site.name} />
+    <meta property="og:site_name" content="Luxury Electrical & Lighting" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="am_ET" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -82,11 +145,13 @@ const jsonLd = {
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#5BE584" />
+    <meta name="theme-color" content="#28e374" />
     <meta name="color-scheme" content="dark" />
 
     <!-- Schema.org Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {schemasToRender.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body class="bg-[#050807] text-[#C1C8C4] antialiased min-h-screen flex flex-col selection:bg-[#5BE584] selection:text-[#050807]">
     <!-- Accessibility Skip Link -->

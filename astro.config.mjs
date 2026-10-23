@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://luxurylighting.vercel.app',
+  site: 'https://luxury-light.vercel.app',
   output: 'static',
   integrations: [sitemap()],
   vite: {

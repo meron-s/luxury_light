@@ -2,12 +2,52 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../data/site.json';
 import { formatPhone, toTel } from '../lib/phone';
+const siteUrl = 'https://luxury-light.vercel.app';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": `${siteUrl}/contact`
+    }
+  ]
+};
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Luxury Electrical & Lighting",
+  "description": "Showroom location, phone lines, Telegram handles, and directions for Luxury Electrical in Addis Ababa",
+  "url": `${siteUrl}/contact`,
+  "mainEntity": {
+    "@type": "Store",
+    "name": "Luxury Electrical & Lighting",
+    "telephone": site.phones.map(p => `+251${p.number.replace(/\D/g, '').slice(1)}`),
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": site.address.line,
+      "addressLocality": site.address.city,
+      "addressCountry": "ET"
+    }
+  }
+};
 ---
 
 <BaseLayout
-  title={`Contact & Showroom Location // ${site.brand} — Addis Ababa`}
-  description={`Visit or call Luxury Lighting at Sosa Merkato Building, Addis Ababa. Direct manager phone numbers, Telegram inbox, and location map.`}
+  title="Contact & Showroom Location — Sosa Merkato, Addis Ababa | Luxury Electrical"
+  description="Visit our showroom in Sosa Merkato, Uganda St, Addis Ababa. Call 0911948627, 0935021157, 0910404241, or 0910210089 or message on Telegram for instant quotes, wholesale orders, and directions."
   currentPath="/contact"
+  extraJsonLd={[breadcrumbSchema, contactPageSchema]}
 >
   <div class="py-12 lg:py-20 bg-[#050807] min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

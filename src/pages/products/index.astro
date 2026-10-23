@@ -9,12 +9,60 @@ import TelegramFeed from '../../components/sections/TelegramFeed.astro';
 
 // Automatically import all product images for Sharp optimization
 const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/products/**/*.{jpg,png,jpeg}', { eager: true });
+
+const siteUrl = 'https://luxury-light.vercel.app';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Products",
+      "item": `${siteUrl}/products`
+    }
+  ]
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Luxury Electrical & Lighting Catalog",
+  "description": "Architectural and commercial electrical fixtures available at Sosa Merkato, Addis Ababa",
+  "numberOfItems": products.length,
+  "itemListElement": products.slice(0, 12).map((prod, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "name": prod.name,
+      "description": prod.description,
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "ETB",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Luxury Electrical & Lighting"
+        }
+      }
+    }
+  }))
+};
 ---
 
 <BaseLayout
-  title={`Products Catalog // ${site.name} — Lighting & Electrical Fixtures Addis Ababa`}
-  description="Explore our complete catalog of LED strip lights, recessed spotlights, roadway luminaires, STAR switches, copper cables, and electrical accessories in Addis Ababa."
+  title="Electrical & Lighting Products Catalog — Wholesale & Retail Addis Ababa | Luxury Electrical"
+  description="Explore our full inventory of LED strip lights, TESLA LED bulbs, KK anti-glare recessed spotlights, street floodlights, STAR designer switches, and certified power cables in Addis Ababa."
   currentPath="/products"
+  extraJsonLd={[breadcrumbSchema, itemListSchema]}
 >
   <div class="py-12 lg:py-16 bg-white min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

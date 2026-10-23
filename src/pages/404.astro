@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import site from '../data/site.json';
 ---
 
 <BaseLayout
-  title={`404 - Page Not Found // ${site.brand}`}
+  title="404 - Page Not Found // Luxury Electrical"
   description="The requested page could not be found. Explore our electrical fixtures catalog or contact our showroom."
+  noindex={true}
 >
   <div class="py-24 sm:py-32 bg-[#050807] flex items-center justify-center min-h-[65vh]">
     <div class="max-w-xl mx-auto px-4 text-center flex flex-col items-center gap-6">

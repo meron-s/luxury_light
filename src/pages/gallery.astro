@@ -2,17 +2,37 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import galleryItems from '../data/gallery.json';
-import site from '../data/site.json';
 import fallbackHero from '../assets/hero/hero-main.jpg';
 
 // Map all gallery images
 const galleryImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/**/*.{jpg,png,jpeg}', { eager: true });
+const siteUrl = 'https://luxury-light.vercel.app';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Gallery",
+      "item": `${siteUrl}/gallery`
+    }
+  ]
+};
 ---
 
 <BaseLayout
-  title={`Project & Showroom Gallery // ${site.brand} — Addis Ababa`}
-  description="Browse our architectural lighting installations, decorative crystal fixtures, high-output outdoor luminaires, and luxury switches."
+  title="Lighting Project & Showroom Gallery | Luxury Electrical Addis Ababa"
+  description="Explore our photo gallery featuring luxury architectural chandeliers, recessed crystal spotlights, LED strip coves, outdoor roadway luminaires, and electrical installations in Ethiopia."
   currentPath="/gallery"
+  extraJsonLd={breadcrumbSchema}
 >
   <div class="py-12 lg:py-20 bg-white min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

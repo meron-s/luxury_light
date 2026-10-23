@@ -1,16 +1,21 @@
 {
-  "name": "Luxury Lighting",
-  "short_name": "Luxury Lighting",
-  "description": "Premier Architectural Lighting Showroom in Addis Ababa, Ethiopia.",
+  "name": "Luxury Electrical & Lighting",
+  "short_name": "Luxury Electrical",
+  "description": "Premier Architectural Lighting and Electrical Showroom in Sosa Merkato, Addis Ababa, Ethiopia.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050807",
-  "theme_color": "#5BE584",
+  "theme_color": "#28e374",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ]
 }
