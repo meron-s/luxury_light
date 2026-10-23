@@ -64,7 +64,8 @@ function cleanTelegramText(rawText: string | null | undefined): { title: string;
   } else if (title.length > 70) {
     title = title.slice(0, 70);
   }
-  const bodyLines = lines.length > 1 ? lines.slice(1) : lines;
+  const bodyLines = (lines.length > 1 ? lines.slice(1) : lines)
+    .filter(line => !line.startsWith('@'));
   const bodyHtml = bodyLines.map(l => escapeHtml(l)).join('<br/>');
   return { title, bodyHtml };
 }
@@ -162,7 +163,7 @@ function createPostCard(post: TelegramPost): string {
         </h3>
 
         ${bodyHtml ? `
-          <div class="text-xs sm:text-sm text-stone-400 line-clamp-3 mb-4 leading-relaxed font-normal">
+          <div class="text-xs sm:text-sm text-stone-400 line-clamp-4 mb-4 leading-relaxed font-normal">
             ${bodyHtml}
           </div>
         ` : ''}
