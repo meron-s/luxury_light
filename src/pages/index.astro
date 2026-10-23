@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/sections/Hero.astro';
 import TopCategories from '../components/sections/TopCategories.astro';
 import FeaturedProducts from '../components/sections/FeaturedProducts.astro';
+import TelegramFeed from '../components/sections/TelegramFeed.astro';
 import LightingSolutions from '../components/sections/LightingSolutions.astro';
 import ShowroomGallery from '../components/sections/ShowroomGallery.astro';
 import OrderSteps from '../components/sections/OrderSteps.astro';
@@ -29,6 +30,9 @@ import site from '../data/site.json';
 
   <!-- 2. Featured Products with product names, available specifications, and Request Price buttons -->
   <FeaturedProducts />
+
+  <!-- Live Feed direct from Telegram channel (@luxuryelectrical) -->
+  <TelegramFeed />
 
   <!-- 3. Lighting Solutions for homes, offices, hotels, commercial spaces, and outdoor areas -->
   <LightingSolutions />

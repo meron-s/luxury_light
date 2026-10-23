@@ -5,6 +5,7 @@ import products from '../../data/products.json';
 import categories from '../../data/categories.json';
 import site from '../../data/site.json';
 import fallbackHero from '../../assets/hero/hero-main.jpg';
+import TelegramFeed from '../../components/sections/TelegramFeed.astro';
 
 // Automatically import all product images for Sharp optimization
 const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/products/**/*.{jpg,png,jpeg}', { eager: true });
@@ -241,6 +242,13 @@ const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/
       </div>
     </div>
   </div>
+
+  <!-- Live Telegram Channel Feed -->
+  <TelegramFeed
+    title="Daily Stock Arrivals via Telegram"
+    subtitle="Direct inventory drops from our Sosa Merkato warehouse to @luxuryelectrical."
+    limit={8}
+  />
 </BaseLayout>
 
 <script src="../../scripts/filter.ts"></script>
