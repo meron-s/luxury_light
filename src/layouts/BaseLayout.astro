@@ -3,6 +3,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import MobileMenu from '../components/layout/MobileMenu.astro';
 import CallSheet from '../components/layout/CallSheet.astro';
+import FloatingCall from '../components/layout/FloatingCall.astro';
 import site from '../data/site.json';
 import '../styles/global.css';
 
@@ -173,6 +174,7 @@ if (extraJsonLd) {
     <!-- Mobile Drawer & Overlays -->
     <MobileMenu />
     <CallSheet />
+    <FloatingCall />
 
     <!-- External Bundled Scripts (100% CSP Compliant with script-src 'self') -->
     <script src="../scripts/call-sheet.ts"></script>

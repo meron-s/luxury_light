@@ -2,23 +2,31 @@
 import site from '../../data/site.json';
 ---
 
-<div class="fixed bottom-4 inset-x-4 z-40 md:hidden flex justify-center pointer-events-none">
-  <div class="pointer-events-auto bg-[#0B1210]/95 backdrop-blur-md border border-[#28e374]/30 rounded-full px-4 py-2.5 shadow-2xl flex items-center gap-3">
-    <!-- Active status indicator -->
-    <div class="flex items-center gap-1.5 pl-1 pr-2 border-r border-white/10">
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#28e374] opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#28e374]"></span>
-      </span>
-      <span class="text-[11px] font-medium text-white/90 uppercase tracking-wider">Showroom</span>
-    </div>
+<div class="fixed bottom-4 inset-x-3 z-40 md:hidden flex justify-center pointer-events-none">
+  <nav
+    aria-label="Quick Actions"
+    class="pointer-events-auto bg-[#060b08]/95 backdrop-blur-md border border-white/15 rounded-full p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.7)] flex items-center gap-1.5"
+  >
+    <!-- TikTok Link (in place of Showroom) -->
+    <a
+      href={site.tiktok || "https://www.tiktok.com/@luxuryelectrical"}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Follow Luxury Electrical on TikTok"
+      class="flex items-center gap-1.5 text-xs font-bold text-white bg-[#161a18] hover:bg-[#202523] border border-white/10 px-3 py-2 rounded-full transition-all active:scale-95"
+    >
+      <svg class="w-3.5 h-3.5 fill-current text-white shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/>
+      </svg>
+      <span>TikTok</span>
+    </a>
 
     <!-- Call Trigger -->
     <button
       type="button"
-      class="trigger-call-modal flex items-center gap-1.5 text-xs font-bold bg-[#28e374] text-[#050807] px-3.5 py-1.5 rounded-full shadow hover:bg-[#22c55e] active:scale-95 transition-all cursor-pointer"
+      class="trigger-call-modal flex items-center gap-1.5 text-xs font-extrabold bg-[#28e374] hover:bg-[#2FD468] text-[#050807] px-3.5 py-2 rounded-full shadow-sm hover:shadow-[0_0_12px_rgba(40,227,116,0.5)] active:scale-95 transition-all cursor-pointer"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
       </svg>
       <span>Call Now</span>
@@ -26,17 +34,16 @@ import site from '../../data/site.json';
 
     <!-- Telegram Quick Link -->
     <a
-      href={site.telegram.inbox}
+      href={site.telegram.channel || "https://t.me/luxuryelectrical"}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Inquire on Telegram"
-      class="flex items-center gap-1 text-xs font-semibold text-[#2AABEE] bg-[#1C201F] border border-[#2AABEE]/30 px-3 py-1.5 rounded-full hover:bg-[#2AABEE]/10 transition-colors"
+      aria-label="Join Luxury Electrical on Telegram"
+      class="flex items-center gap-1.5 text-xs font-bold text-[#2AABEE] bg-[#161a18] hover:bg-[#202523] border border-[#2AABEE]/30 px-3 py-2 rounded-full hover:border-[#2AABEE] active:scale-95 transition-all"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="22" y1="2" x2="11" y2="13"/>
-        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/>
       </svg>
       <span>Telegram</span>
     </a>
-  </div>
+  </nav>
 </div>
