@@ -351,16 +351,16 @@
     "badge": null
   },
   {
-    "id": "architectural-exhaust-fan",
-    "category": "fans-and-ventilation",
-    "name": "Architectural Low-Noise Ceiling & Wall Ventilation Fan",
-    "description": "High-efficiency ventilation unit engineered with quiet aerodynamic blades for modern bathrooms, kitchens, and commercial washrooms.",
-    "image": "/src/assets/products/fans-and-ventilation/architectural-exhaust-fan.jpg",
+    "id": "kk-recessed-spotlight-silver",
+    "category": "led-panel-lights",
+    "name": "KK Recessed Ceiling Spot Light",
+    "description": "Architectural recessed ceiling spotlight fixture with durable silver aluminum bezel, spring retention clips, and glare-free frosted optical diffuser for modern gypsum and interior lighting.",
+    "image": "/src/assets/products/led-panel-lights/kk-spot-light-silver.jpg",
     "specs": {
-      "watt": "TODO: confirm wattage and airflow CFM",
-      "ip": "Continuous Duty Sealed Motor",
-      "color": "Clean Satin White"
+      "watt": "TODO: confirm wattage",
+      "ip": "Spring-Clip Recessed Mount",
+      "color": "Satin Silver / Aluminum"
     },
-    "badge": "New"
+    "badge": "Popular"
   }
 ]

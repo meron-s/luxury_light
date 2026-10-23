@@ -122,7 +122,38 @@ const coverImage = categoryImages[category.slug] || fallbackHero;
         </a>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {categoryProducts.length === 0 ? (
+        <div class="text-center py-16 px-6 rounded-3xl bg-[#f4f7f6] border border-gray-200 max-w-xl mx-auto my-4">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#28e374]/15 text-[#28e374] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">New {category.name} Arrivals Coming Soon</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            We are restocking this collection with fresh arrivals. Inquire directly with our showroom or check daily drops on Telegram.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button
+              type="button"
+              data-product-name={`${category.name} Inquiry`}
+              class="trigger-call-modal px-6 py-2.5 rounded-full bg-[#28e374] text-[#050807] font-bold text-xs sm:text-sm hover:bg-[#2FD468] transition-all cursor-pointer"
+            >
+              Call Showroom
+            </button>
+            <a
+              href={site.telegram.channel}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-2.5 rounded-full bg-[#18201d] text-[#2aa8e8] hover:bg-[#2aa8e8]/15 font-semibold text-xs sm:text-sm transition-all"
+            >
+              Join @luxuryelectrical
+            </a>
+          </div>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {categoryProducts.map((prod) => {
           const imgModule = productImages[prod.image]?.default || fallbackHero;
           const telegramPrefill = encodeURIComponent(`Hello, I want to inquire about: ${prod.name}`);
@@ -251,6 +282,7 @@ const coverImage = categoryImages[category.slug] || fallbackHero;
           );
         })}
       </div>
+      )}
     </div>
   </section>
 </BaseLayout>
