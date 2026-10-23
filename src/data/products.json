@@ -182,6 +182,45 @@
     "badge": null
   },
   {
+    "id": "tesla-led-lamp-series",
+    "category": "led-panel-lights",
+    "name": "TESLA LED Lamp Series (Bulb Master)",
+    "description": "High-efficiency TESLA 1856 Bulb Master LED lamps engineered with wide 175–265V voltage protection, high-lumen output, and standard E27 base. Available in 9W, 12W, 15W, 20W, 30W, 40W, 50W, and 60W.",
+    "image": "/src/assets/products/led-panel-lights/tesla-led-lamp-series.jpg",
+    "specs": {
+      "watt": "9W, 12W, 15W, 20W, 30W, 40W, 50W, 60W",
+      "ip": "175-265V Wide Voltage",
+      "color": "Standard E27 Base"
+    },
+    "badge": "Popular"
+  },
+  {
+    "id": "tesla-led-panel-light",
+    "category": "led-panel-lights",
+    "name": "TESLA Architectural LED Panel Lights (Round, Square & Oval)",
+    "description": "Premium TESLA 1856 LED panel lights with 2-year warranty and up to 30,000 hrs life. Available in Black Frame (18W, 24W Round & Square), White Frame (18W, 24W), and Oval Series (18W, 24W, 36W, 48W).",
+    "image": "/src/assets/products/led-panel-lights/tesla-led-panel-light.jpg",
+    "specs": {
+      "watt": "18W, 24W, 36W, 48W",
+      "ip": "2 Years Official Warranty",
+      "color": "Black / White Frames (Square, Round & Oval)"
+    },
+    "badge": "Featured"
+  },
+  {
+    "id": "tesla-7w-spot-light",
+    "category": "led-panel-lights",
+    "name": "TESLA 7W 3-Color Recessed Spot Light (Multi-Frame)",
+    "description": "Architectural 7W recessed LED downlight with 3 selectable color temperatures (3-color CCT) and interchangeable designer bezel frames: Pure White, Satin Silver, Mirror Chrome, and Black Rim.",
+    "image": "/src/assets/products/led-panel-lights/tesla-7w-spot-light.jpg",
+    "specs": {
+      "watt": "7W High Efficiency",
+      "ip": "3 Color Modes (Switchable CCT)",
+      "color": "White, Silver, Chrome & Black Frames"
+    },
+    "badge": "New"
+  },
+  {
     "id": "street-light-150w",
     "category": "led-street-lights",
     "name": "150W Heavy-Duty Commercial LED Street Luminaire",
