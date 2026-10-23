@@ -39,12 +39,41 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
+function cleanTelegramText(rawText: string | null | undefined): { title: string; bodyHtml: string } {
+  if (!rawText) {
+    return { title: 'Electrical & Lighting Arrival', bodyHtml: '' };
+  }
+  // Convert keycap digits 0️⃣-9️⃣ -> 0-9
+  let text = rawText.replace(/([0-9])\uFE0F?\u20E3/g, '$1');
+  // Strip Unicode fallback font blocks: 🔠 (ABCD), 🔡 (abcd), 🔤 (abc), 🔣 (symbols), 🔢 (1234)
+  text = text.replace(/[\u{1F520}\u{1F521}\u{1F522}\u{1F523}\u{1F524}]/gu, '');
+  // Strip noisy / unrendered decorative icons
+  text = text.replace(/[⚡🫥👎😺🖤🛜🔌📥〰👈➡️🆕➕]/gu, '');
+  // Normalize checkmarks to clean bullet points
+  text = text.replace(/[✔️✅✓]/gu, '•');
+  const lines = text
+    .split('\n')
+    .map(line => line.trim().replace(/^•\s*/, '• ').replace(/\s+/g, ' '))
+    .filter(line => line.length > 0 && line !== '•');
+  if (lines.length === 0) {
+    return { title: 'Electrical & Lighting Arrival', bodyHtml: '' };
+  }
+  let title = lines[0].replace(/^•\s*/, '').trim();
+  if (title.length < 3) {
+    title = 'Electrical & Lighting Arrival';
+  } else if (title.length > 70) {
+    title = title.slice(0, 70);
+  }
+  const bodyLines = lines.length > 1 ? lines.slice(1) : lines;
+  const bodyHtml = bodyLines.map(l => escapeHtml(l)).join('<br/>');
+  return { title, bodyHtml };
+}
+
 function createPostCard(post: TelegramPost): string {
   const photo = post.photos && post.photos.length > 0 ? post.photos[0] : null;
   const hasMultiple = post.photos && post.photos.length > 1;
   const dateStr = formatDate(post.datetime);
-  const cleanTitle = (post.text || 'Electrical & Lighting Arrival').split('\n')[0].slice(0, 70);
-  const fullText = (post.text || '').replace(/\n/g, '<br/>');
+  const { title: cleanTitle, bodyHtml } = cleanTelegramText(post.text);
 
   return `
     <article class="tg-product-card group relative flex flex-col rounded-2xl bg-gradient-to-b from-stone-900/90 to-stone-950/90 border border-stone-800/80 hover:border-amber-500/50 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-amber-500/10">
@@ -132,9 +161,9 @@ function createPostCard(post: TelegramPost): string {
           ${escapeHtml(cleanTitle)}
         </h3>
 
-        ${fullText ? `
+        ${bodyHtml ? `
           <div class="text-xs sm:text-sm text-stone-400 line-clamp-3 mb-4 leading-relaxed font-normal">
-            ${fullText}
+            ${bodyHtml}
           </div>
         ` : ''}
 

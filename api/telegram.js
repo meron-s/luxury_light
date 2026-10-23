@@ -56,6 +56,14 @@ export default async function handler(req, res) {
           .replace(/<br\s*\/?>/gi, '\n')
           .replace(/<[^>]+>/g, '')
           .trim();
+        // Convert keycap digits 0️⃣-9️⃣ -> 0-9
+        text = text.replace(/([0-9])\uFE0F?\u20E3/g, '$1');
+        // Strip Unicode fallback font blocks: 🔠 (ABCD), 🔡 (abcd), 🔤 (abc), 🔣 (symbols), 🔢 (1234)
+        text = text.replace(/[\u{1F520}\u{1F521}\u{1F522}\u{1F523}\u{1F524}]/gu, '');
+        // Strip noisy / unrendered decorative icons
+        text = text.replace(/[⚡🫥👎😺🖤🛜🔌📥〰👈➡️🆕➕]/gu, '');
+        // Normalize checkmarks to clean bullet points
+        text = text.replace(/[✔️✅✓]/gu, '•');
       }
 
       // Filter to keep meaningful posts
