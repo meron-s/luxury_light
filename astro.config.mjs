@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://luxury-light.vercel.app',
   output: 'static',
+  build: {
+    assets: 'assets'
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]

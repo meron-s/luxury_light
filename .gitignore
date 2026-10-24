@@ -28,3 +28,5 @@ Thumbs.db
 # Scratch and internal tools
 stitch-screens/
 scratch/
+*.zip
+

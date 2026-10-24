@@ -1,0 +1,61 @@
+# ----------------------------------------------------------------------
+# Luxury Lighting — Production Apache / DirectAdmin Configuration
+# ----------------------------------------------------------------------
+
+# Directory Index
+DirectoryIndex index.html
+
+# Ensure correct MIME types
+AddType text/css .css
+AddType application/javascript .js
+AddType image/webp .webp
+AddType image/avif .avif
+AddType image/svg+xml .svg
+AddType application/json .json
+
+# Force UTF-8 Encoding
+AddDefaultCharset UTF-8
+
+# Custom 404 Error Page
+ErrorDocument 404 /404.html
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Pass existing files and directories directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Security Headers (Matching SPEC.md Section 6)
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# Browser Caching Rules
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Astro compiled hashed assets (cache forever 1 year)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+
+  # HTML & JSON (revalidate)
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
