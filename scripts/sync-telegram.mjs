@@ -6,18 +6,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const postOverrides = {
-  '1167': 'Micro breaker 25w\n• Micro breaker 25w\n\n@Luxuryelectrical',
-  '1166': 'AuraLight 0.7 Recessed Downlight\n• Ultra-slim recessed ceiling downlight\n• Available in Round & Square profiles\n\n@Luxuryelectrical',
-  '1159': 'Street light 150w\n• High-power outdoor LED street luminaire\n• IP66 weatherproof die-cast housing\n\n@Luxuryelectrical',
-  '1182': 'HAWUD Plastic Distribution Box with Kalki Breakers\n• Available in 8-Way, 12-Way, and 24-Way\n• Flame-retardant distribution enclosure\n• Equipped with smoked cover & DIN-rail\n\n@Luxuryelectrical',
-  '1179': 'KK Electric 220V LED Strip Power Connectors & Plugs\n• Heavy-duty pre-wired power lead connectors\n• Dual-prong pin connector with secure housing\n\n@Luxuryelectrical',
-  '1177': 'Tisesoi® 6W Vintage Edison ST64 Filament Bulb\n• Classic antique teardrop amber glass\n• Energy-saving 6W LED vintage filament\n\n@Luxuryelectrical',
-  '1170': 'H.S Power Multi-Core Copper Electrical Cables\n• 100% pure copper conductors with PVC insulation\n• Sizes: 2x1.5, 2x2.5, 2x4, 2x6, 3x4, 3x6 mm²\n\n@Luxuryelectrical',
-  '1169': 'High-Density 220V Commercial LED Strip Reel (100m)\n• Continuous 100-meter commercial spool\n• Direct 220V input with IP65 silicone jacket\n\n@Luxuryelectrical',
-  '1164': 'KK Electric 2.5W Mini Recessed Spot Light\n• High-lumen COB LED mini spotlight\n• Includes isolated LED driver AC 85-265V\n\n@Luxuryelectrical',
-  '1163': 'Luxury Slim Circular LED Ceiling Panel Light\n• High-lumen circular ceiling panel\n• 24W & 36W wattage options\n\n@Luxuryelectrical',
-  '1161': 'SAGE Luxury Matte Black Switch & Socket Collection\n• Premium switch & socket collection in matte black\n\n@LuxuryElectrical',
-  '1156': 'KK Electric Recessed LED Downlight (ጎርግዋዳ)\n• Deep-recessed anti-glare downlight\n• Available in Clean White & Matte Black trims\n\n@Luxuryelectrical'
+  '1182': 'HAWUD Plastic Distribution Box with Kalki Breakers\n• Available in 8-Way, 12-Way, and 24-Way module capacity\n• Flame-retardant surface & flush mount electrical enclosure\n• Equipped with smoked transparent protective cover & DIN-rail mounting\n• Includes heavy-duty Kalki miniature circuit breakers\n\n@Luxuryelectrical',
+  '1179': 'KK Electric 220V LED Strip Power Connectors & Plugs\n• Heavy-duty pre-wired power lead connectors for 220V continuous LED strips\n• Dual-prong pin connector with secure snap-in insulation housing\n• Compatible with single-color and multi-channel strip installations\n\n@Luxuryelectrical',
+  '1177': 'Tisesoi® 6W Vintage Edison ST64 Filament Bulb\n• Classic antique ST64 teardrop design with amber-tinted glass\n• Energy-saving 6W LED filament replacing 60W traditional incandescent bulbs\n• Standard E27 screw base delivering 2200K warm vintage ambient illumination\n\n@Luxuryelectrical',
+  '1170': 'H.S Power Multi-Core Copper Electrical Cables\n• Premium 100% electrolytic pure copper conductors with tough PVC insulation\n• Available sizes: 2x1.5, 2x2.5, 2x4, 2x6, 3x4, 3x6 mm²\n• Supplied in factory-sealed 100-meter rolls with certified standard gauge\n\n@Luxuryelectrical',
+  '1169': 'High-Density 220V Commercial LED Strip Reel (100m)\n• Continuous 100-meter commercial spool with high diode density SMD LEDs\n• Direct 220V mains input without bulky external desktop transformers\n• Weatherproof IP65 clear silicone jacket for indoor & outdoor architectural use\n\n@Luxuryelectrical',
+  '1167': 'Micro breaker 25w\n• Micro breaker 25w rated current for residential & motor branch protection\n• 400V~ 50Hz with 6000A short-circuit breaking capacity (IEC standard)\n• Compact single-pole DIN-rail standard 35mm clip-on mounting with contact status window\n\n@Luxuryelectrical',
+  '1166': 'AuraLight 0.7 Recessed Slim Downlight (6W)\n• Ultra-slim 6W recessed ceiling downlight available in Round & Square profiles\n• Anti-glare frosted optical diffuser producing soft, uniform illumination\n• Clean matte white bezel seamlessly blending with modern ceilings\n\n@Luxuryelectrical',
+  '1164': 'KK Electric 2.5W Mini Recessed Spot Light\n• High-lumen COB LED mini spotlight with deep-set anti-glare reflector\n• Included isolated constant-current LED driver (Input: AC 85-265V 50/60Hz)\n• Available in sleek Matte Black and Clean White finish bezels\n\n@Luxuryelectrical',
+  '1163': 'Luxury Slim Circular LED Ceiling Panel Light\n• High-lumen circular ceiling panel with 85% energy conservation\n• Available wattage options: 24W and 36W high-performance SMD arrays\n• Long 30,000-hour rated operating lifespan with high color rendering (CRI > 80)\n• External constant-current driver ensuring flicker-free stable illumination\n• Certified for retail showrooms, commercial offices & modern homes\n\n@Luxuryelectrical',
+  '1161': 'SAGE Luxury Matte Black Switch & Socket Collection\n• Premium architectural switch & socket collection in velvety matte black finish\n• Comprehensive range: Single Switch, Double Switch, Triple Switch, Sockets\n• Multi-gang combo units: Combined Socket + Switch, and TV + Power Socket\n• High-grade fire-resistant polycarbonate plate with smooth tactile actuation\n\n@LuxuryElectrical',
+  '1159': 'Heavy-Duty 150W Commercial Outdoor LED Street Light\n• High-power 150W luminaire with 3 high-intensity COB LED optical lenses\n• Rugged aerodynamic die-cast aluminum housing with ribbed cooling heatsink\n• IP66 weatherproof rating engineered to withstand rain, dust & harsh conditions\n• Standard pole-mount collar with dual set-screws for compound security\n\n@Luxuryelectrical',
+  '1156': 'KK Electric Recessed LED Downlight (ጎርግዋዳ)\n• Deep-recessed (ጎርግዋዳ) anti-glare downlight for comfortable ambient lighting\n• Available in timeless Clean White (ነጭ) and Matte Black (ጥቁር) trims\n• 220-240V 50-60Hz direct mains input with sturdy ceiling mounting springs\n• Chrome accent inner ring delivering a high-end luxury aesthetic\n\n@Luxuryelectrical'
 };
 
 async function syncTelegram() {
