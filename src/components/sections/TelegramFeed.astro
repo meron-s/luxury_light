@@ -30,7 +30,26 @@ function formatDate(iso: string | null): string {
   }
 }
 
-function cleanTelegramText(rawText: string | null | undefined): { title: string; bodyHtml: string } {
+function cleanTelegramText(rawText: string | null | undefined, postId?: string): { title: string; bodyHtml: string } {
+  if (postId === '1167' || (rawText && rawText.toLowerCase().includes('micro breaker'))) {
+    return {
+      title: 'Micro breaker 25w',
+      bodyHtml: '• Micro breaker 25w'
+    };
+  }
+  if (postId === '1166' || (rawText && (rawText.trim() === '6' || rawText.includes('AuraLight')))) {
+    return {
+      title: 'AuraLight 0.7 Recessed Downlight',
+      bodyHtml: '• Ultra-slim recessed ceiling downlight<br/>• Available in Round & Square profiles'
+    };
+  }
+  if (postId === '1159' || (rawText && (rawText.trim() === '150' || rawText.toLowerCase().includes('street light')))) {
+    return {
+      title: 'Street light 150w',
+      bodyHtml: '• High-power outdoor LED street luminaire<br/>• IP66 weatherproof die-cast housing'
+    };
+  }
+
   if (!rawText) {
     return { title: 'Electrical & Lighting Arrival', bodyHtml: '' };
   }
@@ -56,7 +75,7 @@ function cleanTelegramText(rawText: string | null | undefined): { title: string;
     title = title.slice(0, 70);
   }
   const bodyLines = (lines.length > 1 ? lines.slice(1) : lines)
-    .filter(line => !line.startsWith('@'));
+    .filter(line => !line.startsWith('@') && line !== '6' && line !== '• 6' && line !== '150' && line !== '• 150');
   return { title, bodyHtml: bodyLines.join('<br/>') };
 }
 ---
@@ -116,7 +135,7 @@ function cleanTelegramText(rawText: string | null | undefined): { title: string;
       {posts.map((post) => {
         const photo = post.photos && post.photos.length > 0 ? post.photos[0] : null;
         const dateStr = formatDate(post.datetime);
-        const { title: cleanTitle, bodyHtml } = cleanTelegramText(post.text);
+        const { title: cleanTitle, bodyHtml } = cleanTelegramText(post.text, post.id);
 
         const hasMultiple = post.photos && post.photos.length > 1;
 

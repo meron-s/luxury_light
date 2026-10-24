@@ -39,7 +39,26 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#039;');
 }
 
-function cleanTelegramText(rawText: string | null | undefined): { title: string; bodyHtml: string } {
+function cleanTelegramText(rawText: string | null | undefined, postId?: string): { title: string; bodyHtml: string } {
+  if (postId === '1167' || (rawText && rawText.toLowerCase().includes('micro breaker'))) {
+    return {
+      title: 'Micro breaker 25w',
+      bodyHtml: '• Micro breaker 25w'
+    };
+  }
+  if (postId === '1166' || (rawText && (rawText.trim() === '6' || rawText.includes('AuraLight')))) {
+    return {
+      title: 'AuraLight 0.7 Recessed Downlight',
+      bodyHtml: '• Ultra-slim recessed ceiling downlight<br/>• Available in Round & Square profiles'
+    };
+  }
+  if (postId === '1159' || (rawText && (rawText.trim() === '150' || rawText.toLowerCase().includes('street light')))) {
+    return {
+      title: 'Street light 150w',
+      bodyHtml: '• High-power outdoor LED street luminaire<br/>• IP66 weatherproof die-cast housing'
+    };
+  }
+
   if (!rawText) {
     return { title: 'Electrical & Lighting Arrival', bodyHtml: '' };
   }
@@ -65,7 +84,7 @@ function cleanTelegramText(rawText: string | null | undefined): { title: string;
     title = title.slice(0, 70);
   }
   const bodyLines = (lines.length > 1 ? lines.slice(1) : lines)
-    .filter(line => !line.startsWith('@'));
+    .filter(line => !line.startsWith('@') && line !== '6' && line !== '• 6' && line !== '150' && line !== '• 150');
   const bodyHtml = bodyLines.map(l => escapeHtml(l)).join('<br/>');
   return { title, bodyHtml };
 }
@@ -74,7 +93,7 @@ function createPostCard(post: TelegramPost): string {
   const photo = post.photos && post.photos.length > 0 ? post.photos[0] : null;
   const hasMultiple = post.photos && post.photos.length > 1;
   const dateStr = formatDate(post.datetime);
-  const { title: cleanTitle, bodyHtml } = cleanTelegramText(post.text);
+  const { title: cleanTitle, bodyHtml } = cleanTelegramText(post.text, post.id);
 
   return `
     <article class="tg-product-card group relative flex flex-col rounded-2xl bg-gradient-to-b from-stone-900/90 to-stone-950/90 border border-stone-800/80 hover:border-amber-500/50 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-amber-500/10">
