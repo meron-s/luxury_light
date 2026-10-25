@@ -29,7 +29,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxury-light.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxuryelectricall.com';
 const fullOgImageUrl = new URL(ogImage, siteUrl).toString();
 
 const baseJsonLd = {
@@ -102,6 +102,7 @@ if (extraJsonLd) {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    <meta name="google-site-verification" content="2m4If125z_9P7RmczpVCHzkNLKv-dTRhM79J-oRJDtU" />
 
     <!-- Search Engine Indexing Directives -->
     {noindex ? (

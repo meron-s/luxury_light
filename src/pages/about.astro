@@ -5,7 +5,7 @@ import site from '../data/site.json';
 import entranceImg from '../assets/about/showroom-entrance.jpg';
 import displayImg from '../assets/about/display-wall.jpg';
 import decorativeImg from '../assets/about/decorative-corner.jpg';
-const siteUrl = 'https://luxury-light.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxuryelectricall.com';
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

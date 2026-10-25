@@ -12,7 +12,7 @@ import panelImg from '../../assets/categories/led-panel-lights.jpg';
 import streetImg from '../../assets/categories/led-street-lights.jpg';
 import accessoriesImg from '../../assets/categories/electrical-accessories.jpg';
 import cablesImg from '../../assets/categories/cables-and-wires.jpg';
-import fansImg from '../../assets/categories/fans-and-ventilation.jpg';
+import kkSpotImg from '../../assets/categories/kk-spot-lights.jpg';
 
 const categoryImages: Record<string, any> = {
   'led-strip-lights': stripImg,
@@ -20,7 +20,8 @@ const categoryImages: Record<string, any> = {
   'led-street-lights': streetImg,
   'electrical-accessories': accessoriesImg,
   'cables-and-wires': cablesImg,
-  'fans-and-ventilation': fansImg,
+  'kk-spot-lights': kkSpotImg,
+  'fans-and-ventilation': kkSpotImg,
 };
 
 // Map all product images
@@ -37,7 +38,7 @@ const { category } = Astro.props;
 const categoryProducts = products.filter((p) => p.category === category.slug);
 const coverImage = categoryImages[category.slug] || fallbackHero;
 
-const siteUrl = 'https://luxury-light.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxuryelectricall.com';
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

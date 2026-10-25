@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import site from '../data/site.json';
 import { formatPhone, toTel } from '../lib/phone';
-const siteUrl = 'https://luxury-light.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxuryelectricall.com';
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

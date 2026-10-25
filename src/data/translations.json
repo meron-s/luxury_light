@@ -34,15 +34,17 @@
     "accessories_tag": { "en": "Safe & Reliable", "am": "ደህንነቱ የተጠበቀ እና አስተማማኝ" },
     "cables_title": { "en": "Cables & Wires", "am": "ገመዶች እና ሽቦዎች" },
     "cables_tag": { "en": "Powering Your World", "am": "ኃይል ለዓለምዎ" },
-    "fans_title": { "en": "Fans & Ventilation", "am": "የአየር ማናፈሻ እና ማራገቢያዎች" },
-    "fans_tag": { "en": "Comfort in Every Season", "am": "ምቾት በሁሉም ወቅት" }
+    "kk_spot_title": { "en": "KK Spot Lights", "am": "ኬኬ ስፖት መብራቶች" },
+    "kk_spot_tag": { "en": "Architectural & Anti-Glare", "am": "ጎርግዋዳ እና ፀረ-ብርሃን ነጸብራቅ" },
+    "fans_title": { "en": "KK Spot Lights", "am": "ኬኬ ስፖት መብራቶች" },
+    "fans_tag": { "en": "Architectural & Anti-Glare", "am": "ጎርግዋዳ እና ፀረ-ብርሃን ነጸብራቅ" }
   },
   "about": {
     "eyebrow": { "en": "ABOUT US", "am": "ስለ እኛ" },
     "title": { "en": "Luxury Lighting", "am": "ላግዠሪ ላይቲንግ" },
     "desc": {
-      "en": "Luxury Lighting is your trusted partner for high-quality electrical and lighting solutions. We provide a wide range of products including LED lights, panels, street lights, electrical accessories, cables, fans and more — all at the best prices and with excellent service.",
-      "am": "ላግዠሪ ላይቲንግ ለከፍተኛ ጥራት ያላቸው የኤሌክትሪክ እና የብርሃን መፍትሄዎች ታማኝ አጋርዎ ነው። የኤልኢዲ መብራቶች፣ ፓነሎች፣ የመንገድ መብራቶች፣ የኤሌክትሪክ እቃዎች፣ ገመዶች፣ ማራገቢያዎች እና ሌሎች በርካታ ምርቶችን በተመጣጣኝ ዋጋ እና በጥሩ አገልግሎት እናቀርባለን።"
+      "en": "Luxury Lighting is your trusted partner for high-quality electrical and lighting solutions. We provide a wide range of products including LED lights, panels, street lights, electrical accessories, cables, KK spot lights and more — all at the best prices and with excellent service.",
+      "am": "ላግዠሪ ላይቲንግ ለከፍተኛ ጥራት ያላቸው የኤሌክትሪክ እና የብርሃን መፍትሄዎች ታማኝ አጋርዎ ነው። የኤልኢዲ መብራቶች፣ ፓነሎች፣ የመንገድ መብራቶች፣ የኤሌክትሪክ እቃዎች፣ ገመዶች፣ ኬኬ ስፖቶች እና ሌሎች በርካታ ምርቶችን በተመጣጣኝ ዋጋ እና በጥሩ አገልግሎት እናቀርባለን።"
     },
     "badge_original": { "en": "Original Products", "am": "ኦሪጅናል ምርቶች" },
     "badge_service": { "en": "Professional Service", "am": "ሙያዊ አገልግሎት" },

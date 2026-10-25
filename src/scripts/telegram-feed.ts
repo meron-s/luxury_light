@@ -473,12 +473,6 @@ export function initTelegramFeed() {
     })
     .catch(err => {
       console.debug('Telegram live check completed (using preloaded static feed):', err.message);
-      if (statusEl) {
-        statusEl.innerHTML = `
-          <span class="inline-block h-2 w-2 rounded-full bg-amber-400"></span>
-          <span class="text-stone-400">Official Telegram Channel: @luxuryelectrical</span>
-        `;
-      }
     });
 }
 

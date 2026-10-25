@@ -6,7 +6,7 @@ import fallbackHero from '../assets/hero/hero-main.jpg';
 
 // Map all gallery images
 const galleryImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery/**/*.{jpg,png,jpeg}', { eager: true });
-const siteUrl = 'https://luxury-light.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxuryelectricall.com';
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

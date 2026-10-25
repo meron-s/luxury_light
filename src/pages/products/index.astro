@@ -10,7 +10,7 @@ import TelegramFeed from '../../components/sections/TelegramFeed.astro';
 // Automatically import all product images for Sharp optimization
 const productImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/products/**/*.{jpg,png,jpeg}', { eager: true });
 
-const siteUrl = 'https://luxury-light.vercel.app';
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://luxuryelectricall.com';
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

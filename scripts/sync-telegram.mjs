@@ -1,4 +1,4 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -36,11 +36,15 @@ async function syncTelegram() {
     const html = await res.text();
     const messageRegex = /<div class="tgme_widget_message\b[^>]*data-post="([^"]+)"[\s\S]*?(?=<div class="tgme_widget_message\b|$)/g;
 
+    const imgDir = resolve(__dirname, '../public/images/telegram');
+    mkdirSync(imgDir, { recursive: true });
+
     const posts = [];
     let match;
     while ((match = messageRegex.exec(html)) !== null) {
       const postBlock = match[0];
       const postId = match[1];
+      const rawId = postId.split('/')[1] || postId;
 
       const dateMatch = postBlock.match(/<time[^>]*datetime="([^"]+)"[^>]*>([^<]+)<\/time>/);
       const datetime = dateMatch ? dateMatch[1] : null;
@@ -66,18 +70,45 @@ async function syncTelegram() {
         text = text.replace(/[✔️✅✓]/gu, '•');
       }
 
-      const rawId = postId.split('/')[1] || postId;
       if (postOverrides[rawId]) {
         text = postOverrides[rawId];
       }
 
-      if (photoMatches.length > 0 || (text.length > 10 && !text.includes('Channel created'))) {
+      const uniquePhotos = [...new Set(photoMatches)];
+      const localPhotos = [];
+
+      for (let i = 0; i < uniquePhotos.length; i++) {
+        const cdnUrl = uniquePhotos[i];
+        const filename = `${rawId}-${i + 1}.jpg`;
+        const filePath = resolve(imgDir, filename);
+        const publicPath = `/images/telegram/${filename}`;
+
+        try {
+          const imgRes = await fetch(cdnUrl);
+          if (imgRes.ok) {
+            const buf = Buffer.from(await imgRes.arrayBuffer());
+            writeFileSync(filePath, buf);
+            localPhotos.push(publicPath);
+          } else if (existsSync(filePath)) {
+            // Keep existing local image if download fails
+            localPhotos.push(publicPath);
+          }
+        } catch (e) {
+          if (existsSync(filePath)) {
+            localPhotos.push(publicPath);
+          } else {
+            console.warn(`Failed to download photo for post ${rawId}:`, e.message);
+          }
+        }
+      }
+
+      if (localPhotos.length > 0 || (text.length > 10 && !text.includes('Channel created'))) {
         posts.push({
-          id: postId.split('/')[1] || postId,
+          id: rawId,
           postId,
           url: `https://t.me/${postId}`,
           datetime,
-          photos: [...new Set(photoMatches)],
+          photos: localPhotos,
           text: text.slice(0, 600)
         });
       }
@@ -96,7 +127,7 @@ async function syncTelegram() {
     const outPath = resolve(__dirname, '../src/data/telegram-products.json');
     mkdirSync(dirname(outPath), { recursive: true });
     writeFileSync(outPath, JSON.stringify(outputData, null, 2), 'utf-8');
-    console.log(`Successfully synced ${posts.length} posts to ${outPath}`);
+    console.log(`Successfully synced ${posts.length} posts and downloaded images to ${imgDir}`);
   } catch (err) {
     console.error('Failed to sync Telegram posts:', err);
     process.exit(1);

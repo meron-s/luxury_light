@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Luxury Lighting — Production Apache / DirectAdmin Configuration
+# Luxury Lighting — Production Apache / LiteSpeed Configuration
 # ----------------------------------------------------------------------
 
 # Directory Index
@@ -23,23 +23,58 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Pass existing files and directories directly
+  # --------------------------------------------------------------------
+  # 1. FORCE HTTPS (MUST BE FIRST BEFORE ANY FILE OR DIRECTORY CHECKS)
+  # --------------------------------------------------------------------
+  RewriteCond %{HTTPS} !on [OR]
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+  RewriteCond %{SERVER_PORT} ^80$
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # --------------------------------------------------------------------
+  # 2. LEGACY CATEGORY REDIRECTS
+  # --------------------------------------------------------------------
+  RewriteRule ^products/fans-and-ventilation/?$ /products/kk-spot-lights [L,R=301]
+
+  # --------------------------------------------------------------------
+  # 3. SERVE EXISTING STATIC FILES & DIRECTORIES DIRECTLY
+  # --------------------------------------------------------------------
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Force HTTPS
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # --------------------------------------------------------------------
+  # 3. CLEAN URLS (ALLOW /about TO SERVE /about/index.html)
+  # --------------------------------------------------------------------
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([^/]+)/?$ /$1.html [L]
+
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)/?$ /$1/index.html [L]
 </IfModule>
 
 # Security Headers (Matching SPEC.md Section 6)
 <IfModule mod_headers.c>
+  # Enforce strict transport security (HSTS) with subdomains and preload
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  
+  # Prevent MIME-type sniffing
   Header always set X-Content-Type-Options "nosniff"
+  
+  # Prevent iframe embedding / clickjacking
   Header always set X-Frame-Options "DENY"
+  
+  # Protect referrer data
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Disable unnecessary browser sensors
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # Cross-Origin Opener Policy
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Automatically upgrade any insecure requests to HTTPS
+  Header always set Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; img-src 'self' data: https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.telesco.pe https://*.telegram.org; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
 </IfModule>
 
 # Browser Caching Rules

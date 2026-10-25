@@ -40,11 +40,11 @@
     "description": "Multi-gauge pure copper insulated power cables (2x1.5 to 3x6), high-speed Cat6 UTP networking cables, and low-loss satellite television coaxial lines."
   },
   {
-    "slug": "fans-and-ventilation",
-    "name": "Fans & Ventilation",
-    "name_am": "የአየር ማናፈሻ እና ማራገቢያዎች",
-    "tagline": "Comfort in Every Season",
-    "image": "/src/assets/categories/fans-and-ventilation.jpg",
-    "description": "Commercial and residential energy-efficient ceiling fans, wall ventilation exhaust systems, and climate circulation units."
+    "slug": "kk-spot-lights",
+    "name": "KK Spot Lights",
+    "name_am": "ኬኬ ስፖት መብራቶች",
+    "tagline": "Deep-Recessed & Anti-Glare",
+    "image": "/src/assets/categories/kk-spot-lights.jpg",
+    "description": "Architectural KK recessed ceiling spotlights, deep-recessed anti-glare downlights, and satin silver aluminum fixtures engineered for modern gypsum ceilings."
   }
 ]

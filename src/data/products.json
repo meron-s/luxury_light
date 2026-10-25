@@ -79,7 +79,7 @@
   },
   {
     "id": "kk-deep-spot-white",
-    "category": "led-panel-lights",
+    "category": "kk-spot-lights",
     "name": "KK Anti-Glare Deep-Recessed Spotlight (White)",
     "description": "Architectural deep-baffle downlight engineered to eliminate direct glare (UGR<19) while delivering precise conical light beam distribution.",
     "image": "/src/assets/products/led-panel-lights/kk-deep-spot-white.jpg",
@@ -92,7 +92,7 @@
   },
   {
     "id": "kk-deep-spot-black",
-    "category": "led-panel-lights",
+    "category": "kk-spot-lights",
     "name": "KK Anti-Glare Deep-Recessed Spotlight (Black)",
     "description": "Stealth matte-black recessed architectural fixture with deep light source placement for high-contrast interior lighting schemes.",
     "image": "/src/assets/products/led-panel-lights/kk-deep-spot-black.jpg",
@@ -131,7 +131,7 @@
   },
   {
     "id": "mini-spot-black",
-    "category": "led-panel-lights",
+    "category": "kk-spot-lights",
     "name": "Compact Architectural Mini Downlight (Black)",
     "description": "Micro-aperture ceiling downlight designed for minimalist accent lighting, niches, display cases, and cove details.",
     "image": "/src/assets/products/led-panel-lights/mini-spot-black.jpg",
@@ -144,7 +144,7 @@
   },
   {
     "id": "mini-spot-white",
-    "category": "led-panel-lights",
+    "category": "kk-spot-lights",
     "name": "Compact Architectural Mini Downlight (White)",
     "description": "Discreet low-profile micro downlight blending cleanly into white gypsum and timber ceiling planes.",
     "image": "/src/assets/products/led-panel-lights/mini-spot-white.jpg",
@@ -391,7 +391,7 @@
   },
   {
     "id": "kk-recessed-spotlight-silver",
-    "category": "led-panel-lights",
+    "category": "kk-spot-lights",
     "name": "KK Recessed Ceiling Spot Light",
     "description": "Architectural recessed ceiling spotlight fixture with durable silver aluminum bezel, spring retention clips, and glare-free frosted optical diffuser for modern gypsum and interior lighting.",
     "image": "/src/assets/products/led-panel-lights/kk-spot-light-silver.jpg",
