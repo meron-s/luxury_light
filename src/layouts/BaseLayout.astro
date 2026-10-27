@@ -40,8 +40,11 @@ const baseJsonLd = {
   "alternateName": ["Luxury Lighting", "Luxury Electrical", "ሉክዠሪ ኤሌክትሪካል መብራቶች"],
   "description": description,
   "url": siteUrl,
-  "logo": new URL('/apple-touch-icon.png', siteUrl).toString(),
-  "image": [fullOgImageUrl],
+  "logo": new URL('/images/brand/logo.png', siteUrl).toString(),
+  "image": [
+    new URL('/images/brand/logo.png', siteUrl).toString(),
+    fullOgImageUrl
+  ],
   "telephone": site.phones.map(p => `+251${p.number.replace(/\D/g, '').slice(1)}`),
   "currenciesAccepted": "ETB",
   "paymentAccepted": "Cash, Telebirr, CBE Bank Transfer",
@@ -141,9 +144,12 @@ if (extraJsonLd) {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={fullOgImageUrl} />
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- Favicons for Google Search, Mobile, and Web Browsers -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Theme Color -->

@@ -9,6 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "generate:favicons": "node scripts/generate-favicons.mjs",
+    "package:zip": "node scripts/create-deploy-zip.mjs",
     "sync:telegram": "node scripts/sync-telegram.mjs"
   },
   "dependencies": {
